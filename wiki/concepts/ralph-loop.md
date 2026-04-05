@@ -2,7 +2,7 @@
 title: "The Ralph loop"
 type: concept
 created: 2026-04-04
-updated: 2026-04-04
+updated: 2026-04-05
 sources: ["wiki/sources/2026-04-04-anthropic-long-running-claude-scientific-computing.md"]
 tags: [agentic-coding, orchestration, methodology, prompt-engineering]
 status: active
@@ -10,11 +10,9 @@ status: active
 
 # The Ralph loop
 
-An orchestration pattern, named after Geoffrey Huntley's [blog post introducing it](https://ghuntley.com/loop/), that wraps a `for` loop around a coding agent and **kicks the agent back into context when it claims completion**, asking whether it's *really* done. The goal is to counteract [agentic-laziness](agentic-laziness.md) — the failure mode where current models stop short on complex multi-part tasks with some excuse like "It's getting late, let's pick back up again tomorrow?" (Source: [2026-04-04-anthropic-long-running-claude-scientific-computing](../sources/2026-04-04-anthropic-long-running-claude-scientific-computing.md)).
+> **A `for`-loop wrapper around a coding agent that kicks it back into context when it claims completion — asking whether it's *really* done.** Named after Geoffrey Huntley's [blog post](https://ghuntley.com/loop/). Counteracts [agentic-laziness](agentic-laziness.md): current models stop short on complex tasks with excuses like *"It's getting late, let's pick back up again tomorrow?"*
 
 ## Mechanism
-
-Conceptually the loop is trivial:
 
 ```
 while not done:
@@ -25,52 +23,49 @@ while not done:
         re-prompt: "are you really done? acceptance criteria not yet met."
 ```
 
-A real invocation from the CLAX project (using the Ralph plugin in Claude Code):
+A real invocation from the CLAX project:
 
 ```
-/ralph-loop:ralph-loop "Please keep working on the task until the success criterion
-of 0.1% accuracy across the entire parameter range is achieved."
+/ralph-loop:ralph-loop "Please keep working on the task until the success
+criterion of 0.1% accuracy across the entire parameter range is achieved."
 --max-iterations 20 --completion-promise "DONE"
 ```
 
-Three knobs matter:
+## The three knobs
 
-1. **The success criterion** — expressed as a precise, measurable condition tied to the [test-oracle-for-agents](test-oracle-for-agents.md). "0.1% accuracy across the entire parameter range" is the example; "all tests pass and coverage is above 90%" is another.
-2. **Maximum iterations** — a budget cap. In the example, up to 20 passes.
-3. **The completion promise** — a specific token (e.g., "DONE") the agent must emit to exit the loop. This forces the agent to make an explicit, distinguishable claim of completion, separable from partial progress reports.
+| Knob | Example | Purpose |
+|---|---|---|
+| **Success criterion** | *"0.1% accuracy across parameter range"* | Precise, measurable, tied to [test-oracle-for-agents](test-oracle-for-agents.md) |
+| **Max iterations** | 20 | Budget cap; blunt failsafe |
+| **Completion promise** | `DONE` | Specific token to force distinguishable claim, separable from partial progress reports |
 
-## Why a named pattern and not just good prompting
+## Why a named pattern and not just "good prompting"
 
-Mishra-Sharma frames the Ralph loop as **capability uplift scaffolding** — something current models need because they are not yet robust enough to stop exactly when the task is done and not before. It's explicitly positioned as **temporary**: *"As models get more capable, they require less bespoke orchestration such as prompt engineering, RAG, or context stuffing. At a given point in time, however, it can be useful to provide some level of scaffolding."*
+Mishra-Sharma frames Ralph as **capability-uplift scaffolding** — something current models need because they aren't yet robust enough to stop exactly when done. Positioned as **temporary**: *"As models get more capable, they require less bespoke orchestration. At a given point in time, however, it can be useful to provide some level of scaffolding."* Ralph is a workaround for [agentic-laziness](agentic-laziness.md) at current capability, not a permanent architectural component.
 
-So the right mental model is: Ralph is a workaround for [agentic-laziness](agentic-laziness.md) at current capability, not a permanent architectural component. The loop will probably become unnecessary once models stop declaring completion prematurely.
+## Sibling patterns
 
-## Related patterns in the same family
-
-Mishra-Sharma mentions several sibling patterns:
-
-- **GSD ("Get Shit Done")** — general-purpose "don't stop until done" harness. Repo: [github.com/gsd-build/get-shit-done](https://github.com/gsd-build/get-shit-done).
+- **GSD ("Get Shit Done")** — general-purpose completion harness ([github.com/gsd-build/get-shit-done](https://github.com/gsd-build/get-shit-done)).
 - **Domain-specific GSD variants** — e.g. a physics variant (arXiv:2603.20179, github.com/psi-oss/get-physics-done).
-- **`/loop` command** — native to Claude Code, same idea built into the CLI.
+- **`/loop` command** native to Claude Code.
 
-All of these share the core mechanic: wrap the agent in a completion-verifying outer loop and only exit when the success criterion is met.
+All share the core mechanic: wrap the agent in a completion-verifying outer loop, exit only when the success criterion is met.
 
-## Connection to other wiki concepts
+## Relation to other wiki concepts
 
-- **Filter loop on the producer.** Ralph is a thin instance of the general pattern analysed in [test-oracle-for-agents](test-oracle-for-agents.md): the LLM produces artifacts, and a filter/oracle decides whether the producer is done. In Ralph's case, the filter is the success criterion check; in Karpathy's [llm-knowledge-bases](llm-knowledge-bases.md), it's the lint pass; in AlphaEvolve ([llm-driven-algorithm-discovery](llm-driven-algorithm-discovery.md)) it's the exploitability metric. Same architecture, different filter.
-- **Dependency on [test-oracle-for-agents](test-oracle-for-agents.md).** Ralph only works if there's a trustworthy way to tell whether the success criterion has actually been met. Without a real oracle, Ralph just loops forever on an agent that keeps claiming "done" falsely. Ralph is the control mechanism *on top of* a valid oracle, not a substitute for one.
+- **Filter on the producer.** Ralph is a thin instance of the general pattern in [producer-filter-pattern](../analyses/producer-filter-pattern.md). Its filter is the success-criterion check; Karpathy's wiki uses a lint pass; AlphaEvolve uses exploitability. Same architecture, different filter.
+- **Dependency on [test-oracle-for-agents](test-oracle-for-agents.md).** Ralph only works with a trustworthy oracle; otherwise it loops forever on false "done" claims. Ralph is the control mechanism *on top of* a valid oracle, not a substitute.
 
 ## Limitations
 
-- **Only works with measurable criteria.** If success is judgment-based or contested, Ralph can't close the loop.
-- **Max-iterations is a blunt failsafe.** If the agent genuinely cannot reach the criterion, Ralph will burn compute until the cap.
-- **Can mask capability limits.** If the agent is looped enough times on a task outside its current capability, it may eventually stumble into a bad local optimum rather than admit infeasibility. Users should treat Ralph's "DONE" as a *claim requiring verification*, not a guarantee.
+- **Only works with measurable criteria.** Judgment-based success → Ralph can't close the loop.
+- **Max-iterations is blunt.** If the agent genuinely cannot reach the criterion, Ralph burns compute until the cap.
+- **Can mask capability limits.** Given enough loops, the agent may stumble into a bad local optimum rather than admit infeasibility. Treat Ralph's DONE as a *claim requiring verification*, not a guarantee.
 
 ## Related
 
-- [long-running-agentic-coding](long-running-agentic-coding.md)
-- [agentic-laziness](agentic-laziness.md)
-- [test-oracle-for-agents](test-oracle-for-agents.md)
-- [agent-persistent-memory](agent-persistent-memory.md)
-- [clax-project](../entities/clax-project.md)
-- [2026-04-04-anthropic-long-running-claude-scientific-computing](../sources/2026-04-04-anthropic-long-running-claude-scientific-computing.md)
+- **Hub:** [long-running-agentic-coding](long-running-agentic-coding.md)
+- **Fights:** [agentic-laziness](agentic-laziness.md)
+- **Depends on:** [test-oracle-for-agents](test-oracle-for-agents.md) · [agent-persistent-memory](agent-persistent-memory.md)
+- **Canonical use:** [clax-project](../entities/clax-project.md)
+- **Source:** [2026-04-04-anthropic-long-running-claude-scientific-computing](../sources/2026-04-04-anthropic-long-running-claude-scientific-computing.md)

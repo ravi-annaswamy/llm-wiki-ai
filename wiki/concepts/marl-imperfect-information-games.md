@@ -2,7 +2,7 @@
 title: "MARL in Imperfect-Information Games"
 type: concept
 created: 2026-04-04
-updated: 2026-04-04
+updated: 2026-04-05
 sources: ["wiki/sources/2026-04-04-marktechpost-deepmind-alphaevolve-game-theory.md"]
 tags: [marl, game-theory, poker, nash-equilibrium, reinforcement-learning]
 status: active
@@ -10,61 +10,56 @@ status: active
 
 # MARL in Imperfect-Information Games
 
-Multi-Agent Reinforcement Learning (MARL) in **imperfect-information** games is the subfield concerned with training agents to play games where players act sequentially and cannot see each other's private information — the canonical example being poker. It is the domain where [counterfactual-regret-minimization](counterfactual-regret-minimization.md) and [policy-space-response-oracles](policy-space-response-oracles.md) developed, and the test bed for the algorithm-discovery work in [2026-04-04-marktechpost-deepmind-alphaevolve-game-theory](../sources/2026-04-04-marktechpost-deepmind-alphaevolve-game-theory.md).
+> **Multi-Agent RL on games where players act sequentially and cannot see each other's private information — poker is the canonical example.** The domain where [counterfactual-regret-minimization](counterfactual-regret-minimization.md) and [policy-space-response-oracles](policy-space-response-oracles.md) developed, and the test bed for the [alphaevolve](../entities/alphaevolve.md) algorithm-discovery work.
 
 ## Why it's harder than perfect-information games
 
-Games like chess and Go are **perfect-information**: every player can see the full state. Minimax and its descendants (including AlphaZero-style self-play with value functions) work because the relevant decision is a function of a fully observable position.
+Chess and Go are perfect-information: minimax + AlphaZero-style self-play work because the decision depends only on a fully observable position. Poker breaks that:
 
-Imperfect-information games break that assumption. In poker:
-
-- A player's optimal action depends on beliefs about hidden cards and hidden strategies.
-- A single observable state (the public board) corresponds to many possible underlying situations — an **information set**.
-- Bluffing, mixed strategies, and equilibrium reasoning become first-class.
-
-As a result, the solution concept shifts from "best move in this position" to "strategy that is a best response to the opponent's strategy, and vice versa" — i.e., a **Nash Equilibrium (NE)** in the extensive-form game.
+| Change | Consequence |
+|---|---|
+| Private hidden cards | Optimal action depends on *beliefs* about opponent |
+| Many underlying situations → one observable | Reasoning lives at the level of an **information set**, not a position |
+| First-class bluffing, mixed strategies | Solution concept shifts to **Nash Equilibrium** in the extensive-form game |
 
 ## Canonical algorithmic paradigms
 
-Two families have dominated the academic literature, and both are the targets of the AlphaEvolve paper:
+| Paradigm | Abstraction | Canonical variants |
+|---|---|---|
+| **CFR** — iterative regret minimization per information set; time-averaged strategy converges to NE | Information set level | CFR+, DCFR, PCFR+, DPCFR+ |
+| **PSRO** — maintain a population of policies per player, build meta-game payoff tensor, mix via meta-strategy solver | Whole-policy level | PSRO, PSRO-RN, Joint-PSRO |
 
-- **[counterfactual-regret-minimization](counterfactual-regret-minimization.md)** (CFR) — iterative regret minimization decomposed across information sets. Time-averaged strategy converges to Nash Equilibrium. Core variants: CFR+, DCFR, PCFR+, DPCFR+, etc.
-- **[policy-space-response-oracles](policy-space-response-oracles.md)** (PSRO) — maintains a population of policies per player, computes a meta-game payoff tensor, and uses a meta-strategy solver to decide how to mix over the population. Best responses to the current mixture are added to the population iteratively.
+Complementary abstractions, routinely benchmarked against each other.
 
-CFR operates at the level of information sets; PSRO operates at the level of entire policies. They're complementary abstractions and are often benchmarked against each other.
+## Benchmark suite (DeepMind paper)
 
-## Standard benchmark games
+| Game | Variants | Size range |
+|---|---|---|
+| Kuhn Poker | 3-player, 4-player | Smallest classic CFR toy |
+| Leduc Poker | 2-player, 3-player | Two betting rounds, public card |
+| Goofspiel | 4-card, 5-card | Bidding card game |
+| Liar's Dice | 4-, 5-, 6-sided | Dice bidding with hidden info |
 
-The DeepMind paper uses a familiar suite of small imperfect-information games:
+Train/test split by **game size**: train on smaller variants, evaluate on larger ones without retuning.
 
-- **Kuhn Poker** (3-player and 4-player variants) — a simplified poker with a 3-card deck; the classic toy domain for CFR research.
-- **Leduc Poker** (2-player and 3-player variants) — slightly larger, with two rounds of betting and a public card.
-- **Goofspiel** (4-card and 5-card variants) — a bidding card game.
-- **Liars Dice** (4-, 5-, 6-sided variants) — a dice-bidding game where players hide information from each other.
+## Evaluation: exploitability
 
-The training/test split is on **game size**: train on smaller variants, evaluate on larger ones with no retuning. This is how generalization is measured in the paper.
+Exploitability = how much a best-responding opponent could gain vs playing NE. Lower is better; zero = exact NE. The DeepMind paper uses **OpenSpiel** with an **exact** best-response oracle (value iteration) and exact payoff entries — no Monte Carlo noise. This isolates algorithmic improvement from evaluation variance.
 
-## Evaluation metric
+## Why this domain fits AlphaEvolve
 
-**Exploitability** is the standard measure: how much a best-responding opponent could gain against the given strategy relative to playing a Nash equilibrium. Lower is better. Zero exploitability means the strategy is an exact Nash equilibrium.
+| Condition | How the domain supplies it |
+|---|---|
+| Clean fitness signal | Negative exploitability |
+| Mature baselines | Decades of CFR and PSRO variants |
+| Structured algorithmic substrate | New variants expressible as modifications of a few Python classes |
+| Fast exact evaluation on small games | High-throughput evolutionary search tractable |
 
-All experiments in the DeepMind paper use the **OpenSpiel** framework with an **exact** best-response oracle (computed via value iteration) and exact payoff entries — removing Monte Carlo sampling noise from the results. This is important because it isolates algorithmic improvements from variance in the evaluation.
-
-## Why the domain is interesting for AlphaEvolve
-
-The field has:
-
-1. **A clean, well-defined fitness signal** (negative exploitability).
-2. **Mature baselines** (decades of CFR and PSRO variants to beat).
-3. **A structured algorithmic substrate** where new variants can be expressed as modifications of a small number of Python classes.
-4. **Fast, exact evaluation** on small games, which makes high-throughput evolutionary search tractable.
-
-All four conditions are exactly what an LLM-driven algorithm search needs, which is why imperfect-information game theory was a natural first venue for [llm-driven-algorithm-discovery](llm-driven-algorithm-discovery.md) applied to [alphaevolve](../entities/alphaevolve.md).
+All four are exactly what [llm-driven-algorithm-discovery](llm-driven-algorithm-discovery.md) needs — which is why imperfect-information game theory was a natural first venue for [alphaevolve](../entities/alphaevolve.md).
 
 ## Related
 
-- [counterfactual-regret-minimization](counterfactual-regret-minimization.md)
-- [policy-space-response-oracles](policy-space-response-oracles.md)
-- [llm-driven-algorithm-discovery](llm-driven-algorithm-discovery.md)
-- [alphaevolve](../entities/alphaevolve.md)
-- [google-deepmind](../entities/google-deepmind.md)
+- **Algorithms:** [counterfactual-regret-minimization](counterfactual-regret-minimization.md) · [policy-space-response-oracles](policy-space-response-oracles.md)
+- **Discovery system:** [alphaevolve](../entities/alphaevolve.md) · [google-deepmind](../entities/google-deepmind.md)
+- **Hub:** [llm-driven-algorithm-discovery](llm-driven-algorithm-discovery.md)
+- **Source:** [2026-04-04-marktechpost-deepmind-alphaevolve-game-theory](../sources/2026-04-04-marktechpost-deepmind-alphaevolve-game-theory.md)
