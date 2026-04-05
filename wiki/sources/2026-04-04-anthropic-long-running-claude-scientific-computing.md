@@ -10,7 +10,7 @@ status: active
 
 # Long-running Claude for scientific computing
 
-Anthropic post by [[entities/siddharth-mishra-sharma]], a researcher on Anthropic's Discovery team. The post describes how to apply multi-day, autonomous agentic coding workflows — the same family of patterns that produced Anthropic's [[entities/anthropic-c-compiler-project]] — to scientific computing tasks, even outside one's domain of expertise. The concrete walkthrough is [[entities/clax-project]]: a differentiable JAX reimplementation of a cosmological Boltzmann solver, built by Claude Opus 4.6 against the [[entities/class-boltzmann-solver]] C reference. (Source: raw/long-running-claude-for-scientific-computing.md)
+Anthropic post by [siddharth-mishra-sharma](../entities/siddharth-mishra-sharma.md), a researcher on Anthropic's Discovery team. The post describes how to apply multi-day, autonomous agentic coding workflows — the same family of patterns that produced Anthropic's [anthropic-c-compiler-project](../entities/anthropic-c-compiler-project.md) — to scientific computing tasks, even outside one's domain of expertise. The concrete walkthrough is [clax-project](../entities/clax-project.md): a differentiable JAX reimplementation of a cosmological Boltzmann solver, built by Claude Opus 4.6 against the [class-boltzmann-solver](../entities/class-boltzmann-solver.md) C reference. (Source: raw/long-running-claude-for-scientific-computing.md)
 
 ## The shift being described
 
@@ -20,11 +20,11 @@ Most scientists currently use AI agents on a tight leash — one step at a time 
 2. Success criteria are **clearly quantifiable**.
 3. Human oversight can be **occasional rather than continuous**.
 
-Examples he gives: reimplementing a numerical solver, porting legacy Fortran to a modern language, debugging a large codebase against a reference implementation. See [[concepts/long-running-agentic-coding]] for the generalized pattern and [[concepts/agent-driven-scientific-computing]] for the domain-specific instance.
+Examples he gives: reimplementing a numerical solver, porting legacy Fortran to a modern language, debugging a large codebase against a reference implementation. See [long-running-agentic-coding](../concepts/long-running-agentic-coding.md) for the generalized pattern and [agent-driven-scientific-computing](../concepts/agent-driven-scientific-computing.md) for the domain-specific instance.
 
 ## The scientific task
 
-The running example is a reimplementation of a cosmological Boltzmann solver in JAX. Boltzmann solvers (canonically [[entities/class-boltzmann-solver]] and CAMB) predict the statistical properties of the Cosmic Microwave Background by evolving coupled equations for photons, baryons, neutrinos, and dark matter through the early universe. They are core infrastructure in cosmology, used to fit models against data from surveys like *Planck* and the *Simons Observatory*.
+The running example is a reimplementation of a cosmological Boltzmann solver in JAX. Boltzmann solvers (canonically [class-boltzmann-solver](../entities/class-boltzmann-solver.md) and CAMB) predict the statistical properties of the Cosmic Microwave Background by evolving coupled equations for photons, baryons, neutrinos, and dark matter through the early universe. They are core infrastructure in cosmology, used to fit models against data from surveys like *Planck* and the *Simons Observatory*.
 
 A **differentiable** version matters because gradient-based inference methods are dramatically faster than gradient-free ones. JAX gives automatic differentiation and GPU compatibility essentially for free.
 
@@ -36,11 +36,11 @@ He also notes a structural contrast with the C compiler project: the compiler wo
 
 Five pieces, each of which maps to a concept page:
 
-1. **`CLAUDE.md` as the portable plan.** The user (in consultation with Claude) drafts a file containing project goals, design decisions, accuracy targets, and rules of engagement. Claude treats this file specially, keeps it in context, and is permitted to **edit it as work progresses**. The CLAX project's [early CLAUDE.md](https://github.com/smsharma/clax/blob/6a6b2330cf25edded1bb31ec57a0091aa794a5d3/CLAUDE.md) is linked as a concrete example. Mishra-Sharma's explicit target was 0.1% accuracy against CLASS on the main science deliverables — matching the typical CLASS↔CAMB agreement level. See [[concepts/long-running-agentic-coding]].
+1. **`CLAUDE.md` as the portable plan.** The user (in consultation with Claude) drafts a file containing project goals, design decisions, accuracy targets, and rules of engagement. Claude treats this file specially, keeps it in context, and is permitted to **edit it as work progresses**. The CLAX project's [early CLAUDE.md](https://github.com/smsharma/clax/blob/6a6b2330cf25edded1bb31ec57a0091aa794a5d3/CLAUDE.md) is linked as a concrete example. Mishra-Sharma's explicit target was 0.1% accuracy against CLASS on the main science deliverables — matching the typical CLASS↔CAMB agreement level. See [long-running-agentic-coding](../concepts/long-running-agentic-coding.md).
 
-2. **`CHANGELOG.md` as portable long-term memory.** A progress file that tracks current status, completed tasks, **failed approaches and why they didn't work**, accuracy tables at key checkpoints, and known limitations. The failed approaches are load-bearing: without them, successive sessions re-attempt the same dead ends. The example entry: *"Tried using Tsit5 for the perturbation ODE, system is too stiff. Switched to Kvaerno5."* See [[concepts/agent-persistent-memory]].
+2. **`CHANGELOG.md` as portable long-term memory.** A progress file that tracks current status, completed tasks, **failed approaches and why they didn't work**, accuracy tables at key checkpoints, and known limitations. The failed approaches are load-bearing: without them, successive sessions re-attempt the same dead ends. The example entry: *"Tried using Tsit5 for the perturbation ODE, system is too stiff. Switched to Kvaerno5."* See [agent-persistent-memory](../concepts/agent-persistent-memory.md).
 
-3. **The test oracle.** The single most important enabling condition. For scientific code this can be a reference implementation, a quantifiable objective, or an existing test suite. In CLAX's case it was CLASS's C source — Claude was instructed to construct unit tests against the reference and run them continuously. See [[concepts/test-oracle-for-agents]].
+3. **The test oracle.** The single most important enabling condition. For scientific code this can be a reference implementation, a quantifiable objective, or an existing test suite. In CLAX's case it was CLASS's C source — Claude was instructed to construct unit tests against the reference and run them continuously. See [test-oracle-for-agents](../concepts/test-oracle-for-agents.md).
 
 4. **Git as hands-off coordination.** The agent commits and pushes after every meaningful unit of work. This provides recoverable history, visible progress (Mishra-Sharma checked on the GitHub commit feed from his phone in line for coffee), and loss protection if compute allocations expire mid-session. Enforced via a CLAUDE.md rule: commit/push after each unit, run `pytest tests/ -x -q` before every commit, never commit code that breaks passing tests.
 
@@ -48,7 +48,7 @@ Five pieces, each of which maps to a concept page:
 
 ## The Ralph loop
 
-A named orchestration pattern to combat [[concepts/agentic-laziness]] — the failure mode where current models, asked to complete a complex multi-part task, find an excuse to stop early ("It's getting late, let's pick back up again tomorrow?"). The [[concepts/ralph-loop]] is essentially a `for` loop that kicks the agent back into context when it claims completion and asks if it's *really* done. Analogous patterns cited: GSD ("get-shit-done"), physics-specific GSD variants, and the native `/loop` command in Claude Code.
+A named orchestration pattern to combat [agentic-laziness](../concepts/agentic-laziness.md) — the failure mode where current models, asked to complete a complex multi-part task, find an excuse to stop early ("It's getting late, let's pick back up again tomorrow?"). The [ralph-loop](../concepts/ralph-loop.md) is essentially a `for` loop that kicks the agent back into context when it claims completion and asks if it's *really* done. Analogous patterns cited: GSD ("get-shit-done"), physics-specific GSD variants, and the native `/loop` command in Claude Code.
 
 A typical invocation in Claude Code:
 
@@ -87,26 +87,26 @@ He draws the analogy to the universal AI-research experience of launching an exp
 
 Several cross-cutting connections are worth making explicit:
 
-- **Fourth instance of the "LLM as active producer of structured artifacts with a filter loop" theme.** Earlier instances: [[concepts/llm-knowledge-bases]] (wiki pages, linting as filter), [[concepts/llm-driven-algorithm-discovery]] (AlphaEvolve, exploitability as filter), [[concepts/ai-novel-factory]] (novel drafts, author revision + Amazon reviews as filter). CLAX is a fourth: JAX code, numerical accuracy against CLASS as filter. In every case the LLM writes a durable artifact and a quantifiable evaluation loop decides what survives. The [[concepts/test-oracle-for-agents]] concept page frames this generically.
-- **Another instance of [[concepts/file-over-app-philosophy]].** `CLAUDE.md`, `CHANGELOG.md`, git-tracked source, SLURM scripts — the entire orchestration lives as plain files on disk. No SaaS knowledge base, no hosted agent service, no vendor coupling. The pattern is legible and portable because everything is a file.
-- **A direct methodological sibling to [[concepts/llm-knowledge-bases]].** Karpathy's pattern is "LLM as librarian over a Markdown corpus." Mishra-Sharma's pattern is "LLM as postdoc over a scientific codebase." Both are long-horizon, both use structured on-disk artifacts as context, both depend critically on a filter loop. They are two application domains of the same underlying architecture.
-- **Reinforces the [[analyses/own-your-substrate]] pattern.** The CLAX experiment runs on the researcher's own HPC allocation, the agent's memory lives in files the researcher owns, and the knowledge accumulates in a git history the researcher controls. The compounding layer (accumulated domain understanding + working codebase) stays local.
+- **Fourth instance of the "LLM as active producer of structured artifacts with a filter loop" theme.** Earlier instances: [llm-knowledge-bases](../concepts/llm-knowledge-bases.md) (wiki pages, linting as filter), [llm-driven-algorithm-discovery](../concepts/llm-driven-algorithm-discovery.md) (AlphaEvolve, exploitability as filter), [ai-novel-factory](../concepts/ai-novel-factory.md) (novel drafts, author revision + Amazon reviews as filter). CLAX is a fourth: JAX code, numerical accuracy against CLASS as filter. In every case the LLM writes a durable artifact and a quantifiable evaluation loop decides what survives. The [test-oracle-for-agents](../concepts/test-oracle-for-agents.md) concept page frames this generically.
+- **Another instance of [file-over-app-philosophy](../concepts/file-over-app-philosophy.md).** `CLAUDE.md`, `CHANGELOG.md`, git-tracked source, SLURM scripts — the entire orchestration lives as plain files on disk. No SaaS knowledge base, no hosted agent service, no vendor coupling. The pattern is legible and portable because everything is a file.
+- **A direct methodological sibling to [llm-knowledge-bases](../concepts/llm-knowledge-bases.md).** Karpathy's pattern is "LLM as librarian over a Markdown corpus." Mishra-Sharma's pattern is "LLM as postdoc over a scientific codebase." Both are long-horizon, both use structured on-disk artifacts as context, both depend critically on a filter loop. They are two application domains of the same underlying architecture.
+- **Reinforces the [own-your-substrate](../analyses/own-your-substrate.md) pattern.** The CLAX experiment runs on the researcher's own HPC allocation, the agent's memory lives in files the researcher owns, and the knowledge accumulates in a git history the researcher controls. The compounding layer (accumulated domain understanding + working codebase) stays local.
 
 ## Related
 
-- [[entities/siddharth-mishra-sharma]]
-- [[entities/clax-project]]
-- [[entities/class-boltzmann-solver]]
-- [[entities/anthropic-c-compiler-project]]
-- [[entities/anthropic]]
-- [[concepts/long-running-agentic-coding]]
-- [[concepts/test-oracle-for-agents]]
-- [[concepts/agent-persistent-memory]]
-- [[concepts/ralph-loop]]
-- [[concepts/agentic-laziness]]
-- [[concepts/agent-driven-scientific-computing]]
-- [[concepts/file-over-app-philosophy]]
-- [[analyses/own-your-substrate]]
+- [siddharth-mishra-sharma](../entities/siddharth-mishra-sharma.md)
+- [clax-project](../entities/clax-project.md)
+- [class-boltzmann-solver](../entities/class-boltzmann-solver.md)
+- [anthropic-c-compiler-project](../entities/anthropic-c-compiler-project.md)
+- [anthropic](../entities/anthropic.md)
+- [long-running-agentic-coding](../concepts/long-running-agentic-coding.md)
+- [test-oracle-for-agents](../concepts/test-oracle-for-agents.md)
+- [agent-persistent-memory](../concepts/agent-persistent-memory.md)
+- [ralph-loop](../concepts/ralph-loop.md)
+- [agentic-laziness](../concepts/agentic-laziness.md)
+- [agent-driven-scientific-computing](../concepts/agent-driven-scientific-computing.md)
+- [file-over-app-philosophy](../concepts/file-over-app-philosophy.md)
+- [own-your-substrate](../analyses/own-your-substrate.md)
 
 ## Prompt that produced this page
 

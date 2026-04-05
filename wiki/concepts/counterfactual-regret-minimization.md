@@ -10,7 +10,7 @@ status: active
 
 # Counterfactual Regret Minimization (CFR)
 
-An iterative algorithm for finding Nash equilibria in [[concepts/marl-imperfect-information-games]]. CFR decomposes regret minimization across **information sets** — the situations a player can find themselves in given what they can observe — and, over many iterations, converges to a Nash equilibrium on average (Source: [[sources/2026-04-04-marktechpost-deepmind-alphaevolve-game-theory]]).
+An iterative algorithm for finding Nash equilibria in [marl-imperfect-information-games](marl-imperfect-information-games.md). CFR decomposes regret minimization across **information sets** — the situations a player can find themselves in given what they can observe — and, over many iterations, converges to a Nash equilibrium on average (Source: [2026-04-04-marktechpost-deepmind-alphaevolve-game-theory](../sources/2026-04-04-marktechpost-deepmind-alphaevolve-game-theory.md)).
 
 CFR and its variants have been the backbone of professional-level poker AI for a decade and a half.
 
@@ -45,14 +45,14 @@ The DeepMind paper expresses the CFR design space as three Python classes that t
 - **`PolicyFromRegretAccumulator`** — how the current-iteration policy is derived from cumulative regrets (vanilla regret matching, predictive updates, etc.).
 - **`PolicyAccumulator`** — how the running average policy is accumulated across iterations (linear, uniform, weighted, warm-started, etc.).
 
-Mutating these three classes via [[entities/alphaevolve]] is the full variation space the evolutionary search operates over.
+Mutating these three classes via [alphaevolve](../entities/alphaevolve.md) is the full variation space the evolutionary search operates over.
 
 ## Discovered variants
 
 - **VAD-CFR** (Volatility-Adaptive Discounted CFR) — matches or exceeds state-of-the-art in **10 of 11** benchmark games. Introduces EWMA-based volatility tracking of instantaneous regret magnitude, asymmetric positive-regret boosting (factor 1.1), and a hard policy-averaging warm-start at iteration 500.
 - **AOD-CFR** (Asymmetric Optimistic Discounted CFR) — a secondary discovery using more conventional mechanisms. Competitive performance through linear discount schedules, sign-dependent scaling, EMA-based policy optimism, and polynomial policy averaging.
 
-See [[sources/2026-04-04-marktechpost-deepmind-alphaevolve-game-theory]] for the full mechanism descriptions and benchmark tables.
+See [2026-04-04-marktechpost-deepmind-alphaevolve-game-theory](../sources/2026-04-04-marktechpost-deepmind-alphaevolve-game-theory.md) for the full mechanism descriptions and benchmark tables.
 
 ## Why CFR is a natural target for automated discovery
 
@@ -62,12 +62,12 @@ See [[sources/2026-04-04-marktechpost-deepmind-alphaevolve-game-theory]] for the
 - **Well-defined fitness signal** — exploitability is computable exactly.
 - **Known gaps** — human-designed variants like DCFR rely on fixed discount schedules, which is an obvious place for adaptive mechanisms to help.
 
-See [[concepts/llm-driven-algorithm-discovery]] for the broader framework.
+See [llm-driven-algorithm-discovery](llm-driven-algorithm-discovery.md) for the broader framework.
 
 ## Related
 
-- [[concepts/marl-imperfect-information-games]]
-- [[concepts/policy-space-response-oracles]]
-- [[concepts/llm-driven-algorithm-discovery]]
-- [[entities/alphaevolve]]
-- [[entities/google-deepmind]]
+- [marl-imperfect-information-games](marl-imperfect-information-games.md)
+- [policy-space-response-oracles](policy-space-response-oracles.md)
+- [llm-driven-algorithm-discovery](llm-driven-algorithm-discovery.md)
+- [alphaevolve](../entities/alphaevolve.md)
+- [google-deepmind](../entities/google-deepmind.md)

@@ -21,12 +21,12 @@ A pattern visible across four of the six sources currently ingested in this wiki
 
 | Source | Producer | Artifact | Filter / oracle | Discussed on |
 |---|---|---|---|---|
-| [[entities/andrej-karpathy]] / VentureBeat | An LLM compiling a wiki from raw sources | Markdown pages with frontmatter, wikilinks, index entries | Lint passes: orphans, broken links, contradictions, stale pages, coverage gaps | [[concepts/llm-knowledge-bases]], [[concepts/wiki-linting]] |
-| [[entities/google-deepmind]] / MarkTechPost | AlphaEvolve (Gemini 2.5 Pro as mutation operator) | Python source code of MARL algorithms | Exploitability metric across a suite of imperfect-information games | [[concepts/llm-driven-algorithm-discovery]], [[entities/alphaevolve]] |
-| [[entities/coral-hart]] / New Yorker | An LLM generating genre-romance drafts | Full novel manuscripts | Author revision pass + Amazon reader reception | [[concepts/ai-novel-factory]], [[concepts/ai-in-creative-writing]] |
-| [[entities/siddharth-mishra-sharma]] / Anthropic | Claude Opus 4.6 in long-running autonomous mode | JAX code + unit tests + git commits | Numerical accuracy vs. [[entities/class-boltzmann-solver]] C reference | [[concepts/long-running-agentic-coding]], [[concepts/test-oracle-for-agents]], [[entities/clax-project]] |
+| [andrej-karpathy](../entities/andrej-karpathy.md) / VentureBeat | An LLM compiling a wiki from raw sources | Markdown pages with frontmatter, wikilinks, index entries | Lint passes: orphans, broken links, contradictions, stale pages, coverage gaps | [llm-knowledge-bases](../concepts/llm-knowledge-bases.md), [wiki-linting](../concepts/wiki-linting.md) |
+| [google-deepmind](../entities/google-deepmind.md) / MarkTechPost | AlphaEvolve (Gemini 2.5 Pro as mutation operator) | Python source code of MARL algorithms | Exploitability metric across a suite of imperfect-information games | [llm-driven-algorithm-discovery](../concepts/llm-driven-algorithm-discovery.md), [alphaevolve](../entities/alphaevolve.md) |
+| [coral-hart](../entities/coral-hart.md) / New Yorker | An LLM generating genre-romance drafts | Full novel manuscripts | Author revision pass + Amazon reader reception | [ai-novel-factory](../concepts/ai-novel-factory.md), [ai-in-creative-writing](../concepts/ai-in-creative-writing.md) |
+| [siddharth-mishra-sharma](../entities/siddharth-mishra-sharma.md) / Anthropic | Claude Opus 4.6 in long-running autonomous mode | JAX code + unit tests + git commits | Numerical accuracy vs. [class-boltzmann-solver](../entities/class-boltzmann-solver.md) C reference | [long-running-agentic-coding](../concepts/long-running-agentic-coding.md), [test-oracle-for-agents](../concepts/test-oracle-for-agents.md), [clax-project](../entities/clax-project.md) |
 
-A plausible **fifth instance** sits implicit in the Anthropic / [[entities/coefficient-bio]] deal: the drug-discovery pipeline the acquired team brings is almost certainly an LLM-producer-plus-filter system (generating candidate molecules, filtered by binding assays and physical-chemistry constraints). The wiki doesn't yet have a source that documents this in detail, but the pattern is widespread enough in ML drug discovery that it is safe to flag as the fifth substrate.
+A plausible **fifth instance** sits implicit in the Anthropic / [coefficient-bio](../entities/coefficient-bio.md) deal: the drug-discovery pipeline the acquired team brings is almost certainly an LLM-producer-plus-filter system (generating candidate molecules, filtered by binding assays and physical-chemistry constraints). The wiki doesn't yet have a source that documents this in detail, but the pattern is widespread enough in ML drug discovery that it is safe to flag as the fifth substrate.
 
 ## What's structurally common
 
@@ -66,11 +66,11 @@ Put together: the producer–filter architecture is what you get if you (a) take
 
 - **Genuinely open-ended exploratory work.** If the success criterion is contested or unknown, there's nothing for the filter to filter on. Mishra-Sharma flags this explicitly: "more open-ended scientific discovery via agents is certainly on the horizon" — it is not here yet, because the oracle isn't there.
 - **Tasks where the filter is as expensive as the producer.** If evaluating an artifact costs as much as producing it, the loop doesn't compound efficiently. Rare-event physics simulations, expert human reviewers with long turnaround times, and real-world physical experiments all live in this regime.
-- **Tasks where the valuable output is a single emission, not a compounding corpus.** A one-off analysis, an ad-hoc question, a throwaway script — these don't need a filter loop because they don't need durability. The [[concepts/ephemeral-wiki]] observation generalizes here: sometimes the right architecture is *not* to build the loop.
+- **Tasks where the valuable output is a single emission, not a compounding corpus.** A one-off analysis, an ad-hoc question, a throwaway script — these don't need a filter loop because they don't need durability. The [ephemeral-wiki](../concepts/ephemeral-wiki.md) observation generalizes here: sometimes the right architecture is *not* to build the loop.
 
-## Relationship to [[analyses/own-your-substrate]]
+## Relationship to [own-your-substrate](own-your-substrate.md)
 
-The two analysis pages in this wiki are complementary. [[analyses/own-your-substrate]] is about **where** to invest (the compounding layers you must own, the commodity layers you can rent). The producer–filter pattern is about **how** to invest in one specific layer: the artifact repository. The producer–filter loop is the mechanism by which the owned compounding layer actually compounds over time.
+The two analysis pages in this wiki are complementary. [own-your-substrate](own-your-substrate.md) is about **where** to invest (the compounding layers you must own, the commodity layers you can rent). The producer–filter pattern is about **how** to invest in one specific layer: the artifact repository. The producer–filter loop is the mechanism by which the owned compounding layer actually compounds over time.
 
 Framed that way, every instance in this analysis is also an "own your substrate" instance: the artifacts live on disk (Karpathy Markdown, Git repos, manuscripts, JAX source) under operator control, and the filters run locally or on infrastructure the operator owns. The two patterns aren't rivals — they're two angles on the same strategic move.
 
@@ -80,25 +80,25 @@ Naming the obvious: **this wiki is itself a producer–filter instance.** The pr
 
 One implication: **the quality of this wiki over the next several months will be determined more by the sharpness of the lint pass than by any other single variable.** Prompts about what to write matter, but they matter less than the mechanism that decides what stays. The refactor cycle is the filter; the ingest cycle is the producer. Both need equal investment.
 
-A related implication worth acting on: **the wiki's lint schema should probably track "failed approaches" explicitly**, mirroring the `CHANGELOG.md` pattern that [[concepts/agent-persistent-memory]] argues is load-bearing. Without it, successive compile passes risk re-attempting structural mistakes that were already tried and found wanting.
+A related implication worth acting on: **the wiki's lint schema should probably track "failed approaches" explicitly**, mirroring the `CHANGELOG.md` pattern that [agent-persistent-memory](../concepts/agent-persistent-memory.md) argues is load-bearing. Without it, successive compile passes risk re-attempting structural mistakes that were already tried and found wanting.
 
 ## Related
 
-- [[analyses/own-your-substrate]]
-- [[concepts/llm-knowledge-bases]]
-- [[concepts/llm-driven-algorithm-discovery]]
-- [[concepts/ai-novel-factory]]
-- [[concepts/long-running-agentic-coding]]
-- [[concepts/test-oracle-for-agents]]
-- [[concepts/wiki-linting]]
-- [[concepts/agent-persistent-memory]]
-- [[concepts/file-over-app-philosophy]]
-- [[entities/clax-project]]
-- [[entities/alphaevolve]]
-- [[sources/2026-04-04-venturebeat-karpathy-llm-knowledge-bases]]
-- [[sources/2026-04-04-marktechpost-deepmind-alphaevolve-game-theory]]
-- [[sources/2026-04-04-newyorker-is-it-wrong-to-write-with-ai]]
-- [[sources/2026-04-04-anthropic-long-running-claude-scientific-computing]]
+- [own-your-substrate](own-your-substrate.md)
+- [llm-knowledge-bases](../concepts/llm-knowledge-bases.md)
+- [llm-driven-algorithm-discovery](../concepts/llm-driven-algorithm-discovery.md)
+- [ai-novel-factory](../concepts/ai-novel-factory.md)
+- [long-running-agentic-coding](../concepts/long-running-agentic-coding.md)
+- [test-oracle-for-agents](../concepts/test-oracle-for-agents.md)
+- [wiki-linting](../concepts/wiki-linting.md)
+- [agent-persistent-memory](../concepts/agent-persistent-memory.md)
+- [file-over-app-philosophy](../concepts/file-over-app-philosophy.md)
+- [clax-project](../entities/clax-project.md)
+- [alphaevolve](../entities/alphaevolve.md)
+- [2026-04-04-venturebeat-karpathy-llm-knowledge-bases](../sources/2026-04-04-venturebeat-karpathy-llm-knowledge-bases.md)
+- [2026-04-04-marktechpost-deepmind-alphaevolve-game-theory](../sources/2026-04-04-marktechpost-deepmind-alphaevolve-game-theory.md)
+- [2026-04-04-newyorker-is-it-wrong-to-write-with-ai](../sources/2026-04-04-newyorker-is-it-wrong-to-write-with-ai.md)
+- [2026-04-04-anthropic-long-running-claude-scientific-computing](../sources/2026-04-04-anthropic-long-running-claude-scientific-computing.md)
 
 ## Prompt that produced this page
 

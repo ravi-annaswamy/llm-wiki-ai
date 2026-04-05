@@ -10,7 +10,7 @@ status: active
 
 # Langevin Dynamics (for generative sampling)
 
-An iterative MCMC procedure that samples from a probability distribution p(x) using **only its score function** ∇ₓ log p(x) — no density evaluations, no acceptance-rejection step. Originally from statistical physics (Parisi 1981; Grenander-Miller 1994), Langevin dynamics is the sampling primitive that makes [[concepts/score-based-generative-models]] practical: once the score network is trained by [[concepts/score-matching]], Langevin dynamics turns that score estimate into samples.
+An iterative MCMC procedure that samples from a probability distribution p(x) using **only its score function** ∇ₓ log p(x) — no density evaluations, no acceptance-rejection step. Originally from statistical physics (Parisi 1981; Grenander-Miller 1994), Langevin dynamics is the sampling primitive that makes [score-based-generative-models](score-based-generative-models.md) practical: once the score network is trained by [score-matching](score-matching.md), Langevin dynamics turns that score estimate into samples.
 
 ## The update rule
 
@@ -26,13 +26,13 @@ For a score-based model s_θ(x) ≈ ∇ₓ log p(x), simply plug s_θ in for the
 
 ## Why naive Langevin + score matching fails in high dimensions
 
-The Fisher divergence that [[concepts/score-matching]] minimizes is weighted by p(x), so the trained score is only accurate where data is dense. In high dimensions, an arbitrary prior π(x) places its mass almost entirely in low-density regions of p(x), where the score model has essentially never been trained. Langevin chains initialized there follow gradients that are close to random, and the chain is derailed before it ever reaches the data manifold.
+The Fisher divergence that [score-matching](score-matching.md) minimizes is weighted by p(x), so the trained score is only accurate where data is dense. In high dimensions, an arbitrary prior π(x) places its mass almost entirely in low-density regions of p(x), where the score model has essentially never been trained. Langevin chains initialized there follow gradients that are close to random, and the chain is derailed before it ever reaches the data manifold.
 
 This is the failure mode Song encountered in 2019 when sampling from deep energy-based models trained by sliced score matching — the experiments that motivated the whole multi-scale noise program.
 
 ## Annealed Langevin dynamics
 
-The fix is to train a [[concepts/score-based-generative-models|Noise Conditional Score Network]] that estimates the score at every level of a sequence of noise scales σ_1 < σ_2 < … < σ_L, and to sample by running Langevin dynamics sequentially from the largest scale to the smallest:
+The fix is to train a [Noise Conditional Score Network](score-based-generative-models.md) that estimates the score at every level of a sequence of noise scales σ_1 < σ_2 < … < σ_L, and to sample by running Langevin dynamics sequentially from the largest scale to the smallest:
 
 1. Start x_0 from a simple prior (e.g., Gaussian with variance σ_L²).
 2. Run Langevin at scale σ_L for K steps.
@@ -43,10 +43,10 @@ Each stage operates on a distribution that is smoother than its successor, so th
 
 ## The continuous-time view
 
-Generalizing annealed Langevin to an infinite number of noise scales gives the continuous-time reverse-SDE formulation of [[concepts/score-based-generative-models]]. The **Euler-Maruyama method** for solving the reverse SDE is structurally identical to a Langevin step — it updates x by the score plus Gaussian noise, with time-dependent coefficients f(x,t) and g(t). **Predictor-corrector samplers** make this explicit: the corrector step at each time in the reverse SDE solver is a Langevin / Hamiltonian Monte Carlo move using the time-dependent score. In other words, Langevin dynamics is both the historical origin of score-based sampling and the corrector step of its modern continuous-time version.
+Generalizing annealed Langevin to an infinite number of noise scales gives the continuous-time reverse-SDE formulation of [score-based-generative-models](score-based-generative-models.md). The **Euler-Maruyama method** for solving the reverse SDE is structurally identical to a Langevin step — it updates x by the score plus Gaussian noise, with time-dependent coefficients f(x,t) and g(t). **Predictor-corrector samplers** make this explicit: the corrector step at each time in the reverse SDE solver is a Langevin / Hamiltonian Monte Carlo move using the time-dependent score. In other words, Langevin dynamics is both the historical origin of score-based sampling and the corrector step of its modern continuous-time version.
 
 ## As a diffusion-model sampler
 
-Because [[concepts/diffusion-models]] and score-based generative models are equivalent under the SDE framework, Langevin-type moves are also valid samplers (or corrector steps) for DDPM-family models — even though DDPMs are usually presented with a learned variational decoder rather than Langevin chains. The equivalence is the whole point of the unification.
+Because [diffusion-models](diffusion-models.md) and score-based generative models are equivalent under the SDE framework, Langevin-type moves are also valid samplers (or corrector steps) for DDPM-family models — even though DDPMs are usually presented with a learned variational decoder rather than Langevin chains. The equivalence is the whole point of the unification.
 
-Source: [[sources/2026-04-04-yang-song-score-based-generative-modeling]].
+Source: [2026-04-04-yang-song-score-based-generative-modeling](../sources/2026-04-04-yang-song-score-based-generative-modeling.md).

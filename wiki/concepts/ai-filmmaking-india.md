@@ -14,7 +14,7 @@ India is the first large market where AI is being deployed aggressively across t
 
 ## Economic case
 
-The widely cited numbers come from [[entities/rahul-regulapati]] of Galleri5 ([[entities/collective-artists-network]]): AI cuts production costs to **one-fifth** and timelines to **one-quarter** of traditional filmmaking in the mythology and fantasy genres. Consulting firm EY projects AI could lift Indian media and entertainment revenue by ~10% and reduce costs by ~15% over the medium term (Source: [[sources/2026-04-04-reuters-ai-indian-films]]).
+The widely cited numbers come from [rahul-regulapati](../entities/rahul-regulapati.md) of Galleri5 ([collective-artists-network](../entities/collective-artists-network.md)): AI cuts production costs to **one-fifth** and timelines to **one-quarter** of traditional filmmaking in the mythology and fantasy genres. Consulting firm EY projects AI could lift Indian media and entertainment revenue by ~10% and reduce costs by ~15% over the medium term (Source: [2026-04-04-reuters-ai-indian-films](../sources/2026-04-04-reuters-ai-indian-films.md)).
 
 The backdrop is industry stress. Moviegoer counts fell from 1.03 billion in 2019 to 832 million in 2025 (Ormax Media), and box-office revenue has been concentrated in a handful of hits since the pandemic. Studios see AI as the efficiency lever that keeps production viable.
 
@@ -22,9 +22,9 @@ The backdrop is industry stress. Moviegoer counts fell from 1.03 billion in 2019
 
 Studios are pursuing AI through three distinct strategies — all documented in Reuters' April 2026 report:
 
-1. **Fully AI-generated content** — especially in the [[concepts/hindu-mythology-ai-genre]]. [[entities/collective-artists-network]]'s Galleri5 is producing an eight-title slate on Hindu deities, and its Mahabharat series airs on [[entities/jiostar]].
-2. **[[concepts/ai-dubbing]]** — crossing India's 22-language market barrier. [[entities/neuralgarage]] provides the technology to studios including Yash Raj Films.
-3. **[[concepts/ai-film-re-editing]]** — rewriting endings or scenes in older catalog titles for re-release. [[entities/eros-media-world]] pioneered this with the "Raanjhanaa" re-release and is now reviewing its full 3,000-title catalog.
+1. **Fully AI-generated content** — especially in the [hindu-mythology-ai-genre](hindu-mythology-ai-genre.md). [collective-artists-network](../entities/collective-artists-network.md)'s Galleri5 is producing an eight-title slate on Hindu deities, and its Mahabharat series airs on [jiostar](../entities/jiostar.md).
+2. **[ai-dubbing](ai-dubbing.md)** — crossing India's 22-language market barrier. [neuralgarage](../entities/neuralgarage.md) provides the technology to studios including Yash Raj Films.
+3. **[ai-film-re-editing](ai-film-re-editing.md)** — rewriting endings or scenes in older catalog titles for re-release. [eros-media-world](../entities/eros-media-world.md) pioneered this with the "Raanjhanaa" re-release and is now reviewing its full 3,000-title catalog.
 
 ## The Hollywood divergence
 
@@ -36,11 +36,11 @@ Galleri5's approach is instructive as a template: rather than rely on pure text-
 
 ## Underlying model family
 
-The text-to-video, image-to-image, and voice systems powering this work are all descendants of [[concepts/diffusion-models]] / [[concepts/score-based-generative-models]] — the generative model family established by [[entities/yang-song]] and collaborators between 2019 and 2021. Indian studios are net renters of this substrate: they consume models from Google (Veo), Microsoft, Nvidia, and open-source diffusion checkpoints, and own the production pipelines, IP, and distribution wrapped around them. This is a textbook instance of the split argued in [[analyses/own-your-substrate]].
+The text-to-video, image-to-image, and voice systems powering this work are all descendants of [diffusion-models](diffusion-models.md) / [score-based-generative-models](score-based-generative-models.md) — the generative model family established by [yang-song](../entities/yang-song.md) and collaborators between 2019 and 2021. Indian studios are net renters of this substrate: they consume models from Google (Veo), Microsoft, Nvidia, and open-source diffusion checkpoints, and own the production pipelines, IP, and distribution wrapped around them. This is a textbook instance of the split argued in [own-your-substrate](../analyses/own-your-substrate.md).
 
 ## Capital and tech partnerships
 
-- [[entities/abundantia-entertainment]] has committed $11M to a new in-house AI studio and expects AI content to reach one-third of revenue within three years.
+- [abundantia-entertainment](../entities/abundantia-entertainment.md) has committed $11M to a new in-house AI studio and expects AI content to reach one-third of revenue within three years.
 - **Google** partnered with Bollywood director Shakun Batra on a five-part cinematic series using Veo 3 and Flow.
 - **Microsoft** provides AI compute to Collective Artists Network.
 - **Nvidia** shared the stage with AI filmmakers at India's AI film fest in February 2026.

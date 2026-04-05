@@ -10,17 +10,17 @@ status: active
 
 # DeepMind's AlphaEvolve discovers new CFR and PSRO algorithms
 
-**Original:** MarkTechPost writeup of a [[entities/google-deepmind]] research paper on applying [[entities/alphaevolve]] — an LLM-powered evolutionary coding agent — to Multi-Agent Reinforcement Learning (MARL) in imperfect-information games. The system discovered new variants of Counterfactual Regret Minimization and Policy Space Response Oracles that match or exceed hand-designed state-of-the-art baselines. Linked arXiv paper: 2602.16928.
+**Original:** MarkTechPost writeup of a [google-deepmind](../entities/google-deepmind.md) research paper on applying [alphaevolve](../entities/alphaevolve.md) — an LLM-powered evolutionary coding agent — to Multi-Agent Reinforcement Learning (MARL) in imperfect-information games. The system discovered new variants of Counterfactual Regret Minimization and Policy Space Response Oracles that match or exceed hand-designed state-of-the-art baselines. Linked arXiv paper: 2602.16928.
 
 ## The core idea
 
 Historically, designing MARL algorithms for imperfect-information games (like poker variants, where players act sequentially and hold private information) has been a manual process: researchers propose weighting schemes, discounting rules, and equilibrium solvers through intuition and trial-and-error. DeepMind's paper replaces this manual iteration with **automated search over the actual Python source code of the algorithms**, using a large language model as the mutation operator.
 
-This is a specific instance of [[concepts/llm-driven-algorithm-discovery]], applied to two established MARL paradigms: [[concepts/counterfactual-regret-minimization]] (CFR) and [[concepts/policy-space-response-oracles]] (PSRO).
+This is a specific instance of [llm-driven-algorithm-discovery](../concepts/llm-driven-algorithm-discovery.md), applied to two established MARL paradigms: [counterfactual-regret-minimization](../concepts/counterfactual-regret-minimization.md) (CFR) and [policy-space-response-oracles](../concepts/policy-space-response-oracles.md) (PSRO).
 
 ## How AlphaEvolve works here
 
-[[entities/alphaevolve]] is a distributed evolutionary system. The loop:
+[alphaevolve](../entities/alphaevolve.md) is a distributed evolutionary system. The loop:
 
 1. Initialize a population with a standard implementation as seed — CFR+ for CFR experiments; Uniform for PSRO experiments.
 2. At each generation, select a parent algorithm by fitness, pass its source code to **Gemini 2.5 Pro** with a prompt to modify it, and produce a candidate.
@@ -71,7 +71,7 @@ The blend:
 
 ## Key takeaways
 
-1. **AlphaEvolve automates algorithm design, not hyperparameter tuning.** It evolves the actual Python source code of MARL algorithms, discovering new update rules rather than variations of existing ones. See [[concepts/llm-driven-algorithm-discovery]].
+1. **AlphaEvolve automates algorithm design, not hyperparameter tuning.** It evolves the actual Python source code of MARL algorithms, discovering new update rules rather than variations of existing ones. See [llm-driven-algorithm-discovery](../concepts/llm-driven-algorithm-discovery.md).
 2. **VAD-CFR replaces static discounting with volatility-awareness** — tracking instantaneous regret magnitude via EWMA and adjusting discount factors dynamically, plus a discovered warm-start threshold the LLM picked without knowing the evaluation horizon.
 3. **SHOR-PSRO automates the exploration-to-exploitation transition.** Annealing a blending factor between Optimistic Regret Matching and a Softmax best-pure-strategy component removes the need to manually tune when a PSRO meta-solver should shift from population diversity to equilibrium refinement.
 4. **Generalization is tested, not assumed.** Both algorithms are developed on four training games and evaluated on four larger unseen games (plus an 11-game sweep). No re-tuning between training and test.
@@ -83,18 +83,18 @@ Two distinct claims are bundled here.
 
 **The narrow claim:** automated search can produce MARL algorithms that beat hand-designed state-of-the-art on established benchmarks. That's already a nontrivial result — the CFR and PSRO families are mature, with years of manual iteration behind them.
 
-**The broader claim:** the mutation unit doesn't have to be a parameter or a configuration — it can be a block of Python. LLMs are good enough at reading, modifying, and generating source code that they can function as the mutation operator in an evolutionary search over an algorithm space. This turns "research on algorithms" into a search problem with a well-defined fitness signal, and it generalizes far beyond game theory. See [[concepts/llm-driven-algorithm-discovery]] for the cross-cutting picture.
+**The broader claim:** the mutation unit doesn't have to be a parameter or a configuration — it can be a block of Python. LLMs are good enough at reading, modifying, and generating source code that they can function as the mutation operator in an evolutionary search over an algorithm space. This turns "research on algorithms" into a search problem with a well-defined fitness signal, and it generalizes far beyond game theory. See [llm-driven-algorithm-discovery](../concepts/llm-driven-algorithm-discovery.md) for the cross-cutting picture.
 
 ## Connection to other threads in this wiki
 
 This source connects to the wiki's "LLM as active producer of structured artifacts" theme:
 
-- In [[concepts/llm-knowledge-bases]], the LLM authors a structured wiki from raw sources.
+- In [llm-knowledge-bases](../concepts/llm-knowledge-bases.md), the LLM authors a structured wiki from raw sources.
 - In AlphaEvolve, the LLM authors new algorithm source code from existing implementations.
 
 In both cases the LLM is not answering questions — it is **generating new artifacts that subsequent work depends on**, with some evaluation loop (linting / exploitability) deciding which artifacts survive. The same architectural instinct is at work.
 
-There is also a weaker connection to [[analyses/own-your-substrate]]: DeepMind owns the entire stack here — the frontier model (Gemini 2.5 Pro), the evolutionary framework (AlphaEvolve), the game engine (OpenSpiel), and the research program. The compounding layer is the discovery infrastructure itself, not any single discovered algorithm.
+There is also a weaker connection to [own-your-substrate](../analyses/own-your-substrate.md): DeepMind owns the entire stack here — the frontier model (Gemini 2.5 Pro), the evolutionary framework (AlphaEvolve), the game engine (OpenSpiel), and the research program. The compounding layer is the discovery infrastructure itself, not any single discovered algorithm.
 
 ## Open questions
 

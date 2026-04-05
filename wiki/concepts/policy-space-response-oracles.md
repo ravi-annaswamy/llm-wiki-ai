@@ -10,7 +10,7 @@ status: active
 
 # Policy Space Response Oracles (PSRO)
 
-PSRO is a higher-level algorithmic paradigm for solving [[concepts/marl-imperfect-information-games]] than [[concepts/counterfactual-regret-minimization]]. Instead of reasoning directly about regrets at every information set, PSRO maintains a **population of policies per player** and iteratively grows that population by adding best responses to carefully chosen mixtures over the existing population (Source: [[sources/2026-04-04-marktechpost-deepmind-alphaevolve-game-theory]]).
+PSRO is a higher-level algorithmic paradigm for solving [marl-imperfect-information-games](marl-imperfect-information-games.md) than [counterfactual-regret-minimization](counterfactual-regret-minimization.md). Instead of reasoning directly about regrets at every information set, PSRO maintains a **population of policies per player** and iteratively grows that population by adding best responses to carefully chosen mixtures over the existing population (Source: [2026-04-04-marktechpost-deepmind-alphaevolve-game-theory](../sources/2026-04-04-marktechpost-deepmind-alphaevolve-game-theory.md)).
 
 ## The core loop
 
@@ -46,7 +46,7 @@ The DeepMind paper exposes two classes as the evolvable interface:
 - **`TrainMetaStrategySolver`** — the solver used during oracle training.
 - **`EvalMetaStrategySolver`** — the solver used during exploitability evaluation.
 
-Mutating these two classes via [[entities/alphaevolve]] is the full variation space.
+Mutating these two classes via [alphaevolve](../entities/alphaevolve.md) is the full variation space.
 
 ## The discovered variant: SHOR-PSRO
 
@@ -63,7 +63,7 @@ The blend is **σ_hybrid = (1 − λ) · σ_ORM + λ · σ_Softmax**.
 
 The asymmetry between training-time and evaluation-time solver configurations was **itself a product of the search**, not a human design choice. This is arguably the most striking single finding of the paper — a non-obvious separation that a human researcher would be unlikely to propose.
 
-See [[sources/2026-04-04-marktechpost-deepmind-alphaevolve-game-theory]] for the full benchmark tables.
+See [2026-04-04-marktechpost-deepmind-alphaevolve-game-theory](../sources/2026-04-04-marktechpost-deepmind-alphaevolve-game-theory.md) for the full benchmark tables.
 
 ## Why PSRO is a natural target for automated discovery
 
@@ -72,12 +72,12 @@ See [[sources/2026-04-04-marktechpost-deepmind-alphaevolve-game-theory]] for the
 - **Clear fitness signal** — exploitability, computable exactly on small games.
 - **Known open question** — how to balance population diversity (early) against equilibrium refinement (late) has been an active research topic for years. Automated annealing schedules are exactly the kind of thing a search is good at finding.
 
-See [[concepts/llm-driven-algorithm-discovery]] for the framework.
+See [llm-driven-algorithm-discovery](llm-driven-algorithm-discovery.md) for the framework.
 
 ## Related
 
-- [[concepts/marl-imperfect-information-games]]
-- [[concepts/counterfactual-regret-minimization]]
-- [[concepts/llm-driven-algorithm-discovery]]
-- [[entities/alphaevolve]]
-- [[entities/google-deepmind]]
+- [marl-imperfect-information-games](marl-imperfect-information-games.md)
+- [counterfactual-regret-minimization](counterfactual-regret-minimization.md)
+- [llm-driven-algorithm-discovery](llm-driven-algorithm-discovery.md)
+- [alphaevolve](../entities/alphaevolve.md)
+- [google-deepmind](../entities/google-deepmind.md)

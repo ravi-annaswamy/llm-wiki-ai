@@ -10,7 +10,7 @@ status: active
 
 # Agent persistent memory
 
-The mechanism by which a long-running coding agent **remembers progress, state, and — crucially — failed attempts** across sessions that can last days or weeks. [[entities/siddharth-mishra-sharma]] introduces this as the second pillar of the [[concepts/long-running-agentic-coding]] methodology, and names the conventional location `CHANGELOG.md` at the project root (Source: [[sources/2026-04-04-anthropic-long-running-claude-scientific-computing]]).
+The mechanism by which a long-running coding agent **remembers progress, state, and — crucially — failed attempts** across sessions that can last days or weeks. [siddharth-mishra-sharma](../entities/siddharth-mishra-sharma.md) introduces this as the second pillar of the [long-running-agentic-coding](long-running-agentic-coding.md) methodology, and names the conventional location `CHANGELOG.md` at the project root (Source: [2026-04-04-anthropic-long-running-claude-scientific-computing](../sources/2026-04-04-anthropic-long-running-claude-scientific-computing.md)).
 
 ## What a progress file tracks
 
@@ -19,7 +19,7 @@ A well-designed `CHANGELOG.md` tracks at minimum:
 - **Current status** — what's done, what's in progress, what's next.
 - **Completed tasks** — with enough detail that the agent can recognize subsequent work that would duplicate them.
 - **Failed approaches and the reasons they failed.** Load-bearing. Without these, successive sessions re-attempt the same dead ends. Example entry Mishra-Sharma gives: *"Tried using Tsit5 for the perturbation ODE, system is too stiff. Switched to Kvaerno5."* The failure reason (stiffness) is what prevents a future session from looping back to Tsit5.
-- **Accuracy tables at key checkpoints.** A running log of how well the code is tracking the [[concepts/test-oracle-for-agents]], with timestamps or commit SHAs. Makes progress auditable and helps identify regressions.
+- **Accuracy tables at key checkpoints.** A running log of how well the code is tracking the [test-oracle-for-agents](test-oracle-for-agents.md), with timestamps or commit SHAs. Makes progress auditable and helps identify regressions.
 - **Known limitations.** Explicit acknowledgment of what the code currently does not do. Prevents the agent from wasting time re-discovering known gaps.
 
 ## Why this is different from conventional changelogs
@@ -38,13 +38,13 @@ Several advantages stack:
 - **Auditable.** The failure log is itself a research artifact. It tells the user what the agent has ruled out and why.
 - **Editable by humans.** If the agent records a wrong conclusion, the user can correct the `CHANGELOG.md` and the correction propagates to all future sessions automatically.
 
-This is a textbook [[concepts/file-over-app-philosophy]] instance: the state that matters lives on disk as a plain file the user owns, not inside a vendor system.
+This is a textbook [file-over-app-philosophy](file-over-app-philosophy.md) instance: the state that matters lives on disk as a plain file the user owns, not inside a vendor system.
 
 ## The connection to the Karpathy pattern
 
-The `CHANGELOG.md` role in a long-running coding project is structurally identical to the role of `wiki/log.md` in [[concepts/llm-knowledge-bases]]: a chronological, append-mostly record of what the LLM has done, why, and what's still unfinished, used as context for subsequent sessions. Both are [[concepts/file-over-app-philosophy]] instances. Both are the "procedural memory" counterpart to the "declarative memory" of the main artifacts (wiki pages in Karpathy's case, source code in Mishra-Sharma's case).
+The `CHANGELOG.md` role in a long-running coding project is structurally identical to the role of `wiki/log.md` in [llm-knowledge-bases](llm-knowledge-bases.md): a chronological, append-mostly record of what the LLM has done, why, and what's still unfinished, used as context for subsequent sessions. Both are [file-over-app-philosophy](file-over-app-philosophy.md) instances. Both are the "procedural memory" counterpart to the "declarative memory" of the main artifacts (wiki pages in Karpathy's case, source code in Mishra-Sharma's case).
 
-This is another example of the same architectural instinct being independently rediscovered in different domains — see [[analyses/own-your-substrate]] for the broader analysis.
+This is another example of the same architectural instinct being independently rediscovered in different domains — see [own-your-substrate](../analyses/own-your-substrate.md) for the broader analysis.
 
 ## Practical instructions the wiki's own setup could borrow
 
@@ -53,10 +53,10 @@ This is another example of the same architectural instinct being independently r
 
 ## Related
 
-- [[concepts/long-running-agentic-coding]]
-- [[concepts/test-oracle-for-agents]]
-- [[concepts/ralph-loop]]
-- [[concepts/file-over-app-philosophy]]
-- [[concepts/llm-knowledge-bases]]
-- [[entities/clax-project]]
-- [[sources/2026-04-04-anthropic-long-running-claude-scientific-computing]]
+- [long-running-agentic-coding](long-running-agentic-coding.md)
+- [test-oracle-for-agents](test-oracle-for-agents.md)
+- [ralph-loop](ralph-loop.md)
+- [file-over-app-philosophy](file-over-app-philosophy.md)
+- [llm-knowledge-bases](llm-knowledge-bases.md)
+- [clax-project](../entities/clax-project.md)
+- [2026-04-04-anthropic-long-running-claude-scientific-computing](../sources/2026-04-04-anthropic-long-running-claude-scientific-computing.md)

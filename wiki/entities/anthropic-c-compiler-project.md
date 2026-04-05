@@ -10,13 +10,13 @@ status: active
 
 # Anthropic C Compiler Project
 
-An Anthropic engineering demonstration in which Claude, working across roughly **2,000 sessions**, built a C compiler capable of compiling the Linux kernel (see anthropic.com/engineering/building-c-compiler, referenced in [[sources/2026-04-04-anthropic-long-running-claude-scientific-computing]]).
+An Anthropic engineering demonstration in which Claude, working across roughly **2,000 sessions**, built a C compiler capable of compiling the Linux kernel (see anthropic.com/engineering/building-c-compiler, referenced in [2026-04-04-anthropic-long-running-claude-scientific-computing](../sources/2026-04-04-anthropic-long-running-claude-scientific-computing.md)).
 
 ## Why it matters to the wiki
 
-The C compiler project is the canonical precedent for **very long-horizon autonomous agentic coding** that the scientific-computing post by [[entities/siddharth-mishra-sharma]] explicitly builds on. It's the existence proof that Claude can sustain a multi-thousand-session build of a complex, correctness-sensitive system against a hard evaluation target (does it compile the Linux kernel?).
+The C compiler project is the canonical precedent for **very long-horizon autonomous agentic coding** that the scientific-computing post by [siddharth-mishra-sharma](siddharth-mishra-sharma.md) explicitly builds on. It's the existence proof that Claude can sustain a multi-thousand-session build of a complex, correctness-sensitive system against a hard evaluation target (does it compile the Linux kernel?).
 
-But Mishra-Sharma also draws a **structural contrast** between the compiler work and the CLAX Boltzmann-solver work ([[entities/clax-project]]):
+But Mishra-Sharma also draws a **structural contrast** between the compiler work and the CLAX Boltzmann-solver work ([clax-project](clax-project.md)):
 
 - **C compiler → parallelizable.** The compiler task farms out to a large number of **parallel agents** working on largely independent subproblems. Each session can make progress without needing global context on what all other sessions are doing.
 - **Boltzmann solver → sequential.** A numerical pipeline is **deeply coupled**: a small error or poor approximation early (e.g., in how the early universe recombines) subtly shifts everything downstream. Debugging requires tracing causally through the whole chain and drawing on domain knowledge. Better suited to a **single sequential agent** spawning subagents as needed, and using the reference implementation to bisect discrepancies.
@@ -25,7 +25,7 @@ This contrast is useful generally: it's not the case that "long-horizon agentic 
 
 ## Related
 
-- [[entities/anthropic]]
-- [[entities/clax-project]]
-- [[concepts/long-running-agentic-coding]]
-- [[sources/2026-04-04-anthropic-long-running-claude-scientific-computing]]
+- [anthropic](anthropic.md)
+- [clax-project](clax-project.md)
+- [long-running-agentic-coding](../concepts/long-running-agentic-coding.md)
+- [2026-04-04-anthropic-long-running-claude-scientific-computing](../sources/2026-04-04-anthropic-long-running-claude-scientific-computing.md)

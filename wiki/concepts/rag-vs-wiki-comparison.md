@@ -10,7 +10,7 @@ status: active
 
 # RAG vs. LLM-Maintained Wiki
 
-This page captures the explicit architectural comparison between the dominant **Retrieval-Augmented Generation (RAG)** pattern and the **[[concepts/llm-knowledge-bases]]** pattern proposed by [[entities/andrej-karpathy]] (Source: [[sources/2026-04-04-venturebeat-karpathy-llm-knowledge-bases]]).
+This page captures the explicit architectural comparison between the dominant **Retrieval-Augmented Generation (RAG)** pattern and the **[llm-knowledge-bases](llm-knowledge-bases.md)** pattern proposed by [andrej-karpathy](../entities/andrej-karpathy.md) (Source: [2026-04-04-venturebeat-karpathy-llm-knowledge-bases](../sources/2026-04-04-venturebeat-karpathy-llm-knowledge-bases.md)).
 
 ## The short version
 
@@ -50,6 +50,6 @@ There is also a hybrid case the source doesn't develop explicitly but is implied
 
 ## Related
 
-- [[concepts/llm-knowledge-bases]]
-- [[concepts/file-over-app-philosophy]]
-- [[entities/andrej-karpathy]]
+- [llm-knowledge-bases](llm-knowledge-bases.md)
+- [file-over-app-philosophy](file-over-app-philosophy.md)
+- [andrej-karpathy](../entities/andrej-karpathy.md)

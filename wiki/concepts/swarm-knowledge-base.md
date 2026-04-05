@@ -10,7 +10,7 @@ status: active
 
 # Swarm Knowledge Base
 
-A multi-agent extension of the [[concepts/llm-knowledge-bases]] pattern, proposed by @jumperz, founder of Secondmate, in response to Karpathy's original post. It scales the single-researcher wiki workflow to a ~10-agent system managed via OpenClaw (Source: [[sources/2026-04-04-venturebeat-karpathy-llm-knowledge-bases]]).
+A multi-agent extension of the [llm-knowledge-bases](llm-knowledge-bases.md) pattern, proposed by @jumperz, founder of Secondmate, in response to Karpathy's original post. It scales the single-researcher wiki workflow to a ~10-agent system managed via OpenClaw (Source: [2026-04-04-venturebeat-karpathy-llm-knowledge-bases](../sources/2026-04-04-venturebeat-karpathy-llm-knowledge-bases.md)).
 
 ## The core challenge
 
@@ -39,7 +39,7 @@ The payoff: the swarm never "wakes up blank." Each agent begins each task with a
 
 ## Relationship to contamination mitigation
 
-This pattern is the multi-agent version of [[concepts/contamination-mitigation]]. Where [[entities/steph-ango]]'s original "clean vault / messy vault" pattern uses a **human** as the promotion gate, the swarm pattern uses a **separate validation model** — because at multi-agent throughput, humans can't be the bottleneck.
+This pattern is the multi-agent version of [contamination-mitigation](contamination-mitigation.md). Where [steph-ango](../entities/steph-ango.md)'s original "clean vault / messy vault" pattern uses a **human** as the promotion gate, the swarm pattern uses a **separate validation model** — because at multi-agent throughput, humans can't be the bottleneck.
 
 Both patterns share the key insight: separate generation from validation, and make promotion to the canonical store an explicit step.
 
@@ -52,7 +52,7 @@ Both patterns share the key insight: separate generation from validation, and ma
 
 ## Related
 
-- [[concepts/llm-knowledge-bases]]
-- [[concepts/contamination-mitigation]]
-- [[concepts/wiki-linting]]
-- [[concepts/ephemeral-wiki]]
+- [llm-knowledge-bases](llm-knowledge-bases.md)
+- [contamination-mitigation](contamination-mitigation.md)
+- [wiki-linting](wiki-linting.md)
+- [ephemeral-wiki](ephemeral-wiki.md)

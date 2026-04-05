@@ -10,16 +10,16 @@ status: active
 
 # Long-running agentic coding
 
-A methodology for handing an LLM coding agent a well-scoped, multi-day, high-stakes software task and letting it work **autonomously** — with occasional human oversight rather than continuous supervision. It is a distinct posture from the dominant "conversational loop, every step on a tight leash" mode most scientists and engineers currently use with AI agents. The shift is enabled by the steady extension of model time-horizons over 2024–2026 (Source: [[sources/2026-04-04-anthropic-long-running-claude-scientific-computing]]).
+A methodology for handing an LLM coding agent a well-scoped, multi-day, high-stakes software task and letting it work **autonomously** — with occasional human oversight rather than continuous supervision. It is a distinct posture from the dominant "conversational loop, every step on a tight leash" mode most scientists and engineers currently use with AI agents. The shift is enabled by the steady extension of model time-horizons over 2024–2026 (Source: [2026-04-04-anthropic-long-running-claude-scientific-computing](../sources/2026-04-04-anthropic-long-running-claude-scientific-computing.md)).
 
-The pattern was demonstrated at scale by the [[entities/anthropic-c-compiler-project]] (Claude building a Linux-kernel-capable C compiler across ~2,000 sessions) and adapted for scientific computing by [[entities/siddharth-mishra-sharma]] in the [[entities/clax-project]].
+The pattern was demonstrated at scale by the [anthropic-c-compiler-project](../entities/anthropic-c-compiler-project.md) (Claude building a Linux-kernel-capable C compiler across ~2,000 sessions) and adapted for scientific computing by [siddharth-mishra-sharma](../entities/siddharth-mishra-sharma.md) in the [clax-project](../entities/clax-project.md).
 
 ## When it fits
 
 Three conditions, which together make autonomous operation viable:
 
 1. **The work is well-scoped.** A clear deliverable exists. "Build a differentiable JAX port of CLASS with feature parity" is scoped; "do cosmology research" is not.
-2. **Success criteria are quantifiable.** Reaching them can be measured mechanically, not judged. 0.1% numerical agreement against a reference. Passing a test suite. Compiling a target codebase. See [[concepts/test-oracle-for-agents]].
+2. **Success criteria are quantifiable.** Reaching them can be measured mechanically, not judged. 0.1% numerical agreement against a reference. Passing a test suite. Compiling a target codebase. See [test-oracle-for-agents](test-oracle-for-agents.md).
 3. **Human oversight can be occasional.** The work doesn't need a human in the loop continuously because the evaluation loop catches most errors without one.
 
 Mishra-Sharma gives three representative task types that fit: reimplementing a numerical solver, porting legacy Fortran to a modern language, and debugging a large codebase against a reference implementation. The common thread: a trustworthy oracle exists to tell the agent whether it's making progress.
@@ -43,11 +43,11 @@ Mishra-Sharma explicitly recommends **iterating on the plan locally first** — 
 
 ### 2. `CHANGELOG.md` — cross-session memory
 
-A separate progress file serving as the agent's **long-term memory across sessions**. See [[concepts/agent-persistent-memory]] for the dedicated page. Tracks current status, completed tasks, **failed approaches with reasons**, accuracy checkpoints, and known limitations. Failed approaches are load-bearing: without them successive sessions re-attempt the same dead ends.
+A separate progress file serving as the agent's **long-term memory across sessions**. See [agent-persistent-memory](agent-persistent-memory.md) for the dedicated page. Tracks current status, completed tasks, **failed approaches with reasons**, accuracy checkpoints, and known limitations. Failed approaches are load-bearing: without them successive sessions re-attempt the same dead ends.
 
 ### 3. The test oracle
 
-The single most important enabling condition. See [[concepts/test-oracle-for-agents]] for the dedicated page. For scientific code this is a reference implementation, a clearly quantifiable objective, or an existing test suite. The agent is instructed to build and **continuously run** tests against the oracle, and to expand the test suite as it works.
+The single most important enabling condition. See [test-oracle-for-agents](test-oracle-for-agents.md) for the dedicated page. For scientific code this is a reference implementation, a clearly quantifiable objective, or an existing test suite. The agent is instructed to build and **continuously run** tests against the oracle, and to expand the test suite as it works.
 
 ### 4. Git as hands-off coordination
 
@@ -67,7 +67,7 @@ The HPC/SLURM specifics are not load-bearing — the same pattern applies on any
 
 ## The Ralph loop (optional capability uplift)
 
-See [[concepts/ralph-loop]]. A `for`-loop scaffold that kicks the agent back into context whenever it claims completion, counteracting [[concepts/agentic-laziness]] — the failure mode where current models stop early on complex multi-part tasks. Mishra-Sharma treats it as capability scaffolding that will become unnecessary as models improve, but useful at current model capability.
+See [ralph-loop](ralph-loop.md). A `for`-loop scaffold that kicks the agent back into context whenever it claims completion, counteracting [agentic-laziness](agentic-laziness.md) — the failure mode where current models stop early on complex multi-part tasks. Mishra-Sharma treats it as capability scaffolding that will become unnecessary as models improve, but useful at current model capability.
 
 ## Why this matters
 
@@ -77,9 +77,9 @@ Mishra-Sharma's closing claim follows from this: *"These days, not running agent
 
 ## Relationship to other patterns in the wiki
 
-- **Sibling to [[concepts/llm-knowledge-bases]].** The Karpathy pattern is the same underlying architecture in a different domain: LLM as long-running producer of structured, on-disk artifacts, with a filter/evaluation loop deciding what survives. Karpathy's artifacts are Markdown wiki pages, evaluated by lint passes. Mishra-Sharma's artifacts are code + tests + commits, evaluated by numerical accuracy against a reference. Both are [[concepts/file-over-app-philosophy]] instances.
-- **Related to [[concepts/llm-driven-algorithm-discovery]].** AlphaEvolve is the adjacent pattern of LLMs producing code artifacts with an evaluation loop — but AlphaEvolve evolves a population in parallel, while long-running agentic coding is typically a single sequential agent tracing causally through a coupled pipeline. Different topologies, shared core idea.
-- **Contributing instance to [[analyses/own-your-substrate]].** The `CLAUDE.md` + `CHANGELOG.md` + git artifacts live on the researcher's disk / forge. The compounding asset (accumulated understanding + working code) stays local.
+- **Sibling to [llm-knowledge-bases](llm-knowledge-bases.md).** The Karpathy pattern is the same underlying architecture in a different domain: LLM as long-running producer of structured, on-disk artifacts, with a filter/evaluation loop deciding what survives. Karpathy's artifacts are Markdown wiki pages, evaluated by lint passes. Mishra-Sharma's artifacts are code + tests + commits, evaluated by numerical accuracy against a reference. Both are [file-over-app-philosophy](file-over-app-philosophy.md) instances.
+- **Related to [llm-driven-algorithm-discovery](llm-driven-algorithm-discovery.md).** AlphaEvolve is the adjacent pattern of LLMs producing code artifacts with an evaluation loop — but AlphaEvolve evolves a population in parallel, while long-running agentic coding is typically a single sequential agent tracing causally through a coupled pipeline. Different topologies, shared core idea.
+- **Contributing instance to [own-your-substrate](../analyses/own-your-substrate.md).** The `CLAUDE.md` + `CHANGELOG.md` + git artifacts live on the researcher's disk / forge. The compounding asset (accumulated understanding + working code) stays local.
 
 ## Open questions
 
@@ -89,14 +89,14 @@ Mishra-Sharma's closing claim follows from this: *"These days, not running agent
 
 ## Related
 
-- [[concepts/agent-persistent-memory]]
-- [[concepts/test-oracle-for-agents]]
-- [[concepts/ralph-loop]]
-- [[concepts/agentic-laziness]]
-- [[concepts/agent-driven-scientific-computing]]
-- [[concepts/llm-knowledge-bases]]
-- [[concepts/file-over-app-philosophy]]
-- [[entities/clax-project]]
-- [[entities/anthropic-c-compiler-project]]
-- [[entities/siddharth-mishra-sharma]]
-- [[sources/2026-04-04-anthropic-long-running-claude-scientific-computing]]
+- [agent-persistent-memory](agent-persistent-memory.md)
+- [test-oracle-for-agents](test-oracle-for-agents.md)
+- [ralph-loop](ralph-loop.md)
+- [agentic-laziness](agentic-laziness.md)
+- [agent-driven-scientific-computing](agent-driven-scientific-computing.md)
+- [llm-knowledge-bases](llm-knowledge-bases.md)
+- [file-over-app-philosophy](file-over-app-philosophy.md)
+- [clax-project](../entities/clax-project.md)
+- [anthropic-c-compiler-project](../entities/anthropic-c-compiler-project.md)
+- [siddharth-mishra-sharma](../entities/siddharth-mishra-sharma.md)
+- [2026-04-04-anthropic-long-running-claude-scientific-computing](../sources/2026-04-04-anthropic-long-running-claude-scientific-computing.md)

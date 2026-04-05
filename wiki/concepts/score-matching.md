@@ -10,7 +10,7 @@ status: active
 
 # Score Matching
 
-A family of training objectives for fitting a model of the score function ∇ₓ log p(x) to a data distribution, without ever evaluating the unknown data score and without requiring a tractable normalizing constant. Introduced by Hyvärinen in 2005 for non-normalized statistical models, extended to denoising variants by Vincent in 2011, and scaled to high dimensions by Song et al. in 2019 with sliced score matching. Score matching is the training objective that makes [[concepts/score-based-generative-models]] work.
+A family of training objectives for fitting a model of the score function ∇ₓ log p(x) to a data distribution, without ever evaluating the unknown data score and without requiring a tractable normalizing constant. Introduced by Hyvärinen in 2005 for non-normalized statistical models, extended to denoising variants by Vincent in 2011, and scaled to high dimensions by Song et al. in 2019 with sliced score matching. Score matching is the training objective that makes [score-based-generative-models](score-based-generative-models.md) work.
 
 ## The problem score matching solves
 
@@ -24,7 +24,7 @@ Score matching methods rewrite the Fisher divergence into an equivalent objectiv
 
 ## Three practical variants
 
-- **Denoising score matching (DSM; Vincent 2011).** Perturb each training sample with a small amount of noise σ²I, then train the model to predict the score of the noise-perturbed distribution. Because the conditional distribution p(x̃|x) is a known Gaussian, its score has a closed form (x − x̃)/σ², so the loss becomes a simple regression against a known target. No Hessian, no trace — just MSE against an analytic score. **This is the objective used in practice** for training [[concepts/score-based-generative-models|NCSN]] and [[concepts/diffusion-models|diffusion]] models, because it scales cleanly and couples naturally with the noise-perturbation machinery those methods rely on.
+- **Denoising score matching (DSM; Vincent 2011).** Perturb each training sample with a small amount of noise σ²I, then train the model to predict the score of the noise-perturbed distribution. Because the conditional distribution p(x̃|x) is a known Gaussian, its score has a closed form (x − x̃)/σ², so the loss becomes a simple regression against a known target. No Hessian, no trace — just MSE against an analytic score. **This is the objective used in practice** for training [NCSN](score-based-generative-models.md) and [diffusion](diffusion-models.md) models, because it scales cleanly and couples naturally with the noise-perturbation machinery those methods rely on.
 
 - **Sliced score matching (SSM; Song et al. 2019).** Project the score matching objective onto random one-dimensional directions, replacing the expensive Hessian trace with a cheap Hessian-vector product. This was Song's first contribution to the line of work and the method he used to scale score matching to deep energy-based models on MNIST before discovering that Langevin sampling from the trained EBMs failed — the failure that eventually led to the multi-scale noise fix.
 
@@ -34,7 +34,7 @@ Score matching methods rewrite the Fisher divergence into an equivalent objectiv
 
 Three properties:
 
-1. **No normalizing constant.** The Fisher divergence compares gradients, and the gradient of log Z_θ is zero. Score matching trains an unnormalized model without ever computing, approximating, or bounding Z_θ. For energy-based models this is the central advantage; it is what lets [[concepts/score-based-generative-models|score-based models]] use arbitrary neural architectures.
+1. **No normalizing constant.** The Fisher divergence compares gradients, and the gradient of log Z_θ is zero. Score matching trains an unnormalized model without ever computing, approximating, or bounding Z_θ. For energy-based models this is the central advantage; it is what lets [score-based models](score-based-generative-models.md) use arbitrary neural architectures.
 
 2. **No architectural constraint on s_θ.** The Fisher divergence does not require s_θ(x) to be an actual score function of any normalized distribution — it is simply an L² comparison of two vector fields. The only requirement is matching input/output dimensionality, which is trivial.
 
@@ -42,7 +42,7 @@ Three properties:
 
 ## Under multi-scale noise: the weighted Fisher divergence
 
-For a [[concepts/score-based-generative-models|Noise Conditional Score Network]] trained jointly over L noise scales, the loss is
+For a [Noise Conditional Score Network](score-based-generative-models.md) trained jointly over L noise scales, the loss is
 
   Σᵢ λ(i) · E_{p_{σ_i}(x)} [ ‖ ∇ₓ log p_{σ_i}(x) − s_θ(x, i) ‖² ]
 
@@ -54,4 +54,4 @@ For the continuous-time SDE formulation, this becomes an integral over t ∈ [0,
 
 Score matching is the training primitive that makes it possible to fit an arbitrary neural network to ∇ₓ log p(x) from samples alone. Denoising score matching is the variant that scales, couples with noise perturbation, and powers practically every modern diffusion / score-based generative model.
 
-Source: [[sources/2026-04-04-yang-song-score-based-generative-modeling]].
+Source: [2026-04-04-yang-song-score-based-generative-modeling](../sources/2026-04-04-yang-song-score-based-generative-modeling.md).

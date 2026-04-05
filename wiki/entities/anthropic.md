@@ -18,17 +18,17 @@ AI safety company and maker of the Claude family of models. Relevant to this wik
 
 Anthropic has been building a dedicated life-sciences capability on two fronts:
 
-1. **Product.** In October 2025 it announced [[entities/claude-for-life-sciences]], a product aimed at helping scientific researchers accelerate discoveries (Source: [[sources/2026-04-03-anthropic-acquires-coefficient-bio]]).
-2. **Talent and IP.** In April 2026 it acquired [[entities/coefficient-bio]] in a reported $400M stock deal, bringing in founders [[entities/samuel-stanton]] and [[entities/nathan-c-frey]] and a ~10-person team with computational drug-discovery backgrounds from [[entities/prescient-design]]. The team joins Anthropic's health & life sciences group (Source: [[sources/2026-04-03-anthropic-acquires-coefficient-bio]]).
+1. **Product.** In October 2025 it announced [claude-for-life-sciences](claude-for-life-sciences.md), a product aimed at helping scientific researchers accelerate discoveries (Source: [2026-04-03-anthropic-acquires-coefficient-bio](../sources/2026-04-03-anthropic-acquires-coefficient-bio.md)).
+2. **Talent and IP.** In April 2026 it acquired [coefficient-bio](coefficient-bio.md) in a reported $400M stock deal, bringing in founders [samuel-stanton](samuel-stanton.md) and [nathan-c-frey](nathan-c-frey.md) and a ~10-person team with computational drug-discovery backgrounds from [prescient-design](prescient-design.md). The team joins Anthropic's health & life sciences group (Source: [2026-04-03-anthropic-acquires-coefficient-bio](../sources/2026-04-03-anthropic-acquires-coefficient-bio.md)).
 
 The combination suggests Anthropic wants first-party domain expertise — not just generic model access — shaping its vertical offerings in biology and medicine.
 
 ## Long-horizon agentic coding
 
-A separate Anthropic thread is developing work patterns for **multi-day, autonomous** Claude Code usage — see [[concepts/long-running-agentic-coding]] for the general pattern. Two public demonstrations anchor the methodology:
+A separate Anthropic thread is developing work patterns for **multi-day, autonomous** Claude Code usage — see [long-running-agentic-coding](../concepts/long-running-agentic-coding.md) for the general pattern. Two public demonstrations anchor the methodology:
 
-1. **The [[entities/anthropic-c-compiler-project]]** — Claude working across ~2,000 sessions to build a C compiler capable of compiling the Linux kernel. A parallel-swarm topology.
-2. **The CLAX experiment** — an April 2026 post by [[entities/siddharth-mishra-sharma]] on Anthropic's **Discovery team** walking through how to apply the same methodology to scientific computing. Concrete artifact: [[entities/clax-project]], a differentiable JAX Boltzmann solver reaching sub-percent accuracy against the [[entities/class-boltzmann-solver]] C reference, built in days by Claude Opus 4.6 (Source: [[sources/2026-04-04-anthropic-long-running-claude-scientific-computing]]). A single-sequential-agent topology, chosen because the scientific codebase is deeply coupled rather than decomposable.
+1. **The [anthropic-c-compiler-project](anthropic-c-compiler-project.md)** — Claude working across ~2,000 sessions to build a C compiler capable of compiling the Linux kernel. A parallel-swarm topology.
+2. **The CLAX experiment** — an April 2026 post by [siddharth-mishra-sharma](siddharth-mishra-sharma.md) on Anthropic's **Discovery team** walking through how to apply the same methodology to scientific computing. Concrete artifact: [clax-project](clax-project.md), a differentiable JAX Boltzmann solver reaching sub-percent accuracy against the [class-boltzmann-solver](class-boltzmann-solver.md) C reference, built in days by Claude Opus 4.6 (Source: [2026-04-04-anthropic-long-running-claude-scientific-computing](../sources/2026-04-04-anthropic-long-running-claude-scientific-computing.md)). A single-sequential-agent topology, chosen because the scientific codebase is deeply coupled rather than decomposable.
 
 The two topologies together make the point that long-horizon autonomous agentic work is not one pattern — the shape of the task determines whether the right deployment is a swarm or a solo agent.
 

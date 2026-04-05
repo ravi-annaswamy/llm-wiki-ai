@@ -10,26 +10,26 @@ status: active
 
 # AI in Creative Writing
 
-The use of large language models to generate, draft, or heavily revise fiction — as distinct from using them for copyediting, research, or the mechanical drudgery of prose work. This concept page anchors the essay-level questions surfaced by the New Yorker piece and connects them to patterns already visible elsewhere in this wiki (Source: [[sources/2026-04-04-newyorker-is-it-wrong-to-write-with-ai]]).
+The use of large language models to generate, draft, or heavily revise fiction — as distinct from using them for copyediting, research, or the mechanical drudgery of prose work. This concept page anchors the essay-level questions surfaced by the New Yorker piece and connects them to patterns already visible elsewhere in this wiki (Source: [2026-04-04-newyorker-is-it-wrong-to-write-with-ai](../sources/2026-04-04-newyorker-is-it-wrong-to-write-with-ai.md)).
 
 ## The question the essay is really asking
 
 Is AI-assisted fiction categorically different from every other "artificial" technology that entered an art form — drum machines, autotune, Photoshop, digital film editing — or is it just the current incumbent of a recurring panic?
 
-The New Yorker essay holds this question open. It advances the [[concepts/drum-machine-analogy-for-ai]] — the Roland TR-808 was dismissed as cheating in 1983, then became foundational — but the writer explicitly declines to commit to the analogy. Writing might be different.
+The New Yorker essay holds this question open. It advances the [drum-machine-analogy-for-ai](drum-machine-analogy-for-ai.md) — the Roland TR-808 was dismissed as cheating in 1983, then became foundational — but the writer explicitly declines to commit to the analogy. Writing might be different.
 
 ## The two poles in the current landscape
 
 The essay anchors its discussion between two cases that bracket the range of how AI is actually appearing in fiction today:
 
-1. **[[entities/shy-girl-ai-novel]]** — mid-quality, probably-accidental AI writing. Acquired by Hachette, then unmasked by [[entities/pangram]] at 78% AI-generated, then cancelled. 4/5 Amazon rating. The reception paradox in its purest form.
-2. **[[entities/coral-hart]]** — deliberate, industrial-scale AI writing. Dozens of pen names, hundreds of books, six figures in revenue, ~45 minutes per draft. The clearest near-term model of the [[concepts/ai-novel-factory]].
+1. **[shy-girl-ai-novel](../entities/shy-girl-ai-novel.md)** — mid-quality, probably-accidental AI writing. Acquired by Hachette, then unmasked by [pangram](../entities/pangram.md) at 78% AI-generated, then cancelled. 4/5 Amazon rating. The reception paradox in its purest form.
+2. **[coral-hart](../entities/coral-hart.md)** — deliberate, industrial-scale AI writing. Dozens of pen names, hundreds of books, six figures in revenue, ~45 minutes per draft. The clearest near-term model of the [ai-novel-factory](ai-novel-factory.md).
 
 Between these two, the essay argues, lies the actual frontier — not best-seller literary fiction, which is mostly insulated for now, but the mid-market and self-published long tail.
 
 ## The reception paradox (cross-wiki connection)
 
-Shy Girl's 4/5 Amazon rating is one of the most interesting data points in this wiki. It is not isolated. The same phenomenon appears in the Galleri5/JioStar AI Mahabharat series documented in [[concepts/hindu-mythology-ai-genre]]: **26.5 million views, 1.4/10 IMDb rating**. Commercial reception and critical/quality signals are decoupling in the same direction across two completely independent media (fiction, film) and two completely different cultural contexts (American self-publishing, Indian mythology TV).
+Shy Girl's 4/5 Amazon rating is one of the most interesting data points in this wiki. It is not isolated. The same phenomenon appears in the Galleri5/JioStar AI Mahabharat series documented in [hindu-mythology-ai-genre](hindu-mythology-ai-genre.md): **26.5 million views, 1.4/10 IMDb rating**. Commercial reception and critical/quality signals are decoupling in the same direction across two completely independent media (fiction, film) and two completely different cultural contexts (American self-publishing, Indian mythology TV).
 
 The pattern now appears on three source pages from two domains. It deserves its own analysis page in a future pass.
 
@@ -44,16 +44,16 @@ The two hypotheses imply very different futures, and the Hachette cancellation i
 
 The essay's central anxiety is not about quality but about **readers' implicit understandings of what they're reading**. The writer notes that expectations about authorship vary silently by context — a Booker Prize winner is assumed to have written every word, a journalist is assumed to have had editors, a prestige TV show is assumed to have a writers' room. AI breaks the silence by forcing those implicit assumptions into the open.
 
-[[entities/coral-hart]]'s selective Amazon disclosure is the canonical example. [[entities/shy-girl-ai-novel]]'s unmasking is another. In both, the violation isn't that AI was used — it's that readers didn't know.
+[coral-hart](../entities/coral-hart.md)'s selective Amazon disclosure is the canonical example. [shy-girl-ai-novel](../entities/shy-girl-ai-novel.md)'s unmasking is another. In both, the violation isn't that AI was used — it's that readers didn't know.
 
-This is the same disclosure problem that appears in [[concepts/ai-film-re-editing]] (Dhanush's objection to the Raanjhanaa AI-altered ending was partly about unconsented alteration, not just the alteration itself).
+This is the same disclosure problem that appears in [ai-film-re-editing](ai-film-re-editing.md) (Dhanush's objection to the Raanjhanaa AI-altered ending was partly about unconsented alteration, not just the alteration itself).
 
 ## Connection to other wiki threads
 
-- **[[concepts/hindu-mythology-ai-genre]]** — the reception paradox from the Indian film ingest reappears almost identically. Two instances of the same phenomenon, different media.
-- **[[concepts/ai-novel-factory]]** — Hart and Patterson as precedents for the factory model.
-- **[[concepts/layered-authorship]]** — the essay's core conceptual move: fiction is layered (premise, plot, style, prose), and layers can be distributed across contributors.
-- **[[analyses/own-your-substrate]]** — authors-as-showrunners fits the pattern. Hart owns the factory, rents the LLM; Indian studios own pipelines, rent tech-major compute; Anthropic owns drug-discovery talent, rents everything else.
+- **[hindu-mythology-ai-genre](hindu-mythology-ai-genre.md)** — the reception paradox from the Indian film ingest reappears almost identically. Two instances of the same phenomenon, different media.
+- **[ai-novel-factory](ai-novel-factory.md)** — Hart and Patterson as precedents for the factory model.
+- **[layered-authorship](layered-authorship.md)** — the essay's core conceptual move: fiction is layered (premise, plot, style, prose), and layers can be distributed across contributors.
+- **[own-your-substrate](../analyses/own-your-substrate.md)** — authors-as-showrunners fits the pattern. Hart owns the factory, rents the LLM; Indian studios own pipelines, rent tech-major compute; Anthropic owns drug-discovery talent, rents everything else.
 - **LLM as active producer of structured artifacts** (emerging theme in overview.md) — Hart's workflow is a third instance alongside Karpathy Knowledge Bases and DeepMind's AlphaEvolve. In all three, the LLM generates durable artifacts that a filter loop promotes: Shy Girl's Pangram check, Karpathy's linting, AlphaEvolve's exploitability. Three instances is a good threshold for a second analysis page.
 
 ## Open questions
@@ -66,11 +66,11 @@ This is the same disclosure problem that appears in [[concepts/ai-film-re-editin
 
 ## Related
 
-- [[entities/shy-girl-ai-novel]]
-- [[entities/coral-hart]]
-- [[entities/pangram]]
-- [[concepts/drum-machine-analogy-for-ai]]
-- [[concepts/layered-authorship]]
-- [[concepts/ai-novel-factory]]
-- [[concepts/hindu-mythology-ai-genre]]
-- [[analyses/own-your-substrate]]
+- [shy-girl-ai-novel](../entities/shy-girl-ai-novel.md)
+- [coral-hart](../entities/coral-hart.md)
+- [pangram](../entities/pangram.md)
+- [drum-machine-analogy-for-ai](drum-machine-analogy-for-ai.md)
+- [layered-authorship](layered-authorship.md)
+- [ai-novel-factory](ai-novel-factory.md)
+- [hindu-mythology-ai-genre](hindu-mythology-ai-genre.md)
+- [own-your-substrate](../analyses/own-your-substrate.md)

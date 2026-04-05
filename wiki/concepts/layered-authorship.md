@@ -10,7 +10,7 @@ status: active
 
 # Layered Authorship
 
-The view — articulated most clearly in the New Yorker essay on AI and writing — that fiction is not a single undifferentiated act of creation, but a **layered** endeavor in which premise, plot, character, scene construction, style, prose, and voice are at least partially separable, and can be produced by different contributors without the result ceasing to "count" as fiction (Source: [[sources/2026-04-04-newyorker-is-it-wrong-to-write-with-ai]]).
+The view — articulated most clearly in the New Yorker essay on AI and writing — that fiction is not a single undifferentiated act of creation, but a **layered** endeavor in which premise, plot, character, scene construction, style, prose, and voice are at least partially separable, and can be produced by different contributors without the result ceasing to "count" as fiction (Source: [2026-04-04-newyorker-is-it-wrong-to-write-with-ai](../sources/2026-04-04-newyorker-is-it-wrong-to-write-with-ai.md)).
 
 ## The move
 
@@ -32,7 +32,7 @@ The essay walks through examples already embedded in how we consume written work
 
 The essay's subtler point: our expectations about authorship **vary silently by context**, and we almost never articulate the contract. A Booker Prize winner is assumed to have written every word. A journalist is assumed to have had editors. A prestige TV show is assumed to have a writers' room. A Patterson thriller is assumed to be Patterson's "brand" more than his prose.
 
-Readers don't notice these varying expectations because they're never forced to. AI breaks that silence. It makes the implicit contract negotiable, which means it has to be renegotiated explicitly — and that renegotiation is happening in public through cases like [[entities/shy-girl-ai-novel]] and the workflow of [[entities/coral-hart]].
+Readers don't notice these varying expectations because they're never forced to. AI breaks that silence. It makes the implicit contract negotiable, which means it has to be renegotiated explicitly — and that renegotiation is happening in public through cases like [shy-girl-ai-novel](../entities/shy-girl-ai-novel.md) and the workflow of [coral-hart](../entities/coral-hart.md).
 
 ## Implications for the AI debate
 
@@ -49,15 +49,15 @@ If the question is "should AI be allowed to contribute to a layer of a novel?", 
 
 The essay's implicit thesis is that the prose/voice layer is the one carrying almost all the current controversy. If AI contributes to premise, outline, or even dialogue, readers object less — because collaborative contribution at those layers is already normal. The Shy Girl opening paragraph the essay quotes is detectable because AI was used at the **prose** layer, which is the layer readers have always expected to be the author's own.
 
-## Connection to [[concepts/ai-novel-factory]]
+## Connection to [ai-novel-factory](ai-novel-factory.md)
 
 The Coral Hart workflow is layered authorship taken to its industrial extreme: Hart picks premises and supervises output at the portfolio level, and the LLM handles every other layer. The New Yorker essay's framing — "authors as showrunners of AI writers' rooms" — makes the TV parallel explicit, and the analogy does most of the legitimizing work. If we already accept TV showrunners as the authors of shows they didn't write word-by-word, why wouldn't we accept the same for a novelist with an AI writers' room? The essay leaves the question hanging.
 
 ## Connection to other wiki threads
 
-- **[[concepts/ai-film-re-editing]]** — Indian studios using AI to change endings of old films are operating at the "outcome" layer while leaving everything else intact. Same layered-authorship logic, different art form.
-- **[[concepts/ai-dubbing]]** — altering the facial-performance layer while preserving the voice identity layer. Again, a layer-specific modification rather than wholesale replacement.
-- **[[analyses/own-your-substrate]]** — authors who own the outline/premise layer while renting the prose layer from a model API are an exact instance of "own the compounding layer, rent the commodity layer."
+- **[ai-film-re-editing](ai-film-re-editing.md)** — Indian studios using AI to change endings of old films are operating at the "outcome" layer while leaving everything else intact. Same layered-authorship logic, different art form.
+- **[ai-dubbing](ai-dubbing.md)** — altering the facial-performance layer while preserving the voice identity layer. Again, a layer-specific modification rather than wholesale replacement.
+- **[own-your-substrate](../analyses/own-your-substrate.md)** — authors who own the outline/premise layer while renting the prose layer from a model API are an exact instance of "own the compounding layer, rent the commodity layer."
 
 ## Open questions
 
@@ -68,9 +68,9 @@ The Coral Hart workflow is layered authorship taken to its industrial extreme: H
 
 ## Related
 
-- [[concepts/ai-in-creative-writing]]
-- [[concepts/ai-novel-factory]]
-- [[entities/coral-hart]]
-- [[entities/shy-girl-ai-novel]]
-- [[analyses/own-your-substrate]]
-- [[sources/2026-04-04-newyorker-is-it-wrong-to-write-with-ai]]
+- [ai-in-creative-writing](ai-in-creative-writing.md)
+- [ai-novel-factory](ai-novel-factory.md)
+- [coral-hart](../entities/coral-hart.md)
+- [shy-girl-ai-novel](../entities/shy-girl-ai-novel.md)
+- [own-your-substrate](../analyses/own-your-substrate.md)
+- [2026-04-04-newyorker-is-it-wrong-to-write-with-ai](../sources/2026-04-04-newyorker-is-it-wrong-to-write-with-ai.md)

@@ -10,7 +10,7 @@ status: active
 
 # MARL in Imperfect-Information Games
 
-Multi-Agent Reinforcement Learning (MARL) in **imperfect-information** games is the subfield concerned with training agents to play games where players act sequentially and cannot see each other's private information — the canonical example being poker. It is the domain where [[concepts/counterfactual-regret-minimization]] and [[concepts/policy-space-response-oracles]] developed, and the test bed for the algorithm-discovery work in [[sources/2026-04-04-marktechpost-deepmind-alphaevolve-game-theory]].
+Multi-Agent Reinforcement Learning (MARL) in **imperfect-information** games is the subfield concerned with training agents to play games where players act sequentially and cannot see each other's private information — the canonical example being poker. It is the domain where [counterfactual-regret-minimization](counterfactual-regret-minimization.md) and [policy-space-response-oracles](policy-space-response-oracles.md) developed, and the test bed for the algorithm-discovery work in [2026-04-04-marktechpost-deepmind-alphaevolve-game-theory](../sources/2026-04-04-marktechpost-deepmind-alphaevolve-game-theory.md).
 
 ## Why it's harder than perfect-information games
 
@@ -28,8 +28,8 @@ As a result, the solution concept shifts from "best move in this position" to "s
 
 Two families have dominated the academic literature, and both are the targets of the AlphaEvolve paper:
 
-- **[[concepts/counterfactual-regret-minimization]]** (CFR) — iterative regret minimization decomposed across information sets. Time-averaged strategy converges to Nash Equilibrium. Core variants: CFR+, DCFR, PCFR+, DPCFR+, etc.
-- **[[concepts/policy-space-response-oracles]]** (PSRO) — maintains a population of policies per player, computes a meta-game payoff tensor, and uses a meta-strategy solver to decide how to mix over the population. Best responses to the current mixture are added to the population iteratively.
+- **[counterfactual-regret-minimization](counterfactual-regret-minimization.md)** (CFR) — iterative regret minimization decomposed across information sets. Time-averaged strategy converges to Nash Equilibrium. Core variants: CFR+, DCFR, PCFR+, DPCFR+, etc.
+- **[policy-space-response-oracles](policy-space-response-oracles.md)** (PSRO) — maintains a population of policies per player, computes a meta-game payoff tensor, and uses a meta-strategy solver to decide how to mix over the population. Best responses to the current mixture are added to the population iteratively.
 
 CFR operates at the level of information sets; PSRO operates at the level of entire policies. They're complementary abstractions and are often benchmarked against each other.
 
@@ -59,12 +59,12 @@ The field has:
 3. **A structured algorithmic substrate** where new variants can be expressed as modifications of a small number of Python classes.
 4. **Fast, exact evaluation** on small games, which makes high-throughput evolutionary search tractable.
 
-All four conditions are exactly what an LLM-driven algorithm search needs, which is why imperfect-information game theory was a natural first venue for [[concepts/llm-driven-algorithm-discovery]] applied to [[entities/alphaevolve]].
+All four conditions are exactly what an LLM-driven algorithm search needs, which is why imperfect-information game theory was a natural first venue for [llm-driven-algorithm-discovery](llm-driven-algorithm-discovery.md) applied to [alphaevolve](../entities/alphaevolve.md).
 
 ## Related
 
-- [[concepts/counterfactual-regret-minimization]]
-- [[concepts/policy-space-response-oracles]]
-- [[concepts/llm-driven-algorithm-discovery]]
-- [[entities/alphaevolve]]
-- [[entities/google-deepmind]]
+- [counterfactual-regret-minimization](counterfactual-regret-minimization.md)
+- [policy-space-response-oracles](policy-space-response-oracles.md)
+- [llm-driven-algorithm-discovery](llm-driven-algorithm-discovery.md)
+- [alphaevolve](../entities/alphaevolve.md)
+- [google-deepmind](../entities/google-deepmind.md)

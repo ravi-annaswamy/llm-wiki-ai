@@ -10,7 +10,7 @@ status: active
 
 # Ephemeral Wiki
 
-A variant of the [[concepts/llm-knowledge-bases]] pattern, described by Lex Fridman in response to Karpathy's original post: instead of maintaining a single long-lived "second brain," users generate a **temporary, task-specific mini-knowledge-base**, use it for the task at hand, and discard it when the task is done (Source: [[sources/2026-04-04-venturebeat-karpathy-llm-knowledge-bases]]).
+A variant of the [llm-knowledge-bases](llm-knowledge-bases.md) pattern, described by Lex Fridman in response to Karpathy's original post: instead of maintaining a single long-lived "second brain," users generate a **temporary, task-specific mini-knowledge-base**, use it for the task at hand, and discard it when the task is done (Source: [2026-04-04-venturebeat-karpathy-llm-knowledge-bases](../sources/2026-04-04-venturebeat-karpathy-llm-knowledge-bases.md)).
 
 ## Fridman's description
 
@@ -34,7 +34,7 @@ A standard Karpathy-style wiki is a long-lived second brain. Sources are ingeste
 ## Why it's useful
 
 - **Low commitment.** Users don't have to decide whether something is "worth" adding to their permanent knowledge base before starting to work with it.
-- **No contamination risk.** Because the ephemeral wiki is discarded, there's no danger of polluting the personal vault — see [[concepts/contamination-mitigation]].
+- **No contamination risk.** Because the ephemeral wiki is discarded, there's no danger of polluting the personal vault — see [contamination-mitigation](contamination-mitigation.md).
 - **Task-shaped context.** The wiki can be structured exactly for the task (e.g., a report, a coding session, a long-form research question) without worrying about general-purpose navigability.
 - **Good fit for voice-mode and mobile consumption.** Fridman's specific use case — loading the mini-wiki into an LLM for voice-mode interaction on a long run — wouldn't work with a sprawling permanent vault.
 
@@ -46,6 +46,6 @@ It also provides a natural pattern for experimentation: generate several ephemer
 
 ## Related
 
-- [[concepts/llm-knowledge-bases]]
-- [[concepts/contamination-mitigation]]
-- [[concepts/swarm-knowledge-base]]
+- [llm-knowledge-bases](llm-knowledge-bases.md)
+- [contamination-mitigation](contamination-mitigation.md)
+- [swarm-knowledge-base](swarm-knowledge-base.md)

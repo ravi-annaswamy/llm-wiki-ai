@@ -10,7 +10,7 @@ status: active
 
 # Contamination Mitigation (Clean Vault / Messy Vault)
 
-A practical refinement of the [[concepts/llm-knowledge-bases]] pattern, proposed by [[entities/steph-ango]] (co-creator of [[entities/obsidian]]) in response to Karpathy's original post (Source: [[sources/2026-04-04-venturebeat-karpathy-llm-knowledge-bases]]).
+A practical refinement of the [llm-knowledge-bases](llm-knowledge-bases.md) pattern, proposed by [steph-ango](../entities/steph-ango.md) (co-creator of [obsidian](../entities/obsidian.md)) in response to Karpathy's original post (Source: [2026-04-04-venturebeat-karpathy-llm-knowledge-bases](../sources/2026-04-04-venturebeat-karpathy-llm-knowledge-bases.md)).
 
 ## The core idea
 
@@ -41,7 +41,7 @@ Promotion is the key step: a conscious human action, not an automatic sync.
 
 Contamination mitigation becomes nearly mandatory once more than one agent is writing to the wiki. Without the clean/messy separation:
 
-- A hallucination from agent A becomes context for agent B, then compounds across the swarm (the same concern addressed by the [[concepts/swarm-knowledge-base]] "Quality Gate").
+- A hallucination from agent A becomes context for agent B, then compounds across the swarm (the same concern addressed by the [swarm-knowledge-base](swarm-knowledge-base.md) "Quality Gate").
 - Lint passes can't distinguish "the user wrote this" from "an agent wrote this last week," so human corrections can be silently reverted.
 
 ## How this wiki could apply it
@@ -50,8 +50,8 @@ This project currently has a single vault (`wiki/`). A future refinement could i
 
 ## Related
 
-- [[concepts/llm-knowledge-bases]]
-- [[concepts/swarm-knowledge-base]]
-- [[concepts/wiki-linting]]
-- [[entities/steph-ango]]
-- [[entities/obsidian]]
+- [llm-knowledge-bases](llm-knowledge-bases.md)
+- [swarm-knowledge-base](swarm-knowledge-base.md)
+- [wiki-linting](wiki-linting.md)
+- [steph-ango](../entities/steph-ango.md)
+- [obsidian](../entities/obsidian.md)

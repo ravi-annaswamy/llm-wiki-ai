@@ -41,8 +41,10 @@ status: draft | active | stale
 
 ### Cross-Linking
 
-- Use `[[wikilinks]]` for internal links between wiki pages
-- Use `[[folder/page-name]]` when linking across subdirectories
+- Use standard Markdown links with relative paths: `[display text](../concepts/page-name.md)`
+- Always include the `.md` extension so GitHub's renderer resolves the link
+- Compute the relative path from the containing file (e.g., from `entities/foo.md` to a concept page, use `../concepts/bar.md`; from `overview.md` to a concept, use `concepts/bar.md`)
+- Obsidian handles standard Markdown links natively, so local editing still works — do NOT use `[[wikilinks]]` (they don't render on GitHub)
 - Every page should have at least 2 inbound links (no orphans)
 - When creating a new page, always check what existing pages should link to it
 
@@ -56,7 +58,7 @@ status: draft | active | stale
 
 - Write in clear, direct prose — not bullet-point dumps
 - Lead with the most important information
-- Include specific claims with source attribution: `(Source: [[sources/2026-04-02-karpathy-post]])`
+- Include specific claims with source attribution: `(Source: [karpathy-post](sources/2026-04-02-karpathy-post.md))`
 - Flag uncertainty: "According to X, though Y disputes this..."
 - Flag contradictions explicitly: "> ⚠️ CONTRADICTION: Page A claims X, but Source B says Y"
 

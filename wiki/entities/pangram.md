@@ -10,11 +10,11 @@ status: active
 
 # Pangram
 
-AI-detection firm that analyzed the horror novel [[entities/shy-girl-ai-novel]] and declared it **78% AI-generated** — a finding that directly led to Hachette's cancellation of the book's publication (Source: [[sources/2026-04-04-newyorker-is-it-wrong-to-write-with-ai]]).
+AI-detection firm that analyzed the horror novel [shy-girl-ai-novel](shy-girl-ai-novel.md) and declared it **78% AI-generated** — a finding that directly led to Hachette's cancellation of the book's publication (Source: [2026-04-04-newyorker-is-it-wrong-to-write-with-ai](../sources/2026-04-04-newyorker-is-it-wrong-to-write-with-ai.md)).
 
 ## Relevance to this wiki
 
-Pangram is the only AI-detection vendor named in the current corpus, and its role in the Shy Girl incident makes it the reference point for thinking about the enforcement side of [[concepts/ai-in-creative-writing]] disclosure regimes. If publishers, platforms, or prize juries want to know whether a manuscript is AI-generated, they need a firm like Pangram to produce a number. The 78% figure was treated by the publisher (Hachette) as credible enough to act on.
+Pangram is the only AI-detection vendor named in the current corpus, and its role in the Shy Girl incident makes it the reference point for thinking about the enforcement side of [ai-in-creative-writing](../concepts/ai-in-creative-writing.md) disclosure regimes. If publishers, platforms, or prize juries want to know whether a manuscript is AI-generated, they need a firm like Pangram to produce a number. The 78% figure was treated by the publisher (Hachette) as credible enough to act on.
 
 ## Open questions the Shy Girl case raises
 
@@ -27,6 +27,6 @@ None of these are answered by the source, but they are the obvious next question
 
 ## Related
 
-- [[entities/shy-girl-ai-novel]]
-- [[concepts/ai-in-creative-writing]]
-- [[sources/2026-04-04-newyorker-is-it-wrong-to-write-with-ai]]
+- [shy-girl-ai-novel](shy-girl-ai-novel.md)
+- [ai-in-creative-writing](../concepts/ai-in-creative-writing.md)
+- [2026-04-04-newyorker-is-it-wrong-to-write-with-ai](../sources/2026-04-04-newyorker-is-it-wrong-to-write-with-ai.md)

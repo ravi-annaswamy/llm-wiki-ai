@@ -10,7 +10,7 @@ status: active
 
 # Wiki Linting (Active Maintenance)
 
-In the [[concepts/llm-knowledge-bases]] pattern, **linting** is the ongoing maintenance step where the LLM periodically scans the whole wiki for inconsistencies, orphan pages, missing connections, contradictions, and coverage gaps — then fixes what it can and surfaces what it can't (Source: [[sources/2026-04-04-venturebeat-karpathy-llm-knowledge-bases]]).
+In the [llm-knowledge-bases](llm-knowledge-bases.md) pattern, **linting** is the ongoing maintenance step where the LLM periodically scans the whole wiki for inconsistencies, orphan pages, missing connections, contradictions, and coverage gaps — then fixes what it can and surfaces what it can't (Source: [2026-04-04-venturebeat-karpathy-llm-knowledge-bases](../sources/2026-04-04-venturebeat-karpathy-llm-knowledge-bases.md)).
 
 Community member Charly Wargnier described the result: "It acts as a living AI knowledge base that actually heals itself."
 
@@ -46,6 +46,6 @@ Linting is how the wiki stays coherent at scale. It is what distinguishes a "sel
 
 ## Related
 
-- [[concepts/llm-knowledge-bases]]
-- [[concepts/contamination-mitigation]]
-- [[concepts/swarm-knowledge-base]] (uses a dedicated Hermes model as a lint/quality gate)
+- [llm-knowledge-bases](llm-knowledge-bases.md)
+- [contamination-mitigation](contamination-mitigation.md)
+- [swarm-knowledge-base](swarm-knowledge-base.md) (uses a dedicated Hermes model as a lint/quality gate)

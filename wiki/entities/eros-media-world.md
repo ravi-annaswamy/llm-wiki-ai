@@ -10,7 +10,7 @@ status: active
 
 # Eros Media World
 
-Indian film studio notable for pioneering the AI re-editing of catalog titles — the clearest test case so far for [[concepts/ai-film-re-editing]] (Source: [[sources/2026-04-04-reuters-ai-indian-films]]).
+Indian film studio notable for pioneering the AI re-editing of catalog titles — the clearest test case so far for [ai-film-re-editing](../concepts/ai-film-re-editing.md) (Source: [2026-04-04-reuters-ai-indian-films](../sources/2026-04-04-reuters-ai-indian-films.md)).
 
 ## The Raanjhanaa re-release
 
@@ -20,6 +20,6 @@ Audience behavior contradicted the artistic backlash: PVR Inox told Reuters that
 
 ## The 3,000-title catalog review
 
-Group CEO [[entities/pradeep-dwivedi]] told Reuters that Eros is now reviewing its full ~3,000-title catalog "to identify candidates for AI-assisted adaptation," framing it as "both a revenue opportunity and a creative renewal strategy."
+Group CEO [pradeep-dwivedi](pradeep-dwivedi.md) told Reuters that Eros is now reviewing its full ~3,000-title catalog "to identify candidates for AI-assisted adaptation," framing it as "both a revenue opportunity and a creative renewal strategy."
 
 The motivation is partly defensive: Eros International, the group's Indian unit, saw consolidated annual revenue from operations fall 44% last year amid what it called "competition from digital platforms."

@@ -96,7 +96,7 @@ Files touched:
 ## [2026-04-04 23:40] refactor | Applied schema improvements to CLAUDE.md
 Applied the three schema proposals from the 2026-04-04 23:25 refactor pass:
 1. Added an "analysis-page graduation" check to the REFACTOR workflow — cross-cutting themes with ≥3 clean instances across sources should be promoted to their own `analyses/` page, with the original location trimmed to a one-paragraph summary + outbound link. This codifies the move that had been happening informally for two refactor cycles.
-2. Extended the Log Format spec to include an optional "Failed approaches / dead ends" line on log entries, explicitly modeled on the `CHANGELOG.md` pattern from [[concepts/agent-persistent-memory]]. The wiki now practices the pattern it catalogues.
+2. Extended the Log Format spec to include an optional "Failed approaches / dead ends" line on log entries, explicitly modeled on the `CHANGELOG.md` pattern from [agent-persistent-memory](concepts/agent-persistent-memory.md). The wiki now practices the pattern it catalogues.
 3. Added an "Ingest-time lenses for agentic-work / automated-research sources" subsection to the Domain Configuration, with three standing checks: is this a producer–filter instance, what's the task-shape-to-topology mapping, and which scaffolding pieces appear.
 Files touched:
 - CLAUDE.md (three sections updated)

@@ -10,9 +10,9 @@ status: active
 
 # AlphaEvolve
 
-A distributed evolutionary coding system developed by [[entities/google-deepmind]] that uses a large language model as the mutation operator in a search over source code (Source: [[sources/2026-04-04-marktechpost-deepmind-alphaevolve-game-theory]]). Rather than mutating numeric hyperparameters, AlphaEvolve mutates **the actual Python implementation** of an algorithm, evolving a population of candidate implementations against a fitness signal.
+A distributed evolutionary coding system developed by [google-deepmind](google-deepmind.md) that uses a large language model as the mutation operator in a search over source code (Source: [2026-04-04-marktechpost-deepmind-alphaevolve-game-theory](../sources/2026-04-04-marktechpost-deepmind-alphaevolve-game-theory.md)). Rather than mutating numeric hyperparameters, AlphaEvolve mutates **the actual Python implementation** of an algorithm, evolving a population of candidate implementations against a fitness signal.
 
-It is the concrete instantiation of [[concepts/llm-driven-algorithm-discovery]] covered in the current wiki corpus.
+It is the concrete instantiation of [llm-driven-algorithm-discovery](../concepts/llm-driven-algorithm-discovery.md) covered in the current wiki corpus.
 
 ## How it works
 
@@ -41,12 +41,12 @@ The fitness signal is negative exploitability after K iterations on a training s
 
 ## Why it's notable
 
-The interesting unit of this work is not any individual discovered algorithm — it is the demonstration that the **mutation unit in an evolutionary search can be a block of code**, not a scalar. LLMs are now fluent enough at reading and writing code that they can act as the variation operator in a classical evolutionary loop, which turns algorithm research into a search problem with a fitness signal — see [[concepts/llm-driven-algorithm-discovery]].
+The interesting unit of this work is not any individual discovered algorithm — it is the demonstration that the **mutation unit in an evolutionary search can be a block of code**, not a scalar. LLMs are now fluent enough at reading and writing code that they can act as the variation operator in a classical evolutionary loop, which turns algorithm research into a search problem with a fitness signal — see [llm-driven-algorithm-discovery](../concepts/llm-driven-algorithm-discovery.md).
 
 ## Related
 
-- [[entities/google-deepmind]]
-- [[concepts/llm-driven-algorithm-discovery]]
-- [[concepts/counterfactual-regret-minimization]]
-- [[concepts/policy-space-response-oracles]]
-- [[concepts/marl-imperfect-information-games]]
+- [google-deepmind](google-deepmind.md)
+- [llm-driven-algorithm-discovery](../concepts/llm-driven-algorithm-discovery.md)
+- [counterfactual-regret-minimization](../concepts/counterfactual-regret-minimization.md)
+- [policy-space-response-oracles](../concepts/policy-space-response-oracles.md)
+- [marl-imperfect-information-games](../concepts/marl-imperfect-information-games.md)

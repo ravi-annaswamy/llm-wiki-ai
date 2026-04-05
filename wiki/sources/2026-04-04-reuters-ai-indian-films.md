@@ -14,9 +14,9 @@ status: active
 
 ## Summary
 
-India — already the world's most prolific film producer — is reorganizing its film industry around AI at a scale and aggressiveness unmatched in Hollywood. Studios are pursuing three distinct plays: creating fully AI-generated films (especially in the Hindu mythology genre), using AI dubbing to cross India's 22-language market barrier, and recutting endings of older catalog titles for re-release. See [[concepts/ai-filmmaking-india]] for the synthesis.
+India — already the world's most prolific film producer — is reorganizing its film industry around AI at a scale and aggressiveness unmatched in Hollywood. Studios are pursuing three distinct plays: creating fully AI-generated films (especially in the Hindu mythology genre), using AI dubbing to cross India's 22-language market barrier, and recutting endings of older catalog titles for re-release. See [ai-filmmaking-india](../concepts/ai-filmmaking-india.md) for the synthesis.
 
-The economic case is sharp: [[entities/rahul-regulapati]], who heads [[entities/collective-artists-network]]'s Galleri5 AI studio, told Reuters that AI is cutting mythology/fantasy production costs to one-fifth and timelines to one-quarter of traditional filmmaking. Consulting firm EY projects AI could lift Indian media/entertainment revenue 10% and cut costs 15% over the medium term.
+The economic case is sharp: [rahul-regulapati](../entities/rahul-regulapati.md), who heads [collective-artists-network](../entities/collective-artists-network.md)'s Galleri5 AI studio, told Reuters that AI is cutting mythology/fantasy production costs to one-fifth and timelines to one-quarter of traditional filmmaking. Consulting firm EY projects AI could lift Indian media/entertainment revenue 10% and cut costs 15% over the medium term.
 
 The shift is driven by industry stress, not just opportunity. Indian moviegoer counts fell from 1.03 billion in 2019 to 832 million in 2025 (Ormax Media), squeezing production budgets even as box-office sales hit a record $1.4 billion. AI is the efficiency lever studios are reaching for.
 
@@ -26,22 +26,22 @@ The Hollywood contrast is explicit. SAG-AFTRA's contract requires performer cons
 
 ### 1. Fully AI-generated content (mythology genre)
 
-[[entities/collective-artists-network]] — a top Bollywood talent agency — runs Galleri5, a cinematic AI lab in Bengaluru. It is planning eight AI-generated titles focused on Hindu deities (Hanuman, Krishna, Durga, Kali). Its first episodic series, an AI adaptation of the Mahabharat, airs on [[entities/jiostar]] and has recorded at least 26.5 million views since its October release — though it sits at 1.4/10 on IMDb, with reviewers citing lip-sync issues and unnatural styling. For reference, an earlier non-AI TV adaptation drew 200 million viewers between 1988 and 1990. See [[concepts/hindu-mythology-ai-genre]].
+[collective-artists-network](../entities/collective-artists-network.md) — a top Bollywood talent agency — runs Galleri5, a cinematic AI lab in Bengaluru. It is planning eight AI-generated titles focused on Hindu deities (Hanuman, Krishna, Durga, Kali). Its first episodic series, an AI adaptation of the Mahabharat, airs on [jiostar](../entities/jiostar.md) and has recorded at least 26.5 million views since its October release — though it sits at 1.4/10 on IMDb, with reviewers citing lip-sync issues and unnatural styling. For reference, an earlier non-AI TV adaptation drew 200 million viewers between 1988 and 1990. See [hindu-mythology-ai-genre](../concepts/hindu-mythology-ai-genre.md).
 
-[[entities/abundantia-entertainment]], founded by Vikram Malhotra, recently announced an $11M AI studio build and expects AI-generated/assisted content to reach one-third of revenue within three years.
+[abundantia-entertainment](../entities/abundantia-entertainment.md), founded by Vikram Malhotra, recently announced an $11M AI studio build and expects AI-generated/assisted content to reach one-third of revenue within three years.
 
 ### 2. AI dubbing
 
-India's 22 official languages and hundreds of dialects fragment the market. [[entities/neuralgarage]], a Bengaluru AI startup, provides dubbing for top studios including Yash Raj Films; its tech was used last year to dub Yash Raj's "War 2" from Hindi into Telugu. Co-founder Subhabrata Debnath demonstrated the technology to Reuters: it preserves performer identity and speaking style while altering the face enough to make dubbing look natural (lips, jaw in sync). See [[concepts/ai-dubbing]].
+India's 22 official languages and hundreds of dialects fragment the market. [neuralgarage](../entities/neuralgarage.md), a Bengaluru AI startup, provides dubbing for top studios including Yash Raj Films; its tech was used last year to dub Yash Raj's "War 2" from Hindi into Telugu. Co-founder Subhabrata Debnath demonstrated the technology to Reuters: it preserves performer identity and speaking style while altering the face enough to make dubbing look natural (lips, jaw in sync). See [ai-dubbing](../concepts/ai-dubbing.md).
 
 ### 3. AI re-editing of catalog titles
 
-[[entities/eros-media-world]] last year re-released the 2013 hit "Raanjhanaa" with an AI-altered ending — replacing the protagonist's death with a happy reunion. Lead actor Dhanush said on X the remake had "stripped the film of its very soul." The re-release still drew audiences: PVR Inox told Reuters that 35% of available tickets sold for the Tamil version during its August release month, 12 percentage points above the 2025 average. Eros group CEO [[entities/pradeep-dwivedi]] said the studio is now reviewing its full 3,000-title catalog "to identify candidates for AI-assisted adaptation." Eros International's Indian unit saw annual revenue from operations fall 44% last year amid "competition from digital platforms." See [[concepts/ai-film-re-editing]].
+[eros-media-world](../entities/eros-media-world.md) last year re-released the 2013 hit "Raanjhanaa" with an AI-altered ending — replacing the protagonist's death with a happy reunion. Lead actor Dhanush said on X the remake had "stripped the film of its very soul." The re-release still drew audiences: PVR Inox told Reuters that 35% of available tickets sold for the Tamil version during its August release month, 12 percentage points above the 2025 average. Eros group CEO [pradeep-dwivedi](../entities/pradeep-dwivedi.md) said the studio is now reviewing its full 3,000-title catalog "to identify candidates for AI-assisted adaptation." Eros International's Indian unit saw annual revenue from operations fall 44% last year amid "competition from digital platforms." See [ai-film-re-editing](../concepts/ai-film-re-editing.md).
 
 ## Tech majors entering
 
 - **Google** partnered with Bollywood director Shakun Batra in August 2025 to produce a five-part cinematic series using Veo 3 and Flow. Mira Lane, Google's VP of technology and society, framed AI as enabling independent artists to create sequences otherwise "out of reach due to budget or logistical constraints."
-- **Microsoft** is providing AI computing power to [[entities/collective-artists-network]], telling Reuters it wants to "shape the next wave of global storytelling."
+- **Microsoft** is providing AI computing power to [collective-artists-network](../entities/collective-artists-network.md), telling Reuters it wants to "shape the next wave of global storytelling."
 - **Nvidia** shared the stage with AI filmmakers at India's AI film fest in New Delhi (February). Global VP Pradeep Gupta said Nvidia is working to slash compute costs so creators can "create something substantial without putting a lot of money" into production.
 
 ## Production pipeline detail

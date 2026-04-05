@@ -18,9 +18,9 @@ Pharma R&D is expensive and slow; even modest efficiency gains translate to larg
 
 ## Notable activity in this wiki
 
-- **[[entities/coefficient-bio]]** — stealth startup founded by former [[entities/prescient-design]] researchers [[entities/samuel-stanton]] and [[entities/nathan-c-frey]], applying AI to make drug discovery and broader biological research more efficient. Acquired by [[entities/anthropic]] in April 2026 for a reported $400M (Source: [[sources/2026-04-03-anthropic-acquires-coefficient-bio]]).
-- **[[entities/anthropic]] / [[entities/claude-for-life-sciences]]** — Anthropic is building a vertical life-sciences capability combining its Claude for Life Sciences product (launched October 2025) with acquired domain talent.
-- **[[entities/prescient-design]]** — Genentech's in-house AI drug-design group, notable as a talent origin point for drug-discovery AI startups.
+- **[coefficient-bio](../entities/coefficient-bio.md)** — stealth startup founded by former [prescient-design](../entities/prescient-design.md) researchers [samuel-stanton](../entities/samuel-stanton.md) and [nathan-c-frey](../entities/nathan-c-frey.md), applying AI to make drug discovery and broader biological research more efficient. Acquired by [anthropic](../entities/anthropic.md) in April 2026 for a reported $400M (Source: [2026-04-03-anthropic-acquires-coefficient-bio](../sources/2026-04-03-anthropic-acquires-coefficient-bio.md)).
+- **[anthropic](../entities/anthropic.md) / [claude-for-life-sciences](../entities/claude-for-life-sciences.md)** — Anthropic is building a vertical life-sciences capability combining its Claude for Life Sciences product (launched October 2025) with acquired domain talent.
+- **[prescient-design](../entities/prescient-design.md)** — Genentech's in-house AI drug-design group, notable as a talent origin point for drug-discovery AI startups.
 
 ## Open questions
 

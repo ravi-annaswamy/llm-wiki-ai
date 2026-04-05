@@ -10,7 +10,7 @@ status: active
 
 # NeuralGarage
 
-Bengaluru-based AI startup providing dubbing technology to top Indian studios, including Yash Raj Films (Source: [[sources/2026-04-04-reuters-ai-indian-films]]).
+Bengaluru-based AI startup providing dubbing technology to top Indian studios, including Yash Raj Films (Source: [2026-04-04-reuters-ai-indian-films](../sources/2026-04-04-reuters-ai-indian-films.md)).
 
 ## Technology
 
@@ -22,4 +22,4 @@ NeuralGarage's technology was used last year to dub Yash Raj Films' Hindi featur
 
 ## Why it matters
 
-Dubbing may be the lowest-friction entry point for AI in Indian film. India's 22 official languages and hundreds of dialects make dubbing a baseline requirement for any national blockbuster, and audiences have long complained about mismatched lip movement — so AI here solves a pre-existing grievance rather than replacing live performance. See [[concepts/ai-dubbing]] and [[concepts/ai-filmmaking-india]].
+Dubbing may be the lowest-friction entry point for AI in Indian film. India's 22 official languages and hundreds of dialects make dubbing a baseline requirement for any national blockbuster, and audiences have long complained about mismatched lip movement — so AI here solves a pre-existing grievance rather than replacing live performance. See [ai-dubbing](../concepts/ai-dubbing.md) and [ai-filmmaking-india](../concepts/ai-filmmaking-india.md).

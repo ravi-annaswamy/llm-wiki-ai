@@ -14,9 +14,9 @@ status: active
 
 ## Summary
 
-[[entities/anthropic]] has acquired [[entities/coefficient-bio]], a stealth biotech AI startup, in a roughly $400M all-stock deal. Coefficient Bio was founded about eight months before the acquisition by [[entities/samuel-stanton]] and [[entities/nathan-c-frey]], both formerly of [[entities/prescient-design]] (Genentech's computational drug discovery group). The ~10-person team is expected to join Anthropic's health and life sciences group.
+[anthropic](../entities/anthropic.md) has acquired [coefficient-bio](../entities/coefficient-bio.md), a stealth biotech AI startup, in a roughly $400M all-stock deal. Coefficient Bio was founded about eight months before the acquisition by [samuel-stanton](../entities/samuel-stanton.md) and [nathan-c-frey](../entities/nathan-c-frey.md), both formerly of [prescient-design](../entities/prescient-design.md) (Genentech's computational drug discovery group). The ~10-person team is expected to join Anthropic's health and life sciences group.
 
-The acquisition extends Anthropic's strategic push into healthcare that began publicly with the October 2025 launch of [[entities/claude-for-life-sciences]], a product aimed at helping scientific researchers accelerate discoveries. Coefficient Bio was applying AI to make [[concepts/ai-drug-discovery]] and broader biological research more efficient.
+The acquisition extends Anthropic's strategic push into healthcare that began publicly with the October 2025 launch of [claude-for-life-sciences](../entities/claude-for-life-sciences.md), a product aimed at helping scientific researchers accelerate discoveries. Coefficient Bio was applying AI to make [ai-drug-discovery](../concepts/ai-drug-discovery.md) and broader biological research more efficient.
 
 ## Key facts
 

@@ -10,9 +10,9 @@ status: active
 
 # LLM-Driven Algorithm Discovery
 
-The idea that a large language model, rather than a human researcher, can serve as the mutation and variation operator in a search over algorithm design space — producing new algorithms (or variants of existing ones) automatically, with the LLM reading and rewriting actual source code at each step (Source: [[sources/2026-04-04-marktechpost-deepmind-alphaevolve-game-theory]]).
+The idea that a large language model, rather than a human researcher, can serve as the mutation and variation operator in a search over algorithm design space — producing new algorithms (or variants of existing ones) automatically, with the LLM reading and rewriting actual source code at each step (Source: [2026-04-04-marktechpost-deepmind-alphaevolve-game-theory](../sources/2026-04-04-marktechpost-deepmind-alphaevolve-game-theory.md)).
 
-The concrete instance in this wiki is [[entities/alphaevolve]] from [[entities/google-deepmind]], applied to [[concepts/counterfactual-regret-minimization]] and [[concepts/policy-space-response-oracles]] in [[concepts/marl-imperfect-information-games]].
+The concrete instance in this wiki is [alphaevolve](../entities/alphaevolve.md) from [google-deepmind](../entities/google-deepmind.md), applied to [counterfactual-regret-minimization](counterfactual-regret-minimization.md) and [policy-space-response-oracles](policy-space-response-oracles.md) in [marl-imperfect-information-games](marl-imperfect-information-games.md).
 
 ## The key reframing
 
@@ -68,12 +68,12 @@ the same approach should apply. Likely next targets: optimizers, attention varia
 
 This concept connects to the wiki's broader "LLM as active producer of structured artifacts" pattern:
 
-- In [[concepts/llm-knowledge-bases]], the LLM authors a structured wiki from raw sources, with a linting loop as the evaluation signal.
+- In [llm-knowledge-bases](llm-knowledge-bases.md), the LLM authors a structured wiki from raw sources, with a linting loop as the evaluation signal.
 - Here, the LLM authors new algorithm implementations from existing ones, with exploitability as the evaluation signal.
 
 In both cases the LLM is **generating new artifacts that subsequent work depends on**, inside an evaluation loop that decides which artifacts survive. The LLM isn't answering a query — it's producing a durable output that becomes part of the substrate.
 
-It also weakly touches [[analyses/own-your-substrate]]: DeepMind controls Gemini 2.5 Pro (the mutation operator), AlphaEvolve (the evolutionary framework), and OpenSpiel (the evaluation substrate). The compounding asset is not the discovered algorithms — it's the discovery infrastructure.
+It also weakly touches [own-your-substrate](../analyses/own-your-substrate.md): DeepMind controls Gemini 2.5 Pro (the mutation operator), AlphaEvolve (the evolutionary framework), and OpenSpiel (the evaluation substrate). The compounding asset is not the discovered algorithms — it's the discovery infrastructure.
 
 ## Open questions
 
@@ -85,10 +85,10 @@ It also weakly touches [[analyses/own-your-substrate]]: DeepMind controls Gemini
 
 ## Related
 
-- [[entities/alphaevolve]]
-- [[entities/google-deepmind]]
-- [[concepts/counterfactual-regret-minimization]]
-- [[concepts/policy-space-response-oracles]]
-- [[concepts/marl-imperfect-information-games]]
-- [[concepts/llm-knowledge-bases]]
-- [[analyses/own-your-substrate]]
+- [alphaevolve](../entities/alphaevolve.md)
+- [google-deepmind](../entities/google-deepmind.md)
+- [counterfactual-regret-minimization](counterfactual-regret-minimization.md)
+- [policy-space-response-oracles](policy-space-response-oracles.md)
+- [marl-imperfect-information-games](marl-imperfect-information-games.md)
+- [llm-knowledge-bases](llm-knowledge-bases.md)
+- [own-your-substrate](../analyses/own-your-substrate.md)

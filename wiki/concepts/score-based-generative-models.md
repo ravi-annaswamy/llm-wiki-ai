@@ -10,9 +10,9 @@ status: active
 
 # Score-Based Generative Models
 
-A family of generative models that parameterize the **score function** — the gradient of the log probability density, ∇ₓ log p(x) — instead of the density itself. Introduced by [[entities/yang-song]] and Stefano Ermon at NeurIPS 2019, unified with [[concepts/diffusion-models|diffusion probabilistic models]] under a stochastic-differential-equation framework at ICLR 2021, and now the dominant paradigm for image, audio, shape, and video generation.
+A family of generative models that parameterize the **score function** — the gradient of the log probability density, ∇ₓ log p(x) — instead of the density itself. Introduced by [yang-song](../entities/yang-song.md) and Stefano Ermon at NeurIPS 2019, unified with [diffusion probabilistic models](diffusion-models.md) under a stochastic-differential-equation framework at ICLR 2021, and now the dominant paradigm for image, audio, shape, and video generation.
 
-This page is a **hub concept** for the score-based / diffusion family. Sub-pages: [[concepts/score-matching]], [[concepts/langevin-dynamics]], [[concepts/diffusion-models]], [[concepts/probability-flow-ode]].
+This page is a **hub concept** for the score-based / diffusion family. Sub-pages: [score-matching](score-matching.md), [langevin-dynamics](langevin-dynamics.md), [diffusion-models](diffusion-models.md), [probability-flow-ode](probability-flow-ode.md).
 
 ## Why model the score instead of the density
 
@@ -22,11 +22,11 @@ Modeling the score sidesteps the normalizing constant entirely: the gradient of 
 
 ## Training: score matching
 
-The natural loss is the Fisher divergence ‖∇ₓ log p(x) − s_θ(x)‖², which cannot be evaluated directly because the data score is unknown. The family of [[concepts/score-matching]] methods (Hyvärinen 2005; denoising score matching, Vincent 2011; sliced score matching, Song et al. 2019) produces unbiased estimates of this divergence from finite samples alone, optimizable with standard stochastic gradient descent. No adversarial optimization, no ELBO, no tractable normalizing constant — just a regression-like objective on samples.
+The natural loss is the Fisher divergence ‖∇ₓ log p(x) − s_θ(x)‖², which cannot be evaluated directly because the data score is unknown. The family of [score-matching](score-matching.md) methods (Hyvärinen 2005; denoising score matching, Vincent 2011; sliced score matching, Song et al. 2019) produces unbiased estimates of this divergence from finite samples alone, optimizable with standard stochastic gradient descent. No adversarial optimization, no ELBO, no tractable normalizing constant — just a regression-like objective on samples.
 
 ## Sampling: Langevin dynamics
 
-Given a trained score-based model, samples are drawn via [[concepts/langevin-dynamics]], an MCMC procedure that only needs ∇ₓ log p(x) (and no density evaluations):
+Given a trained score-based model, samples are drawn via [langevin-dynamics](langevin-dynamics.md), an MCMC procedure that only needs ∇ₓ log p(x) (and no density evaluations):
 
 x_{i+1} ← x_i + ε · s_θ(x_i) + √(2ε) · z_i,  z_i ∼ N(0, I)
 
@@ -60,7 +60,7 @@ Numerical solvers for the reverse SDE include Euler-Maruyama, reverse-diffusion 
 
 ## The probability flow ODE and exact likelihoods
 
-Every SDE has a corresponding deterministic ODE — the [[concepts/probability-flow-ode]] — with the same time marginals. Solving this ODE yields a sampler that, when the score is replaced by its neural estimate, becomes an instance of a neural ODE (continuous normalizing flow). That makes **exact log-likelihood computation** available via the instantaneous change-of-variables formula. Song's group reported SoTA 2.99 bits/dim on uniformly dequantized CIFAR-10, even without maximum likelihood training; with likelihood weighting and variational dequantization, 2.83 bits/dim on CIFAR-10 and 3.76 on ImageNet 32×32 — comparable or better than the best autoregressive models.
+Every SDE has a corresponding deterministic ODE — the [probability-flow-ode](probability-flow-ode.md) — with the same time marginals. Solving this ODE yields a sampler that, when the score is replaced by its neural estimate, becomes an instance of a neural ODE (continuous normalizing flow). That makes **exact log-likelihood computation** available via the instantaneous change-of-variables formula. Song's group reported SoTA 2.99 bits/dim on uniformly dequantized CIFAR-10, even without maximum likelihood training; with likelihood weighting and variational dequantization, 2.83 bits/dim on CIFAR-10 and 3.76 on ImageNet 32×32 — comparable or better than the best autoregressive models.
 
 ## Controllable generation: inverse problems
 
@@ -72,7 +72,7 @@ The unconditional score is learned once; the measurement-model score ∇ₓ log 
 
 ## Unification with diffusion models
 
-Score-based generative modeling and [[concepts/diffusion-models|denoising diffusion probabilistic models]] were developed independently. The 2020 DDPM paper (Ho, Jain, Abbeel) first observed that the diffusion ELBO reduces to a weighted combination of score matching losses. The 2021 SDE paper then proved both are discretizations of the same continuous-time class. Song's analogy: **wave mechanics and matrix mechanics as equivalent formulations of quantum mechanics**. Same model family, two perspectives with different affordances.
+Score-based generative modeling and [denoising diffusion probabilistic models](diffusion-models.md) were developed independently. The 2020 DDPM paper (Ho, Jain, Abbeel) first observed that the diffusion ELBO reduces to a weighted combination of score matching losses. The 2021 SDE paper then proved both are discretizations of the same continuous-time class. Song's analogy: **wave mechanics and matrix mechanics as equivalent formulations of quantum mechanics**. Same model family, two perspectives with different affordances.
 
 ## Known limitations
 
@@ -81,6 +81,6 @@ Score-based generative modeling and [[concepts/diffusion-models|denoising diffus
 
 ## Why this matters outside ML theory
 
-Diffusion / score-based models are the **commodity substrate** underlying the applied visual-AI work cataloged elsewhere in this wiki — [[concepts/ai-filmmaking-india]], [[concepts/ai-dubbing]], [[concepts/hindu-mythology-ai-genre]], and the image/voice generation implicit in [[concepts/ai-novel-factory]]. The [[analyses/own-your-substrate]] analysis argues operators should rent this layer and own the layers that compound above it; Song's line of work is the rentable layer.
+Diffusion / score-based models are the **commodity substrate** underlying the applied visual-AI work cataloged elsewhere in this wiki — [ai-filmmaking-india](ai-filmmaking-india.md), [ai-dubbing](ai-dubbing.md), [hindu-mythology-ai-genre](hindu-mythology-ai-genre.md), and the image/voice generation implicit in [ai-novel-factory](ai-novel-factory.md). The [own-your-substrate](../analyses/own-your-substrate.md) analysis argues operators should rent this layer and own the layers that compound above it; Song's line of work is the rentable layer.
 
-Source: [[sources/2026-04-04-yang-song-score-based-generative-modeling]].
+Source: [2026-04-04-yang-song-score-based-generative-modeling](../sources/2026-04-04-yang-song-score-based-generative-modeling.md).

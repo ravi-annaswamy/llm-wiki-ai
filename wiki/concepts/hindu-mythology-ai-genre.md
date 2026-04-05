@@ -10,7 +10,7 @@ status: active
 
 # Hindu Mythology as an AI Film Genre
 
-Hindu mythology — stories from the Ramayana, the Mahabharat, and associated deity cycles (Hanuman, Krishna, Durga, Kali) — has emerged as the first genre where Indian studios are betting on **fully AI-generated** content, rather than AI-assisted or AI-dubbed content. It is the tip of the spear for [[concepts/ai-filmmaking-india]] (Source: [[sources/2026-04-04-reuters-ai-indian-films]]).
+Hindu mythology — stories from the Ramayana, the Mahabharat, and associated deity cycles (Hanuman, Krishna, Durga, Kali) — has emerged as the first genre where Indian studios are betting on **fully AI-generated** content, rather than AI-assisted or AI-dubbed content. It is the tip of the spear for [ai-filmmaking-india](ai-filmmaking-india.md) (Source: [2026-04-04-reuters-ai-indian-films](../sources/2026-04-04-reuters-ai-indian-films.md)).
 
 ## Why mythology is a natural fit for AI-generated content
 
@@ -21,8 +21,8 @@ Hindu mythology — stories from the Ramayana, the Mahabharat, and associated de
 
 ## The active slate
 
-- **[[entities/collective-artists-network]] / Galleri5** is planning eight AI-generated titles focused on Hindu deities: Hanuman, Krishna, Durga, Kali.
-- Its first episodic series — an AI Mahabharat — airs on **[[entities/jiostar]]** and has recorded **at least 26.5 million views** since its October release.
+- **[collective-artists-network](../entities/collective-artists-network.md) / Galleri5** is planning eight AI-generated titles focused on Hindu deities: Hanuman, Krishna, Durga, Kali.
+- Its first episodic series — an AI Mahabharat — airs on **[jiostar](../entities/jiostar.md)** and has recorded **at least 26.5 million views** since its October release.
 
 ## The reception paradox
 
@@ -36,4 +36,4 @@ Director Anurag Kashyap summarized the studio incentive to Reuters: "In India, c
 - Will religious/devotional audiences ever push back on AI depictions of deities on theological grounds?
 - As AI video quality improves, will the genre shift from "AI is acceptable because visuals are stylized" to "AI is acceptable everywhere"?
 
-Related: [[concepts/ai-filmmaking-india]], [[entities/collective-artists-network]], [[entities/jiostar]]. The text-to-video models producing the content are descendants of [[concepts/diffusion-models]] / [[concepts/score-based-generative-models]].
+Related: [ai-filmmaking-india](ai-filmmaking-india.md), [collective-artists-network](../entities/collective-artists-network.md), [jiostar](../entities/jiostar.md). The text-to-video models producing the content are descendants of [diffusion-models](diffusion-models.md) / [score-based-generative-models](score-based-generative-models.md).

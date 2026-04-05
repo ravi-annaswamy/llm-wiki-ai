@@ -10,7 +10,7 @@ status: active
 
 # Drum Machine Analogy for AI
 
-The argument — advanced, though not fully endorsed, by the New Yorker essay on AI and writing — that the trajectory of AI in creative work is likely to follow the trajectory of electronic instruments in music, and specifically of the Roland TR-808 drum machine from its 1980 release through its absorption into the mainstream by the late 1980s (Source: [[sources/2026-04-04-newyorker-is-it-wrong-to-write-with-ai]]).
+The argument — advanced, though not fully endorsed, by the New Yorker essay on AI and writing — that the trajectory of AI in creative work is likely to follow the trajectory of electronic instruments in music, and specifically of the Roland TR-808 drum machine from its 1980 release through its absorption into the mainstream by the late 1980s (Source: [2026-04-04-newyorker-is-it-wrong-to-write-with-ai](../sources/2026-04-04-newyorker-is-it-wrong-to-write-with-ai.md)).
 
 ## The historical reference points
 
@@ -41,8 +41,8 @@ The essay holds the analogy at arm's length. The writer explicitly notes that "p
 Reasons the analogy might not carry:
 
 - **Electronic instruments expanded the sonic palette.** The 808 created sounds no acoustic instrument could make, opening genuinely new aesthetic territory. AI writing may not be doing this — it may be *automating the production of sounds we already know*, which is a different economic and cultural operation.
-- **The 808 democratized production; AI may concentrate it.** Secondhand 808s put music-making tools in the hands of people without access to studios. AI writing tools may instead concentrate production in the hands of a small number of operators running [[concepts/ai-novel-factory]] at scale — [[entities/coral-hart]] is the near-term example.
-- **Music is listened to in moments; novels are lived in for hours.** The tolerance threshold for "automated feel" may be much lower when readers spend tens of hours with a text than when listeners spend four minutes with a track. The [[entities/shy-girl-ai-novel]] 4/5 rating is a data point *against* this concern, but not a resolution.
+- **The 808 democratized production; AI may concentrate it.** Secondhand 808s put music-making tools in the hands of people without access to studios. AI writing tools may instead concentrate production in the hands of a small number of operators running [ai-novel-factory](ai-novel-factory.md) at scale — [coral-hart](../entities/coral-hart.md) is the near-term example.
+- **Music is listened to in moments; novels are lived in for hours.** The tolerance threshold for "automated feel" may be much lower when readers spend tens of hours with a text than when listeners spend four minutes with a track. The [shy-girl-ai-novel](../entities/shy-girl-ai-novel.md) 4/5 rating is a data point *against* this concern, but not a resolution.
 - **The human faults technology irons out may be what distinguishes writing from hackwork.** The essay quotes the Daft Punk line about restraint and self-imposed limits, and notes that in an "autotuned or AI-synthesized world," imperfection starts to feel perfect in a new way.
 
 ## Why the analogy is still useful
@@ -56,12 +56,12 @@ Even if it doesn't predict the future, the drum machine story is a template for 
 
 ## Cross-wiki connection
 
-The analogy quietly reinforces the reception paradox already visible in [[concepts/hindu-mythology-ai-genre]] and [[entities/shy-girl-ai-novel]]: early technology-assisted artifacts get low quality scores and high audience engagement at the same time, for exactly the reasons the 808's early critics would have predicted. That was true for 1983 drum-machine tracks too. The question for this wiki is whether the decoupling is a transitional phase (analogy holds) or a stable equilibrium (analogy breaks).
+The analogy quietly reinforces the reception paradox already visible in [hindu-mythology-ai-genre](hindu-mythology-ai-genre.md) and [shy-girl-ai-novel](../entities/shy-girl-ai-novel.md): early technology-assisted artifacts get low quality scores and high audience engagement at the same time, for exactly the reasons the 808's early critics would have predicted. That was true for 1983 drum-machine tracks too. The question for this wiki is whether the decoupling is a transitional phase (analogy holds) or a stable equilibrium (analogy breaks).
 
 ## Related
 
-- [[concepts/ai-in-creative-writing]]
-- [[concepts/ai-novel-factory]]
-- [[concepts/hindu-mythology-ai-genre]]
-- [[entities/shy-girl-ai-novel]]
-- [[sources/2026-04-04-newyorker-is-it-wrong-to-write-with-ai]]
+- [ai-in-creative-writing](ai-in-creative-writing.md)
+- [ai-novel-factory](ai-novel-factory.md)
+- [hindu-mythology-ai-genre](hindu-mythology-ai-genre.md)
+- [shy-girl-ai-novel](../entities/shy-girl-ai-novel.md)
+- [2026-04-04-newyorker-is-it-wrong-to-write-with-ai](../sources/2026-04-04-newyorker-is-it-wrong-to-write-with-ai.md)

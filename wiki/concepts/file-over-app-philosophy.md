@@ -10,19 +10,19 @@ status: active
 
 # File-Over-App Philosophy
 
-The idea, popularized by [[entities/steph-ango]] (co-creator of [[entities/obsidian]]), that knowledge should be stored in open, portable files that outlive any specific application — rather than inside a proprietary SaaS database where the vendor owns the substrate (Source: [[sources/2026-04-04-venturebeat-karpathy-llm-knowledge-bases]]).
+The idea, popularized by [steph-ango](../entities/steph-ango.md) (co-creator of [obsidian](../entities/obsidian.md)), that knowledge should be stored in open, portable files that outlive any specific application — rather than inside a proprietary SaaS database where the vendor owns the substrate (Source: [2026-04-04-venturebeat-karpathy-llm-knowledge-bases](../sources/2026-04-04-venturebeat-karpathy-llm-knowledge-bases.md)).
 
 In the Karpathy pattern, this philosophy is load-bearing, not decorative.
 
 ## The three choices that make the pattern work
 
 - **Markdown (.md)** as the source of truth. An open standard. Readable by any text editor. Future-proof: if a given note-taking app disappears, the files remain.
-- **[[entities/obsidian]]** (or equivalent) as the viewing/editing layer. Local-first. The app "visits" the files rather than owning them. You can switch apps without migrating your data.
+- **[obsidian](../entities/obsidian.md)** (or equivalent) as the viewing/editing layer. Local-first. The app "visits" the files rather than owning them. You can switch apps without migrating your data.
 - **"Vibe-coded" scripts** — custom, likely Python-based tools that bridge the LLM and the local file system. Not a platform. Not a SaaS tenant. Just scripts the user can read and modify.
 
 ## Why it matters for LLM knowledge bases
 
-The [[concepts/llm-knowledge-bases]] pattern collapses if the data lives in a SaaS silo, because:
+The [llm-knowledge-bases](llm-knowledge-bases.md) pattern collapses if the data lives in a SaaS silo, because:
 
 1. **The LLM can't freely read and write the corpus.** SaaS APIs are rate-limited, opaque, and frequently lag behind what local file access makes trivial.
 2. **Auditability requires human-readable files.** When every claim in the compiled wiki traces back to a specific source file, users need to be able to open and read that file with any tool they have.
@@ -41,7 +41,7 @@ SaaS knowledge platforms are, in this framing, optimizing the wrong layer. They 
 
 ## Related
 
-- [[concepts/llm-knowledge-bases]]
-- [[entities/obsidian]]
-- [[entities/steph-ango]]
-- [[concepts/contamination-mitigation]]
+- [llm-knowledge-bases](llm-knowledge-bases.md)
+- [obsidian](../entities/obsidian.md)
+- [steph-ango](../entities/steph-ango.md)
+- [contamination-mitigation](contamination-mitigation.md)
