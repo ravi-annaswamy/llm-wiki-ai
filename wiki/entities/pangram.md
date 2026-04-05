@@ -2,8 +2,8 @@
 title: "Pangram"
 type: entity
 created: 2026-04-04
-updated: 2026-04-04
-sources: ["wiki/sources/2026-04-04-newyorker-is-it-wrong-to-write-with-ai.md"]
+updated: 2026-04-05
+sources: ["wiki/sources/2026-04-04-newyorker-is-it-wrong-to-write-with-ai.md", "wiki/sources/2026-04-05-theverge-human-made-labels.md"]
 tags: [ai-detection, publishing, verification]
 status: active
 ---
@@ -24,6 +24,10 @@ Pangram is the only AI-detection vendor named in the current corpus, and its rol
 - **What's the norm for author appeals?** Mia Ballard publicly suggested a freelance editor ran the manuscript through AI without her consent. How does a detection firm's finding interact with that kind of dispute?
 
 None of these are answered by the source, but they are the obvious next questions for any reader trying to understand whether AI-detection is a viable part of a disclosure regime in publishing.
+
+## The broader skepticism
+
+The April 2026 Verge piece on [human-made-content-labelling](../concepts/human-made-content-labelling.md) takes an implicitly dim view of the entire AI-detection category, describing detection services as "notoriously unreliable" in the context of labelling schemes (like *No-AI-Icon*) that depend on them. The Verge does not name Pangram specifically, but the generalization applies: any human-made label scheme whose verification step routes through an AI detector inherits that detector's reliability ceiling, and will degrade as models improve at evading classification. This is a structural argument for preferring process-based verification (manual audit of sketches, drafts) or identity-based verification ([proof-i-did-it](proof-i-did-it.md)) over output-based detection.
 
 ## Related
 

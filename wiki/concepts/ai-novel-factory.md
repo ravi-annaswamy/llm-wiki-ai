@@ -88,7 +88,7 @@ Four instances of the same abstract pattern is probably enough to file as its ow
 ## Open questions
 
 - **Does the factory model work outside romance?** Hart's genre is unusually tolerant of formulaic prose and outcome-driven plotting. Literary fiction, horror (see [shy-girl-ai-novel](../entities/shy-girl-ai-novel.md)), and prestige thriller may not be as forgiving.
-- **Is selective disclosure stable?** Hart's inconsistent compliance with Amazon's disclosure ask suggests a regime that is neither enforced nor ignored. This equilibrium may not survive a second high-profile unmasking.
+- **Is selective disclosure stable?** Hart's inconsistent compliance with Amazon's disclosure ask (or zero compliance, per The Verge's stronger rendering — see the cross-source discrepancy noted on [coral-hart](../entities/coral-hart.md)) suggests a regime that is neither enforced nor ignored. This equilibrium may not survive a second high-profile unmasking, and [human-made-content-labelling](human-made-content-labelling.md) efforts run directly into it on the producer side: operators making six figures from non-disclosure are the exact population those schemes cannot recruit.
 - **What happens to mid-list human authors?** The factory's natural economic victim is the human writer producing 2-4 genre novels a year at similar quality. If the factory is cheaper at comparable reader satisfaction, the mid-list contracts.
 - **Does the factory eventually produce a literary breakout, or is it structurally incapable of that?** Patterson has run a human factory for decades without producing a Booker winner. That may be a feature of the factory form, not a temporary limitation.
 

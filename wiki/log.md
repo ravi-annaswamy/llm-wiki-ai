@@ -189,6 +189,33 @@ Files touched:
 - wiki/index.md (page count 67 → 72, added new source, new Karpathy-projects entity category, three new concepts)
 - wiki/overview.md (eighth source summary; expanded producer-filter theme; added Karpathy-arc and ratchet-vs-population themes; added five AutoResearch figures; added three open questions)
 
+## [2026-04-05 10:30] ingest | The Verge — Really, you made this without AI? Prove it
+Ingested Jess Weatherbed's Verge opinion piece (2026-04-04) surveying the fragmented landscape of human-made content labelling schemes as an alternative to AI-labelling standards like C2PA. Single-pass ingest (~2k words, opinion piece, fits under 3k threshold). First wiki source focused on provenance/authenticity as an independent axis from quality or capability.
+
+Key additions:
+- **1 new source page** anchoring the landscape survey and the Mosseri "fingerprint real media" structural argument.
+- **2 new concept pages:** `human-made-content-labelling` (hub for the 12+ competing schemes, four verification approaches, structural ceilings), and `fingerprinting-real-vs-fake` (the incentive-alignment principle generalized).
+- **4 new entity pages** for the schemes with enough substance in the source: `c2pa` (counterexample), `proudly-human` (manual audit + post-hoc legal), `not-by-ai` (90% threshold voluntary), `proof-i-did-it` (blockchain tokens).
+
+Cross-source finding: The Verge and the previously-ingested New Yorker essay give **different accounts of Coral Hart's disclosure compliance** — Verge says "doesn't have a label on any of her books," New Yorker says "sometimes does and sometimes doesn't." Both cite the same Alexandra Alter NYT piece. Flagged as a cross-source discrepancy on `entities/coral-hart.md`; conservatively the Verge's stronger-stated version is preferred but the wiki cannot fully resolve without the original Alter piece in `raw/`.
+
+Entity pages deliberately *not* created for passing academic quotes (Jonathan Stray, Nina Beguš, Thomas Beyer, Trevor Woods) — they are mentioned on the source page and the `human-made-content-labelling` hub but don't meet the substantive-discussion threshold for their own pages. The Authors Guild Human Authored Certification and Made by Human / No-AI-Icon are mentioned inline on the hub concept page without their own entity pages for the same reason (name-drop only in source).
+
+Files touched:
+- wiki/sources/2026-04-05-theverge-human-made-labels.md (new)
+- wiki/concepts/human-made-content-labelling.md (new)
+- wiki/concepts/fingerprinting-real-vs-fake.md (new)
+- wiki/entities/c2pa.md (new)
+- wiki/entities/proudly-human.md (new)
+- wiki/entities/not-by-ai.md (new)
+- wiki/entities/proof-i-did-it.md (new)
+- wiki/entities/coral-hart.md (updated — added Verge as second source; rewrote Disclosure section to flag cross-source discrepancy; added labelling regime connection)
+- wiki/entities/pangram.md (updated — added Verge's "notoriously unreliable" framing and the structural argument against detection-based labelling)
+- wiki/concepts/ai-novel-factory.md (updated — extended "Is selective disclosure stable?" open question to connect to labelling schemes)
+- wiki/concepts/ai-in-creative-writing.md (updated — added labelling regime reference in open questions; added links to new concept pages)
+- wiki/index.md (page count 72 → 79, added 9th source, new "Content provenance & labelling" entity category, new "Provenance & authenticity" concept category)
+- wiki/overview.md (ninth source summary; added new "provenance as incentive-alignment" key theme tying into own-your-substrate)
+
 ## [2026-04-04 21:55] lint | Full health check, low-friction fixes applied
 Ran a full lint pass across all 42 files. Results: no orphans, no low-inbound pages, no genuine broken links (3 flagged items were prose examples like `[[backlinks]]`), no contradictions. Flagged: (1) page-count drift in index.md (38 → 39), (2) stale frontmatter path in the Anthropic source referencing the obsolete `raw/assets/` subdirectory, (3) missing prompt-sections on two older source pages per the user's global instruction, (4) 10+ candidate new pages for concepts/entities mentioned on 3+ pages (Galleri5 at 10 pages, SAG-AFTRA at 6, VAD-CFR/SHOR-PSRO at 6, Mahabharat/Raanjhanaa/Gemini 2.5 Pro/OpenSpiel/Yash Raj at 5 each). User opted to apply only the low-friction fixes; the new-page batch was deferred.
 Files touched:

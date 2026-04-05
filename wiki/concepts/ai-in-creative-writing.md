@@ -59,7 +59,7 @@ This is the same disclosure problem that appears in [ai-film-re-editing](ai-film
 ## Open questions
 
 - Is the reception paradox conditional on non-disclosure, or robust to it?
-- Does a "disclosure regime" built on detection firms like Pangram scale, or is it an adversarial losing battle?
+- Does a "disclosure regime" built on detection firms like Pangram scale, or is it an adversarial losing battle? The Verge's April 2026 survey of [human-made-content-labelling](human-made-content-labelling.md) schemes takes the explicit position that detection-based enforcement is already losing and that labelling the *real* side is the only viable path — but catalogs the structural reasons even that may not work. See [fingerprinting-real-vs-fake](fingerprinting-real-vs-fake.md).
 - What happens to mid-list human authors if the top (literary) stays human and the bottom (mass-market genre) becomes AI factories?
 - Is there a genre where AI fiction is actually *preferred* by readers, the way mythology appears to be preferred for AI video content in India?
 - Does "restraint" (the essay's closing word) become the new marker of craft — and if so, what does it look like operationally?
@@ -74,3 +74,5 @@ This is the same disclosure problem that appears in [ai-film-re-editing](ai-film
 - [ai-novel-factory](ai-novel-factory.md)
 - [hindu-mythology-ai-genre](hindu-mythology-ai-genre.md)
 - [own-your-substrate](../analyses/own-your-substrate.md)
+- [human-made-content-labelling](human-made-content-labelling.md)
+- [fingerprinting-real-vs-fake](fingerprinting-real-vs-fake.md)

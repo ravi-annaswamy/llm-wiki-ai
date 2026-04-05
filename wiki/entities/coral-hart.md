@@ -2,8 +2,8 @@
 title: "Coral Hart"
 type: entity
 created: 2026-04-04
-updated: 2026-04-04
-sources: ["wiki/sources/2026-04-04-newyorker-is-it-wrong-to-write-with-ai.md"]
+updated: 2026-04-05
+sources: ["wiki/sources/2026-04-04-newyorker-is-it-wrong-to-write-with-ai.md", "wiki/sources/2026-04-05-theverge-human-made-labels.md"]
 tags: [ai-writing, romance, self-publishing, pseudonym, novel-factory]
 status: active
 ---
@@ -26,7 +26,14 @@ Hart has built what the New Yorker essay calls an AI-assisted "novel factory" ([
 
 ## Disclosure
 
-Amazon asks Hart to disclose AI use. According to Alter's reporting, she **sometimes does and sometimes doesn't**. This non-compliance is the essay's canonical example of how [ai-in-creative-writing](../concepts/ai-in-creative-writing.md) erodes the "implicit understandings" readers rely on when they pick up a book.
+Amazon asks Hart to disclose AI use. Two secondary sources citing Alexandra Alter's NYT reporting characterize her compliance differently:
+
+- **The New Yorker (2026-04-04):** she "sometimes does and sometimes doesn't."
+- **The Verge (2026-04-04, per Jess Weatherbed):** "She doesn't have a label on any of her books that discloses they were written using AI tools," citing her own fear that disclosure would "damage her business for that work" because of the "strong stigma" around the technology.
+
+> ⚠️ CROSS-SOURCE DISCREPANCY: Both secondary sources attribute the claim to the same NYT reporting. The wiki cannot resolve which characterization is correct without the original Alter piece in `raw/`. The Verge's version is the stronger claim (zero disclosure, with a motivation attached); the New Yorker's version is weaker (partial compliance, no stated motivation). Conservatively, the Verge's stronger-stated version is less likely to arise from paraphrase error, but this is speculative.
+
+Either way, the wiki's reading of Hart as a **disclosure-regime stress test** holds: her non-compliance (whether total or partial) is driven by a rational economic calculation — she believes the label itself would depress sales, which the [shy-girl-ai-novel](shy-girl-ai-novel.md) cancellation suggests is probably correct. This makes her the canonical example of how [ai-in-creative-writing](../concepts/ai-in-creative-writing.md) erodes the "implicit understandings" readers rely on, and also of why [human-made-content-labelling](../concepts/human-made-content-labelling.md) faces an uphill fight against the producer side of the market: the people who would most benefit from staying unlabelled have a concrete revenue reason not to cooperate with any scheme.
 
 ## Why it matters
 
@@ -47,5 +54,7 @@ Hart is what the future implied by the Shy Girl incident ([shy-girl-ai-novel](sh
 - [ai-novel-factory](../concepts/ai-novel-factory.md)
 - [ai-in-creative-writing](../concepts/ai-in-creative-writing.md)
 - [layered-authorship](../concepts/layered-authorship.md)
+- [human-made-content-labelling](../concepts/human-made-content-labelling.md)
 - [shy-girl-ai-novel](shy-girl-ai-novel.md)
 - [2026-04-04-newyorker-is-it-wrong-to-write-with-ai](../sources/2026-04-04-newyorker-is-it-wrong-to-write-with-ai.md)
+- [2026-04-05-theverge-human-made-labels](../sources/2026-04-05-theverge-human-made-labels.md)

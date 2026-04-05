@@ -2,12 +2,12 @@
 title: "Wiki Index"
 type: overview
 created: 2026-04-04
-updated: 2026-04-04
+updated: 2026-04-05
 ---
 
 # Wiki Index
 
-Last updated: 2026-04-04 | Total pages: 72 | Total sources: 8
+Last updated: 2026-04-05 | Total pages: 79 | Total sources: 9
 
 ## Sources
 
@@ -21,6 +21,7 @@ Last updated: 2026-04-04 | Total pages: 72 | Total sources: 8
 | 2026-04-04 | [2026-04-04-anthropic-long-running-claude-scientific-computing](sources/2026-04-04-anthropic-long-running-claude-scientific-computing.md) | anthropic, claude-code, agentic-coding, long-horizon-tasks, scientific-computing, hpc, cosmology |
 | 2026-04-04 | [2026-04-04-yang-song-score-based-generative-modeling](sources/2026-04-04-yang-song-score-based-generative-modeling.md) | generative-models, diffusion, score-matching, sde, ml-theory, foundational |
 | 2026-04-04 | [2026-04-04-datacamp-karpathy-autoresearch](sources/2026-04-04-datacamp-karpathy-autoresearch.md) | karpathy, autoresearch, automated-research, agentic-engineering, ratchet-loop, producer-filter |
+| 2026-04-05 | [2026-04-05-theverge-human-made-labels](sources/2026-04-05-theverge-human-made-labels.md) | provenance, authenticity, c2pa, labelling, disclosure, the-verge |
 
 ## Entities
 
@@ -33,6 +34,12 @@ Last updated: 2026-04-04 | Total pages: 72 | Total sources: 8
 - [alphaevolve](entities/alphaevolve.md) — DeepMind's LLM-powered evolutionary coding agent; mutates source code, not parameters.
 - [obsidian](entities/obsidian.md) — Local-first Markdown note-taking app; typical viewing layer for the Karpathy pattern.
 - [pangram](entities/pangram.md) — AI-detection firm whose 78% finding got the Shy Girl novel cancelled.
+
+### Content provenance & labelling
+- [c2pa](entities/c2pa.md) — Industry AI-labelling standard (Adobe/MS/Google/Meta); broadly committed, "wholly ineffectual" in practice.
+- [proudly-human](entities/proudly-human.md) — Manual-audit human-made certification vendor; post-hoc legal enforcement only.
+- [not-by-ai](entities/not-by-ai.md) — Voluntary ≥90% human threshold badge; unverified self-attestation.
+- [proof-i-did-it](entities/proof-i-did-it.md) — Blockchain-based non-forgeable "Made by Human" token issuer.
 
 ### Anthropic projects & demos
 - [anthropic-c-compiler-project](entities/anthropic-c-compiler-project.md) — ~2,000-session Claude build of a Linux-kernel-capable C compiler; parallel-swarm topology.
@@ -115,6 +122,10 @@ Last updated: 2026-04-04 | Total pages: 72 | Total sources: 8
 - [layered-authorship](concepts/layered-authorship.md) — Fiction as separable layers (premise, plot, prose, voice), distributable across contributors.
 - [ai-novel-factory](concepts/ai-novel-factory.md) — Industrial-scale AI fiction pipelines; Coral Hart and Patterson as precedents.
 - [drum-machine-analogy-for-ai](concepts/drum-machine-analogy-for-ai.md) — 1983 objections to the TR-808 mapped onto 2026 objections to AI writing.
+
+### Provenance & authenticity
+- [human-made-content-labelling](concepts/human-made-content-labelling.md) — Hub concept; 12+ fragmented schemes, four verification approaches, structural failure modes.
+- [fingerprinting-real-vs-fake](concepts/fingerprinting-real-vs-fake.md) — Mosseri's incentive-alignment principle: label the side motivated to cooperate.
 
 ## Analyses
 
