@@ -10,73 +10,67 @@ status: active
 
 # Really, you made this without AI? Prove it
 
-**Original:** The Verge, by Jess Weatherbed, published 2026-04-04. URL: theverge.com/tech/906453/human-made-ai-free-logo-creative-content.
+> **An opinion piece arguing that human-made content labelling is more likely to succeed than AI labelling as an authenticity regime on the open internet.** Structural claim (borrowed from Instagram's Adam Mosseri): *"more practical to fingerprint real media than fake media"* — AI producers are incentivized to hide origin; human creators whose livelihoods are threatened are motivated to prove theirs. See [fingerprinting-real-vs-fake](../concepts/fingerprinting-real-vs-fake.md).
 
-## Summary
+**Original:** The Verge, by Jess Weatherbed, 2026-04-04. URL: theverge.com/tech/906453/human-made-ai-free-logo-creative-content.
 
-An opinion piece arguing that **human-made content labelling** is more likely to succeed than AI labelling as an authenticity regime on the open internet. The structural claim, borrowed from Instagram head Adam Mosseri, is that it is "more practical to fingerprint real media than fake media" — the producers of AI content are incentivized to hide its origin (clicks, chaos, cash), while human creators whose livelihoods are threatened are motivated to distinguish their work. The established AI-labelling standard, [c2pa](../entities/c2pa.md), has broad industry support (Adobe, Microsoft, Google) but has been "wholly ineffectual" in practice because the producers it would expose do not cooperate. See [fingerprinting-real-vs-fake](../concepts/fingerprinting-real-vs-fake.md) for the general principle.
+The established AI-labelling standard [c2pa](../entities/c2pa.md) has broad industry support (Adobe, Microsoft, Google) but has been *"wholly ineffectual"* in practice — the producers it would expose don't cooperate. Weatherbed catalogues **at least 12** competing human-made labelling schemes. See [human-made-content-labelling](../concepts/human-made-content-labelling.md).
 
-The piece then surveys the fragmented landscape of [human-made-content-labelling](../concepts/human-made-content-labelling.md) schemes — Weatherbed counts at least 12 — and catalogues their verification approaches and failure modes:
+## The labelling landscape
 
-- **Trust-based:** *Made by Human* offers downloadable badges with no provenance check.
-- **AI-detection-based:** *No-AI-Icon* visually inspects works and runs them through "notoriously unreliable" AI detection services.
-- **Manual audit:** Most schemes rely on human auditors reviewing sketches, drafts, and process — labor-intensive but currently the most reliable.
-- **Voluntary + threshold:** [not-by-ai](../entities/not-by-ai.md) certifies work at least 90% human-made but does not verify the claim.
-- **Blockchain attestation:** [proof-i-did-it](../entities/proof-i-did-it.md) issues on-chain "Made by Human" tokens to verified creators — framed by quoted academic Thomas Beyer as shifting the question from "does this look like AI?" to "can this account prove its human history?"
-- **Industry-specific:** The Authors Guild offers a "human authored certification" for books; [proudly-human](../entities/proudly-human.md) (CEO Trevor Woods) targets all creative content.
+| Scheme | Verification approach | Weakness |
+|---|---|---|
+| **Made by Human** | Trust-based — downloadable badges | No provenance check |
+| **No-AI-Icon** | AI-detection services | *"Notoriously unreliable"* |
+| Most schemes | Manual audit of sketches, drafts, process | Labor-intensive; currently the most reliable |
+| **[not-by-ai](../entities/not-by-ai.md)** | Voluntary ≥90% human threshold | Claim not verified |
+| **[proof-i-did-it](../entities/proof-i-did-it.md)** | On-chain "Made by Human" tokens to verified creators | Relocates the verification problem to the token issuer |
+| **Authors Guild** | Human-authored book certification | Industry-specific |
+| **[proudly-human](../entities/proudly-human.md)** (CEO Trevor Woods) | Post-hoc legal enforcement | No fraud prevention |
 
 ## The definition problem
 
-A core obstacle the piece surfaces is that "human-made" has no agreed meaning. Quoted experts:
+"Human-made" has no agreed meaning.
 
-- **Jonathan Stray (UC Berkeley Center for Human-Compatible AI):** "Does chatting with an LLM about the idea before executing it manually count as using AI? And how could the creator prove no AI was involved? Other consumer labels, such as 'Organic' have regulations and agencies that enforce them."
-- **Nina Beguš (UC Berkeley School of Information):** "Any creative output today can be touched by AI in one way or another without us being able to prove it. Authorship is disintegrating into new directions, becoming more technologically enhanced and more collective. We need to revamp our creativity criteria that were made solely for humans."
+- **Jonathan Stray (UC Berkeley CHAI):** *"Does chatting with an LLM about the idea before executing it manually count as using AI? How could the creator prove no AI was involved? 'Organic' has regulations and agencies that enforce them."*
+- **Nina Beguš (UC Berkeley):** *"Any creative output today can be touched by AI in one way or another without us being able to prove it. Authorship is disintegrating… We need to revamp our creativity criteria."*
 
-This is the same problem [layered-authorship](../concepts/layered-authorship.md) surfaces in fiction — AI can touch premise, outline, prose, voice, or final revision, and the label has to decide which combinations still count as human. See [human-made-content-labelling](../concepts/human-made-content-labelling.md) for how the schemes in this piece try (and largely fail) to handle it.
+Same problem [layered-authorship](../concepts/layered-authorship.md) surfaces in fiction: AI can touch premise, outline, prose, voice, or final revision, and the label has to decide which combinations still count.
 
 ## Coral Hart cameo and a cross-source discrepancy
 
-Weatherbed cites [coral-hart](../entities/coral-hart.md) as a prominent example of why human-made labels face an uphill fight: an author making a six-figure sum from 200+ AI-generated romance novels who has chosen not to disclose because of "strong stigma" around the technology.
+The Verge cites [coral-hart](../entities/coral-hart.md) as a prominent example of why human-made labels face an uphill fight: six figures from 200+ AI novels, no disclosure because of *"strong stigma"* around the technology.
 
-> ⚠️ CROSS-SOURCE DISCREPANCY: The Verge (citing The New York Times) says Hart "doesn't have a label on any of her books that discloses they were written using AI tools." The wiki's existing [coral-hart](../entities/coral-hart.md) page (sourced from the 2026-04-04 New Yorker essay, which also cites Alexandra Alter's NYT reporting) says she "sometimes does and sometimes doesn't." Both secondary sources attribute the claim to the same primary (Alter/NYT), but characterize her compliance differently. Without the original NYT article in `raw/`, the wiki cannot resolve which is correct. The stronger-stated Verge version is the one to prefer conservatively (harder to reach by paraphrase error), but both are flagged on the Hart page.
+> ⚠️ **CROSS-SOURCE DISCREPANCY.** The Verge (citing NYT) says Hart *"doesn't have a label on any of her books that discloses they were written using AI tools."* The wiki's [coral-hart](../entities/coral-hart.md) page (sourced from the 2026-04-04 New Yorker essay, which also cites Alexandra Alter's NYT reporting) says she *"sometimes does and sometimes doesn't."* Both secondary sources attribute to the same primary. Without the original NYT article in `raw/`, the wiki can't resolve it. The stronger-stated Verge version is the conservative choice. Flagged on the Hart page.
 
-The Verge's framing also sharpens the **non-disclosure-is-economically-rational** half of the reception paradox documented on [ai-in-creative-writing](../concepts/ai-in-creative-writing.md): Hart isn't hiding her method because readers wouldn't buy, she's hiding it because she believes the label itself would depress sales. The Shy Girl cancellation is evidence that she is probably right.
+The Verge's framing sharpens the **non-disclosure-is-economically-rational** half of the reception paradox in [ai-in-creative-writing](../concepts/ai-in-creative-writing.md): Hart isn't hiding because readers wouldn't buy — she's hiding because the label itself would depress sales. The Shy Girl cancellation is evidence she's probably right.
 
 ## Why human-made labelling may still fail
 
-Weatherbed is an advocate for the approach but catalogs the structural problems honestly:
+Weatherbed is an advocate but honest about the structural problems:
 
-1. **Fragmentation.** 12+ competing standards, no unification, no Fair Trade-scale agreed authority.
-2. **No enforcement.** The Proudly Human CEO concedes that fraudulent use of the mark can only be pursued via legal action after the fact; prevention is not possible.
-3. **Regulator gap.** Comparable labels ("Organic", "Fair Trade") require government/regulator backing that does not exist for AI authenticity.
-4. **The rapid-evolution problem.** Per Woods: "The rapid evolution of AI capabilities and AI-generated content will outpace government and regulator responses."
-5. **The detection adversarial loop.** Schemes that fall back on AI detection (No-AI-Icon) inherit all the reliability problems of [pangram](../entities/pangram.md)-style tools and will degrade as models improve.
+1. **Fragmentation** — 12+ competing standards, no unification.
+2. **No enforcement** — Proudly Human CEO concedes only post-hoc legal action is possible.
+3. **Regulator gap** — "Organic" / "Fair Trade" need government backing; AI authenticity has none.
+4. **Rapid evolution** (Woods): *"AI capabilities will outpace government and regulator responses."*
+5. **Adversarial detection loop** — schemes falling back on AI detection inherit all [pangram](../entities/pangram.md)-style unreliability, degrading as models improve.
 
-## Why it matters
+## Why it matters for this wiki
 
-This is the wiki's first source focused on **provenance and authenticity** as a distinct axis from quality, economics, or capability. It sits at the intersection of several existing threads:
+First source focused on **provenance and authenticity** as a distinct axis from quality, economics, or capability. Intersections:
 
-- The disclosure-regime stress test introduced by [shy-girl-ai-novel](../entities/shy-girl-ai-novel.md) and [coral-hart](../entities/coral-hart.md), now extended beyond publishing to all creative media.
-- The [own-your-substrate](../analyses/own-your-substrate.md) logic applied to trust infrastructure: creators who own a verified human-history token (Proof I Did It) own a layer that compounds; creators who depend on platform-provided trust signals (C2PA) do not.
-- A new economic actor — certification-mark vendors — that mirrors the "pick-and-shovel" pattern of AI-detection firms like [pangram](../entities/pangram.md), but on the opposite side of the trust boundary.
-
-## Key facts
-
-- **At least 12 competing human-made labelling schemes** currently exist (Weatherbed's count).
-- **C2PA** is the established AI-labelling standard, with Adobe, Microsoft, and Google committed; deemed "wholly ineffectual" in practice.
-- **Not by AI** threshold: work must be ≥90% human.
-- **Proof I Did It** stores verification on blockchain, issuing non-forgeable "Made by Human" tokens.
-- **Proudly Human** operates on post-hoc legal enforcement; no fraud prevention.
-- **Coral Hart:** 200+ AI-generated novels, six figures, (per Verge) no disclosure on any book, citing stigma.
+- Disclosure-regime stress test from [shy-girl-ai-novel](../entities/shy-girl-ai-novel.md) and [coral-hart](../entities/coral-hart.md) now extended to all creative media.
+- **[own-your-substrate](../analyses/own-your-substrate.md) applied to trust infrastructure.** Creators who own a verified human-history token own a compounding layer; creators who depend on platform-provided signals (C2PA) do not.
+- New economic actor — **certification-mark vendors** — mirror the "pick-and-shovel" pattern of AI-detection firms like Pangram, but on the opposite side of the trust boundary.
 
 ## Open questions
 
-- Does any of the 12 schemes have a realistic path to becoming the dominant standard, or does fragmentation persist indefinitely?
-- Is the blockchain-token approach (Proof I Did It) materially more robust than trust-based alternatives, or does it just relocate the verification problem (how does the token issuer verify humanity in the first place)?
-- What does the "manual audit with sketches and drafts" approach look like at scale? Is there a minimum viable automated version that AI cannot yet trivially fake?
-- If the Verge-reported version of Coral Hart's disclosure practice is correct (zero labels, ever), does that change how [ai-in-creative-writing](../concepts/ai-in-creative-writing.md) should frame her as a "disclosure-regime stress test"?
-- Regulators show no current appetite for a unified standard. What event would force one — a scandal, a court ruling, a platform mandate?
+- Does any of the 12 schemes have a path to dominance, or does fragmentation persist?
+- Is the blockchain-token approach materially more robust, or does it just relocate the verification problem?
+- Manual-audit at scale — minimum viable automation AI can't yet fake?
+- If the Verge version of Hart's disclosure practice is correct (zero labels, ever), does that reframe her role in [ai-in-creative-writing](../concepts/ai-in-creative-writing.md)?
+- What event would force regulators to adopt a unified standard?
 
-## Prompt that produced this source page
+## Prompt
 
 > ingest raw/2026-04-05-theverge-Really, you made this without AI Prove it

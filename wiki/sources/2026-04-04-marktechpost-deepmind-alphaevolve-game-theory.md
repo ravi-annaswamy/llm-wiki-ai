@@ -2,7 +2,7 @@
 title: "DeepMind's AlphaEvolve discovers new CFR and PSRO algorithms"
 type: source
 created: 2026-04-04
-updated: 2026-04-04
+updated: 2026-04-05
 sources: ["raw/deepmind-gametheory-algo-auto-research.md.md"]
 tags: [deepmind, alphaevolve, marl, game-theory, cfr, psro, automated-algorithm-discovery]
 status: active
@@ -10,100 +10,70 @@ status: active
 
 # DeepMind's AlphaEvolve discovers new CFR and PSRO algorithms
 
-**Original:** MarkTechPost writeup of a [google-deepmind](../entities/google-deepmind.md) research paper on applying [alphaevolve](../entities/alphaevolve.md) — an LLM-powered evolutionary coding agent — to Multi-Agent Reinforcement Learning (MARL) in imperfect-information games. The system discovered new variants of Counterfactual Regret Minimization and Policy Space Response Oracles that match or exceed hand-designed state-of-the-art baselines. Linked arXiv paper: 2602.16928.
+> **A [google-deepmind](../entities/google-deepmind.md) paper applying [alphaevolve](../entities/alphaevolve.md) — an LLM-powered evolutionary coding agent — to MARL in imperfect-information games. The system discovered new variants of CFR and PSRO that match or exceed hand-designed state-of-the-art.**
 
-## The core idea
-
-Historically, designing MARL algorithms for imperfect-information games (like poker variants, where players act sequentially and hold private information) has been a manual process: researchers propose weighting schemes, discounting rules, and equilibrium solvers through intuition and trial-and-error. DeepMind's paper replaces this manual iteration with **automated search over the actual Python source code of the algorithms**, using a large language model as the mutation operator.
-
-This is a specific instance of [llm-driven-algorithm-discovery](../concepts/llm-driven-algorithm-discovery.md), applied to two established MARL paradigms: [counterfactual-regret-minimization](../concepts/counterfactual-regret-minimization.md) (CFR) and [policy-space-response-oracles](../concepts/policy-space-response-oracles.md) (PSRO).
+**Original:** MarkTechPost writeup of arXiv 2602.16928. A specific instance of [llm-driven-algorithm-discovery](../concepts/llm-driven-algorithm-discovery.md) applied to [counterfactual-regret-minimization](../concepts/counterfactual-regret-minimization.md) and [policy-space-response-oracles](../concepts/policy-space-response-oracles.md).
 
 ## How AlphaEvolve works here
 
-[alphaevolve](../entities/alphaevolve.md) is a distributed evolutionary system. The loop:
+Distributed evolutionary search with **Gemini 2.5 Pro** as the mutation operator. Each generation: select a parent algorithm by fitness, pass its **Python source code** to the LLM with a mutation prompt, evaluate the candidate on proxy games, admit valid candidates to the population.
 
-1. Initialize a population with a standard implementation as seed — CFR+ for CFR experiments; Uniform for PSRO experiments.
-2. At each generation, select a parent algorithm by fitness, pass its source code to **Gemini 2.5 Pro** with a prompt to modify it, and produce a candidate.
-3. Evaluate candidates on proxy games. Valid candidates enter the population.
-4. Support multi-objective optimization: if multiple fitness metrics are defined, one is randomly chosen per generation to guide parent sampling.
+| Component | Setting |
+|---|---|
+| **Seed** | CFR+ (for CFR) · Uniform (for PSRO) |
+| **Fitness** | Negative exploitability after K iterations |
+| **Training games** | 3-player Kuhn Poker, 2-player Leduc, 4-card Goofspiel, 5-sided Liars Dice |
+| **Held-out test** | 4-player Kuhn, 3-player Leduc, 5-card Goofspiel, 6-sided Liars Dice + 11-game sweep |
+| **Framework** | OpenSpiel with exact best-response oracle (no Monte Carlo noise) |
+| **CFR search space** | `RegretAccumulator`, `PolicyFromRegretAccumulator`, `PolicyAccumulator` — expressive enough to represent known variants |
+| **PSRO search space** | `TrainMetaStrategySolver`, `EvalMetaStrategySolver` |
 
-**Fitness signal:** negative exploitability after K iterations, measured on a training set of 3-player Kuhn Poker, 2-player Leduc Poker, 4-card Goofspiel, and 5-sided Liars Dice. Final evaluation uses a separate, larger test set (4-player Kuhn Poker, 3-player Leduc Poker, 5-card Goofspiel, 6-sided Liars Dice) plus an 11-game appendix sweep. All experiments use the OpenSpiel framework, with an exact best-response oracle (via value iteration) and exact payoff tensors — no Monte Carlo noise.
+## Discovered: VAD-CFR
 
-**Evolvable search space:**
+**Volatility-Adaptive Discounted CFR** combines three mechanisms:
 
-- For CFR: three Python classes — `RegretAccumulator`, `PolicyFromRegretAccumulator`, `PolicyAccumulator`. The interface is expressive enough to represent all known CFR variants as special cases.
-- For PSRO: two classes — `TrainMetaStrategySolver` and `EvalMetaStrategySolver`, the meta-strategy solvers used during oracle training and during exploitability evaluation.
+1. **Volatility-adaptive discounting.** EWMA (decay 0.1) tracks instantaneous regret magnitude; high volatility → faster discounting. Base α = 1.5, β = −0.1.
+2. **Asymmetric instantaneous boosting.** Positive instantaneous regrets ×1.1 **on the update only**, not the accumulated history.
+3. **Hard warm-start at iteration 500.** Policy averaging postponed entirely until iteration 500, then weighted by temporal weight × instantaneous regret magnitude.
 
-## Discovered algorithm 1: VAD-CFR
+**The 500 threshold was generated by the LLM without knowledge of the 1000-iteration evaluation horizon.** Discovered, not tuned. **Performance: matches/exceeds SoTA in 10 of 11 games** (sole exception: 4-player Kuhn Poker).
 
-**Volatility-Adaptive Discounted CFR.** Rather than the fixed discount factors used in DCFR and the linear averaging used in CFR+, the search produced three mechanisms working together:
+An earlier trial produced **AOD-CFR** (Asymmetric Optimistic Discounted CFR): competitive using more conventional mechanisms.
 
-1. **Volatility-adaptive discounting.** Tracks volatility via an EWMA (decay 0.1) of instantaneous regret magnitude. When volatility is high, discounting increases to forget unstable history faster; when it drops, more history is retained. Base α = 1.5, β = −0.1.
-2. **Asymmetric instantaneous boosting.** Positive instantaneous regrets are multiplied by 1.1 before being added to cumulative regrets. The asymmetry is on the instantaneous update, not the accumulated history — making the algorithm more reactive to currently good actions.
-3. **Hard warm-start with regret-magnitude weighting.** Policy averaging is postponed entirely until iteration 500. Regret accumulation continues normally during this phase. Once averaging begins, policies are weighted by a combination of temporal weight and instantaneous regret magnitude, prioritizing high-information iterations.
+## Discovered: SHOR-PSRO
 
-Notable: **the 500-iteration threshold was generated by the LLM without knowledge of the 1000-iteration evaluation horizon.** The mechanism was discovered, not tuned against the eval budget.
+**Smoothed Hybrid Optimistic Regret PSRO.** Linearly blends two components per internal iteration:
 
-**Performance:** Benchmarked against CFR, CFR+, LCFR, DCFR, PCFR+, DPCFR+, HS-PCFR+(30) over 1000 iterations with K = 1000 and exact exploitability. VAD-CFR matches or surpasses state-of-the-art in **10 of 11 games** on the full evaluation, with 4-player Kuhn Poker the sole exception.
+> σ_hybrid = (1 − λ) · σ_ORM + λ · σ_Softmax
 
-### Also discovered: AOD-CFR
+σ_ORM = Optimistic Regret Matching (stability). σ_Softmax = Boltzmann over pure strategies (exploitation).
 
-An earlier trial on a different training set produced a second variant, **Asymmetric Optimistic Discounted CFR (AOD-CFR)**: linear discount schedule (α: 1.0 → 2.5 over 500 iterations, β: 0.5 → 0.0), sign-dependent scaling of instantaneous regret, trend-based policy optimism via an EMA of cumulative regrets, and polynomial policy averaging with exponent γ scaling from 1.0 → 5.0. The paper reports it is competitive using more conventional mechanisms than VAD-CFR.
+| Configuration | λ | Diversity | Temperature | Returns |
+|---|---|---|---|---|
+| **Training-time** | 0.3 → 0.05 (anneal) | 0.05 → 0.001 | 0.5 → 0.01 | Time-averaged |
+| **Evaluation-time** | 0.01 (fixed) | 0.0 | 0.001 | Last-iterate |
 
-## Discovered algorithm 2: SHOR-PSRO
-
-**Smoothed Hybrid Optimistic Regret PSRO.** The evolved meta-solver constructs a meta-strategy by **linearly blending two components at every internal solver iteration**:
-
-- **σ_ORM (Optimistic Regret Matching)** — regret-minimization stability. Gains are computed, optionally normalized and diversity-adjusted, then used to update cumulative regrets via regret matching. A momentum term is applied to payoff gains.
-- **σ_Softmax (Smoothed Best Pure Strategy)** — a Boltzmann distribution over pure strategies biased toward high-payoff modes. A temperature parameter controls concentration.
-
-The blend:
-
-> **σ_hybrid = (1 − λ) · σ_ORM + λ · σ_Softmax**
-
-**Training-time solver.** Uses a dynamic annealing schedule over outer PSRO iterations. λ anneals from 0.3 → 0.05 (greedy exploitation → equilibrium finding), diversity bonus decays from 0.05 → 0.001 (early exploration → late refinement), softmax temperature drops from 0.5 → 0.01. Internal solver iterations scale with population size. Returns the time-averaged strategy across internal iterations for stability.
-
-**Evaluation-time solver.** Fixed parameters: λ = 0.01, diversity bonus = 0.0, temperature = 0.001. Runs more internal iterations (base 8000, scaling with population size) and returns the **last-iterate** strategy rather than the average, for a reactive, low-noise exploitability estimate.
-
-**This training/evaluation asymmetry was itself a product of the search, not a human design choice** — arguably the most striking single finding in the paper.
-
-**Performance:** Benchmarked against Uniform, Nash (LP for 2-player games), AlphaRank, Projected Replicator Dynamics (PRD), and Regret Matching (RM) with K = 100 PSRO iterations. SHOR-PSRO matches or surpasses state-of-the-art in **8 of 11 games**.
+**The training/evaluation asymmetry was itself a product of the search, not a human design choice** — arguably the most striking finding. **Performance: matches/exceeds SoTA in 8 of 11 games.**
 
 ## Key takeaways
 
-1. **AlphaEvolve automates algorithm design, not hyperparameter tuning.** It evolves the actual Python source code of MARL algorithms, discovering new update rules rather than variations of existing ones. See [llm-driven-algorithm-discovery](../concepts/llm-driven-algorithm-discovery.md).
-2. **VAD-CFR replaces static discounting with volatility-awareness** — tracking instantaneous regret magnitude via EWMA and adjusting discount factors dynamically, plus a discovered warm-start threshold the LLM picked without knowing the evaluation horizon.
-3. **SHOR-PSRO automates the exploration-to-exploitation transition.** Annealing a blending factor between Optimistic Regret Matching and a Softmax best-pure-strategy component removes the need to manually tune when a PSRO meta-solver should shift from population diversity to equilibrium refinement.
-4. **Generalization is tested, not assumed.** Both algorithms are developed on four training games and evaluated on four larger unseen games (plus an 11-game sweep). No re-tuning between training and test.
-5. **Discovered mechanisms are non-intuitive by design.** Hard warm-start at exactly iteration 500, asymmetric positive-regret boosting by exactly 1.1, asymmetric training/evaluation solver configurations — these are not choices a human researcher would typically arrive at. That non-intuitiveness is the paper's core argument for automated search over this design space.
+1. **The mutation unit can be a block of Python, not a parameter.** LLMs are good enough at reading, modifying, and generating source code to function as the variation operator in an evolutionary search over algorithm space.
+2. **Non-intuitive discovered mechanisms.** Hard warm-start at exactly iteration 500, ×1.1 positive-regret boost on the instantaneous update, asymmetric train/eval configs. Not choices a human would typically make.
+3. **Generalization is tested, not assumed.** Four training games, four unseen test games, no retuning.
 
-## Why it matters
+## Cross-wiki threads
 
-Two distinct claims are bundled here.
-
-**The narrow claim:** automated search can produce MARL algorithms that beat hand-designed state-of-the-art on established benchmarks. That's already a nontrivial result — the CFR and PSRO families are mature, with years of manual iteration behind them.
-
-**The broader claim:** the mutation unit doesn't have to be a parameter or a configuration — it can be a block of Python. LLMs are good enough at reading, modifying, and generating source code that they can function as the mutation operator in an evolutionary search over an algorithm space. This turns "research on algorithms" into a search problem with a well-defined fitness signal, and it generalizes far beyond game theory. See [llm-driven-algorithm-discovery](../concepts/llm-driven-algorithm-discovery.md) for the cross-cutting picture.
-
-## Connection to other threads in this wiki
-
-This source connects to the wiki's "LLM as active producer of structured artifacts" theme:
-
-- In [llm-knowledge-bases](../concepts/llm-knowledge-bases.md), the LLM authors a structured wiki from raw sources.
-- In AlphaEvolve, the LLM authors new algorithm source code from existing implementations.
-
-In both cases the LLM is not answering questions — it is **generating new artifacts that subsequent work depends on**, with some evaluation loop (linting / exploitability) deciding which artifacts survive. The same architectural instinct is at work.
-
-There is also a weaker connection to [own-your-substrate](../analyses/own-your-substrate.md): DeepMind owns the entire stack here — the frontier model (Gemini 2.5 Pro), the evolutionary framework (AlphaEvolve), the game engine (OpenSpiel), and the research program. The compounding layer is the discovery infrastructure itself, not any single discovered algorithm.
+- **Instance of [llm-driven-algorithm-discovery](../concepts/llm-driven-algorithm-discovery.md)** — cluster-scale, tight-scaffolding counterpart to [autoresearch](../entities/autoresearch.md).
+- **[producer-filter-pattern](../analyses/producer-filter-pattern.md)** — LLM generates algorithm source code; exploitability is the filter.
+- **Weak [own-your-substrate](../analyses/own-your-substrate.md)** — DeepMind owns Gemini 2.5 Pro, AlphaEvolve, and OpenSpiel. The compounding asset is the discovery infrastructure, not any single algorithm.
 
 ## Open questions
 
-- How well does AlphaEvolve transfer outside MARL? The paper demonstrates CFR and PSRO; it's unclear how structured a search space needs to be for LLM-driven mutation to converge.
-- How much of the discovery is "LLM knows the literature and is reproducing tricks it's seen" vs. genuinely novel structure? The 1.1× positive-regret boost and iteration-500 warm-start are specific enough to raise the question.
-- Does the fitness signal (negative exploitability) dominate the search outcome? Would different fitness shapes produce qualitatively different algorithms?
-- How expensive is the full evolutionary run? The paper doesn't foreground compute cost in this summary.
-- Can the same framework rediscover known algorithms from scratch as a sanity check, or only improve on seeded baselines?
+- How far does the approach transfer outside MARL? How structured must the search space be?
+- How much is genuine novelty vs LLM retrieving tricks from training data?
+- Full evolutionary-run compute cost — not foregrounded in the writeup.
+- Can the framework rediscover known algorithms from a minimal seed as a sanity check?
 
-## Prompt that produced this source page
+## Prompt
 
 > ingest deepmind game theory article
