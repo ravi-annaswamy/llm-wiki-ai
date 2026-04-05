@@ -2,7 +2,7 @@
 title: "AI Novel Factory"
 type: concept
 created: 2026-04-04
-updated: 2026-04-04
+updated: 2026-04-05
 sources: ["wiki/sources/2026-04-04-newyorker-is-it-wrong-to-write-with-ai.md"]
 tags: [ai-writing, publishing, industrial-production, self-publishing, showrunner-model]
 status: active
@@ -10,94 +10,74 @@ status: active
 
 # AI Novel Factory
 
-An emerging model of fiction production in which a single human operator supervises an LLM-driven pipeline that drafts novels at a volume no individual writer could sustain. The operator picks premises, edits outputs, manages pen names, and markets the result; the model does the line-by-line writing. The New Yorker essay treats this as the clearest near-term shape of industrial AI fiction (Source: [2026-04-04-newyorker-is-it-wrong-to-write-with-ai](../sources/2026-04-04-newyorker-is-it-wrong-to-write-with-ai.md)).
+> **One human supervises an LLM pipeline that drafts novels at volumes no individual writer could sustain.** Not competing for the literary top. Competing for the mid-market genre long tail that was previously economically impossible for one person to serve.
 
-## The canonical near-term case
+The operator picks premises, edits outputs, manages pen names, and markets. The model writes. The New Yorker essay treats this as the near-term shape of industrial AI fiction (Source: [2026-04-04-newyorker-is-it-wrong-to-write-with-ai](../sources/2026-04-04-newyorker-is-it-wrong-to-write-with-ai.md)).
 
-[coral-hart](../entities/coral-hart.md) is the working example. Her pipeline, as profiled by Alexandra Alter in February 2026:
+## Canonical case: Coral Hart
 
-- Premise in (e.g., "a rancher who falls for a city girl running away from her past").
-- Draft out in ~45 minutes.
-- Human revision pass.
-- Published on Amazon under one of dozens of pen names.
-- Hundreds of novels produced this way; six figures in revenue; a secondary business selling classes on the workflow itself.
-- Amazon's disclosure ask is answered inconsistently.
+| Dimension | Figure |
+|---|---|
+| Draft time | ~45 min |
+| Volume | Hundreds of novels |
+| Pen names | Dozens |
+| Revenue | Six figures |
+| Best-sellers | None |
+| Secondary business | Classes teaching the workflow |
 
-No individual title is a best-seller. The business is the **portfolio**, not the hit.
+Full profile: [coral-hart](../entities/coral-hart.md).
 
-## The pre-AI precedent: James Patterson
+## Precedent: James Patterson
 
-The essay's key move is to point out that the factory model is not new — only its economics are. **James Patterson** has been running a human novel factory for years:
+The factory model is not new — only its economics are. Patterson has run a **human** novel factory for years:
 
-- ~15 books a year.
-- ~30 projects in flight simultaneously.
-- Detailed outlines and treatments handed to collaborators who write the prose.
-- 1 out of every 17 hardcover novels sold in the US is a Patterson book.
-- Excluded from "literary" conversations, but commercially dominant.
+- ~15 books/year, ~30 projects in flight simultaneously
+- Detailed outlines handed to collaborators who write prose
+- 1 in 17 US hardcover novels sold is a Patterson book
+- Excluded from literary conversations; commercially dominant
 
-Patterson is the human-labor-intensive version of what Coral Hart does with an LLM. The essay's implicit argument: if the Patterson model is an accepted (if lower-prestige) part of publishing, the AI version is a change of **substrate**, not of **kind**.
+The essay's implicit move: if Patterson is an accepted (if lower-prestige) form of publishing, the AI version is a change of **substrate**, not of **kind**. See [layered-authorship](layered-authorship.md) for the showrunner frame that legitimizes both.
 
-## The showrunner frame
+## Why the economic zone is new
 
-The New Yorker essay explicitly borrows the "showrunner" vocabulary from television. A showrunner is the author of a TV show in the sense that matters commercially and culturally, even though they did not write every episode. The writers' room did.
+The factory is not chasing best-sellers. It occupies a zone previously impossible for one operator:
 
-If we accept showrunners as authors, the essay asks, why wouldn't we accept a novelist who supervises an AI writers' room? This framing does almost all the legitimizing work in the debate — it moves AI fiction from "cheating" to "a known form of layered authorship with a new kind of collaborator." See [layered-authorship](layered-authorship.md) for the full structure of the argument.
+- **Volume beyond human limits.** Pre-AI genre writers hit a ceiling around 2-4 books/year. The factory clears that by an order of magnitude.
+- **Portfolio economics.** No single book needs to succeed. The portfolio average needs to clear near-zero marginal cost.
+- **Pen-name arbitrage.** ~30 micro-brands running simultaneously, each targeting a sub-genre niche, without brand dilution.
 
-## Why the factory model is economically interesting
+## Industrial siblings in the wiki
 
-The factory is not competing for the literary top of the market. Hart's books don't win prizes and don't become best-sellers. But they occupy a zone that was previously **economically impossible**:
+The factory logic recurs in other domains — see the [producer-filter-pattern](../analyses/producer-filter-pattern.md) analysis for the full inventory. Short version:
 
-- **Mid-market genre fiction at volumes no human can sustain.** Romance, thriller, cozy mystery — genres where readers consume books quickly and want a reliable pipeline of new titles. This is exactly the zone where pre-AI writers hit a production ceiling around 2-4 books a year.
-- **Portfolio economics over hit economics.** The factory doesn't need any single book to succeed. It needs the portfolio average to clear the marginal cost of production, which for AI drafts is close to zero.
-- **Long-tail pen-name arbitrage.** Different pen names can target different sub-genres and reader niches without brand dilution. The factory can run ~30 micro-brands simultaneously.
-
-This is the commercial middle ground the New Yorker essay identifies as the actual frontier of AI fiction — not the literary top, which is mostly insulated, but the mid-market long tail.
-
-## The industrial analogues already in the wiki
-
-The AI novel factory is one of several "factory" patterns this wiki is tracking across domains:
-
-- **[hindu-mythology-ai-genre](hindu-mythology-ai-genre.md)** — Galleri5/JioStar producing an AI Mahabharat series. Same factory logic: industrial production of mid-quality content at volumes traditional production cannot match, accepted (or at least consumed) by audiences despite low critical scores.
-- **[ai-film-re-editing](ai-film-re-editing.md)** — studios re-cutting back-catalog films with AI. A "factory" operating on existing IP rather than new content, but the same economic logic: per-unit cost of modification collapses, so volume of modification can scale.
-- **Anthropic + [coefficient-bio](../entities/coefficient-bio.md)** — the "drug discovery factory" implied by Claude for Life Sciences: industrial-scale generation of candidate molecules that a wet-lab filter promotes. Same structural shape: LLM produces many artifacts, human/physical filter selects the few worth keeping.
-
-In all four cases the pattern is **generate cheap, filter hard**. The AI novel factory's filter is thin (author revision + Amazon reader reaction); the drug-discovery factory's filter is expensive (wet-lab validation). The thinness of the filter is what makes the novel factory controversial.
-
-## Connection to [own-your-substrate](../analyses/own-your-substrate.md)
-
-The factory is a textbook instance of the "own the compounding layer, rent the commodity layer" pattern:
-
-- **Owned (compounds over time):** the pen-name portfolio, the reader lists, the course business, the prompt library, the editorial workflow, the genre taxonomy.
-- **Rented (commodity):** the LLM API, the compute.
-
-If model APIs get cheaper (they do) and models get better (they do), the factory's rented layer improves for free. The owned layer keeps compounding. This is exactly the economic structure that makes Coral Hart's six-figure business defensible at a scale that would have been impossible five years ago — and the reason more operators are likely to follow.
-
-## Connection to [llm-knowledge-bases](llm-knowledge-bases.md)
-
-There is a deep structural parallel between an AI novel factory and a Karpathy-style LLM knowledge base. Both are systems in which the **human supervises, the LLM produces, and a filter loop promotes durable artifacts**:
-
-| Artifact produced | Filter | Promotion mechanism |
+| Factory | Artifact | Filter |
 |---|---|---|
-| Novel draft (Coral Hart) | Author revision + Amazon reader reaction | Publish under pen name |
-| Wiki page (Karpathy KB) | Human review + wikilink integrity | Commit to repo |
-| Algorithm variant (AlphaEvolve) | Executable exploitability metric | Keep in population |
-| Candidate molecule (Coefficient Bio) | Wet-lab assay | Advance to next stage |
+| AI novel (Coral Hart) | Draft | Author revision + reader reaction |
+| Knowledge base (Karpathy) | Wiki page | Lint pass + link integrity |
+| Algorithm discovery (AlphaEvolve) | Code variant | Exploitability metric |
+| Mythology TV (Galleri5/JioStar) | Episode | Audience consumption |
+| Drug candidate (Coefficient Bio, implied) | Molecule | Wet-lab assay |
 
-Four instances of the same abstract pattern is probably enough to file as its own analysis page — the emerging "LLM as active producer of structured artifacts" theme flagged in [overview](../overview.md).
+The AI novel factory's filter is the **thinnest** of these, which is what makes it controversial.
+
+## Own-your-substrate instance
+
+- **Owned (compounds):** pen-name portfolio, reader lists, course business, prompt library, editorial workflow.
+- **Rented (commodity):** LLM API, compute.
+
+As API prices fall and models improve, the rented layer gets better for free. The owned layer keeps compounding. See [own-your-substrate](../analyses/own-your-substrate.md).
 
 ## Open questions
 
-- **Does the factory model work outside romance?** Hart's genre is unusually tolerant of formulaic prose and outcome-driven plotting. Literary fiction, horror (see [shy-girl-ai-novel](../entities/shy-girl-ai-novel.md)), and prestige thriller may not be as forgiving.
-- **Is selective disclosure stable?** Hart's inconsistent compliance with Amazon's disclosure ask (or zero compliance, per The Verge's stronger rendering — see the cross-source discrepancy noted on [coral-hart](../entities/coral-hart.md)) suggests a regime that is neither enforced nor ignored. This equilibrium may not survive a second high-profile unmasking, and [human-made-content-labelling](human-made-content-labelling.md) efforts run directly into it on the producer side: operators making six figures from non-disclosure are the exact population those schemes cannot recruit.
-- **What happens to mid-list human authors?** The factory's natural economic victim is the human writer producing 2-4 genre novels a year at similar quality. If the factory is cheaper at comparable reader satisfaction, the mid-list contracts.
-- **Does the factory eventually produce a literary breakout, or is it structurally incapable of that?** Patterson has run a human factory for decades without producing a Booker winner. That may be a feature of the factory form, not a temporary limitation.
+- **Does the model work outside romance?** Romance tolerates formulaic prose; literary fiction, horror (see [shy-girl-ai-novel](../entities/shy-girl-ai-novel.md)), and prestige thriller may not.
+- **Is selective disclosure stable?** Hart's non-compliance (or total non-disclosure — see the cross-source discrepancy on [coral-hart](../entities/coral-hart.md)) is a rational calculation. Any serious [human-made-content-labelling](human-made-content-labelling.md) regime runs directly into this producer-side resistance.
+- **Does the factory ever produce a literary breakout?** Patterson has run a human factory for decades without a Booker. That may be a structural feature, not a temporary limit.
 
 ## Related
 
-- [coral-hart](../entities/coral-hart.md)
-- [shy-girl-ai-novel](../entities/shy-girl-ai-novel.md)
-- [ai-in-creative-writing](ai-in-creative-writing.md)
-- [layered-authorship](layered-authorship.md)
-- [drum-machine-analogy-for-ai](drum-machine-analogy-for-ai.md)
-- [own-your-substrate](../analyses/own-your-substrate.md)
-- [2026-04-04-newyorker-is-it-wrong-to-write-with-ai](../sources/2026-04-04-newyorker-is-it-wrong-to-write-with-ai.md)
+- **Canonical case:** [coral-hart](../entities/coral-hart.md)
+- **Contrast:** [shy-girl-ai-novel](../entities/shy-girl-ai-novel.md) (accidental, unmasked)
+- **Hub:** [ai-in-creative-writing](ai-in-creative-writing.md)
+- **Analyses:** [producer-filter-pattern](../analyses/producer-filter-pattern.md) · [own-your-substrate](../analyses/own-your-substrate.md) · [layered-authorship](layered-authorship.md)
+- **Adjacent:** [drum-machine-analogy-for-ai](drum-machine-analogy-for-ai.md) · [human-made-content-labelling](human-made-content-labelling.md)
+- **Source:** [2026-04-04-newyorker-is-it-wrong-to-write-with-ai](../sources/2026-04-04-newyorker-is-it-wrong-to-write-with-ai.md)

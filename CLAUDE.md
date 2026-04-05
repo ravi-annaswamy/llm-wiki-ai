@@ -60,7 +60,72 @@ status: draft | active | stale
 - Lead with the most important information
 - Include specific claims with source attribution: `(Source: [karpathy-post](sources/2026-04-02-karpathy-post.md))`
 - Flag uncertainty: "According to X, though Y disputes this..."
-- Flag contradictions explicitly: "> ⚠️ CONTRADICTION: Page A claims X, but Source B says Y"
+
+### Page Style Guide
+
+A uniform style makes the wiki scannable at scale. Every page type has the same visible skeleton.
+
+**1. TL;DR lede.** Every page starts with a single blockquote directly under the H1, 1–3 sentences, bold. It answers "what is this and why should I care?" for a reader who will not scroll. Keep it under ~250 characters.
+
+```markdown
+# Page Title
+
+> **One-sentence hook.** Optional second sentence with the sharpest specific claim. This is the only thing some readers will read.
+```
+
+**2. Canonical section skeletons.** Pick the skeleton by page type and do not invent variants. Omit sections that don't apply; don't rename them.
+
+- **Entity:** Lede → The workflow / Background (table preferred) → Why it matters → Related
+- **Concept:** Lede → Core idea → Landscape / instances (table) → Structural points → Open questions → Related
+- **Source:** Lede → Summary → Key facts (table or bullets) → Why it matters → Open questions → Prompt
+- **Analysis:** Lede → The pattern → Instance table → Implications → Related
+
+**3. Tables over bullet walls.** Any time you have ≥3 items with parallel structure (verification approaches, factory instances, comparison dimensions, figures), use a table. Bullets are for short, non-parallel lists.
+
+**4. Kill duplicate framing.** If a cross-cutting idea already has its own page (`own-your-substrate`, `producer-filter-pattern`, reception paradox, etc.), do **not** re-explain it in prose. Give a one-line pointer: *"This is an instance of X — see [analyses/x.md]."* Re-explaining is the single biggest source of bloat.
+
+**5. Typed "Related" section.** Replace flat bullet lists with grouped typed links. Use these labels (pick the ones that apply):
+
+```markdown
+## Related
+
+- **Hub:** [hub-page](...)
+- **Canonical case / Instances:** [page](...)
+- **Contrast:** [page](...)
+- **Analyses:** [page](...)
+- **Adjacent:** [page](...)
+- **Sources:** [source-page](...)
+```
+
+This both reduces visual clutter and surfaces the relationship type without extra prose. Drop the old "Connection to other wiki threads" section — typed Related replaces it.
+
+**6. Callouts.** Use exactly one callout pattern for warnings:
+
+```markdown
+> ⚠️ **CONTRADICTION.** Page A claims X; Source B says Y.
+> ⚠️ **CROSS-SOURCE DISCREPANCY.** Both sources cite the same primary but differ.
+> ⚠️ **STALE.** This page's primary source was superseded by [newer-source].
+```
+
+No other emoji callouts. No HTML. One blockquote, bold label, period.
+
+**7. Cap open questions at 3 unless there's a specific reason.** The first few are usually the interesting ones; the long tail dilutes them.
+
+**8. Section titles should be short.** Prefer one- or two-word H2s. "Why it matters" is fine; "The question the essay is really asking" is not.
+
+**9. Page length budgets.** Soft caps, enforced by lint:
+
+| Page type | Target | Hard cap |
+|---|---|---|
+| Entity | 40–80 lines | 120 |
+| Concept | 80–160 lines | 250 |
+| Source | 40–80 lines | 120 |
+| Analysis | no target | no cap |
+| Overview / index | as needed | — |
+
+If a source page wants to grow past the cap, the analysis belongs on a concept page, not the source. If a concept page wants to grow past the cap, split into sub-concepts with a hub.
+
+**10. Frontmatter discipline.** Use YAML list form for `sources:` when there are multiple entries; inline only for single entries. Tag lists should be ≤6 tags. Do not invent new `type:` values.
 
 ### Concept & Entity Granularity
 
@@ -151,9 +216,10 @@ When I say "lint" or "health check":
 4. **Missing pages**: Concepts or entities mentioned but lacking their own page
 5. **Broken links**: `[[wikilinks]]` that point to non-existent pages
 6. **Coverage gaps**: Important topics mentioned in sources but not developed
-7. **Suggested questions**: What should I investigate next?
+7. **Style violations** (see Page Style Guide): missing TL;DR lede, non-canonical section skeleton, flat Related list that should be typed, "Connection to other wiki threads" duplicating a Related section, bullet wall where a table would fit, page over its length budget, re-explanation of a cross-cutting pattern that already has its own page.
+8. **Suggested questions**: What should I investigate next?
 
-Report findings as a checklist, then ask which ones to fix.
+Report findings as a checklist, then ask which ones to fix. For style violations, offer to batch-apply fixes rather than asking file-by-file — the style guide is uniform and batching preserves coherence.
 
 ### 4. REFACTOR — Restructuring
 
