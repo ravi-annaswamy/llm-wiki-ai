@@ -2,7 +2,7 @@
 title: "Anthropic C Compiler Project"
 type: entity
 created: 2026-04-04
-updated: 2026-04-04
+updated: 2026-04-05
 sources: ["wiki/sources/2026-04-04-anthropic-long-running-claude-scientific-computing.md"]
 tags: [anthropic, agentic-coding, long-horizon-tasks, reference-demo]
 status: active
@@ -10,22 +10,26 @@ status: active
 
 # Anthropic C Compiler Project
 
-An Anthropic engineering demonstration in which Claude, working across roughly **2,000 sessions**, built a C compiler capable of compiling the Linux kernel (see anthropic.com/engineering/building-c-compiler, referenced in [2026-04-04-anthropic-long-running-claude-scientific-computing](../sources/2026-04-04-anthropic-long-running-claude-scientific-computing.md)).
+> **Claude built a Linux-kernel-capable C compiler across ~2,000 parallel sessions.** The canonical existence proof that multi-thousand-session autonomous agentic coding can clear a hard correctness bar.
 
-## Why it matters to the wiki
+Referenced via anthropic.com/engineering/building-c-compiler. The compiler project is the precedent the scientific-computing walkthrough by [siddharth-mishra-sharma](siddharth-mishra-sharma.md) explicitly builds on.
 
-The C compiler project is the canonical precedent for **very long-horizon autonomous agentic coding** that the scientific-computing post by [siddharth-mishra-sharma](siddharth-mishra-sharma.md) explicitly builds on. It's the existence proof that Claude can sustain a multi-thousand-session build of a complex, correctness-sensitive system against a hard evaluation target (does it compile the Linux kernel?).
+## Swarm topology vs solo topology
 
-But Mishra-Sharma also draws a **structural contrast** between the compiler work and the CLAX Boltzmann-solver work ([clax-project](clax-project.md)):
+Mishra-Sharma draws a structural contrast between the compiler work and [clax-project](clax-project.md):
 
-- **C compiler → parallelizable.** The compiler task farms out to a large number of **parallel agents** working on largely independent subproblems. Each session can make progress without needing global context on what all other sessions are doing.
-- **Boltzmann solver → sequential.** A numerical pipeline is **deeply coupled**: a small error or poor approximation early (e.g., in how the early universe recombines) subtly shifts everything downstream. Debugging requires tracing causally through the whole chain and drawing on domain knowledge. Better suited to a **single sequential agent** spawning subagents as needed, and using the reference implementation to bisect discrepancies.
+| | C compiler | CLAX (Boltzmann solver) |
+|---|---|---|
+| Task shape | Parallelizable subproblems | Deeply coupled pipeline |
+| Topology | ~2,000 parallel sessions | Single sequential agent + subagents |
+| Debug strategy | Local — sessions work independently | Causal trace through the whole chain |
+| Domain knowledge | Mostly self-contained | Required for bisecting discrepancies |
 
-This contrast is useful generally: it's not the case that "long-horizon agentic work" has one topology. The **shape of the task determines whether the right deployment is a swarm or a solo agent**. This observation generalizes beyond code — it probably applies to other domains where an artifact is either naturally decomposable or deeply coupled.
+Long-horizon agentic work is not one pattern — **the shape of the task determines whether the right deployment is a swarm or a solo agent.** This generalizes beyond code.
 
 ## Related
 
-- [anthropic](anthropic.md)
-- [clax-project](clax-project.md)
-- [long-running-agentic-coding](../concepts/long-running-agentic-coding.md)
-- [2026-04-04-anthropic-long-running-claude-scientific-computing](../sources/2026-04-04-anthropic-long-running-claude-scientific-computing.md)
+- **Parent:** [anthropic](anthropic.md)
+- **Contrast:** [clax-project](clax-project.md)
+- **Hub:** [long-running-agentic-coding](../concepts/long-running-agentic-coding.md)
+- **Source:** [2026-04-04-anthropic-long-running-claude-scientific-computing](../sources/2026-04-04-anthropic-long-running-claude-scientific-computing.md)

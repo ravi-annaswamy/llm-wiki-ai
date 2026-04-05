@@ -2,7 +2,7 @@
 title: "AlphaEvolve"
 type: entity
 created: 2026-04-04
-updated: 2026-04-04
+updated: 2026-04-05
 sources: ["wiki/sources/2026-04-04-marktechpost-deepmind-alphaevolve-game-theory.md"]
 tags: [deepmind, evolutionary, llm, gemini, automated-algorithm-discovery]
 status: active
@@ -10,43 +10,46 @@ status: active
 
 # AlphaEvolve
 
-A distributed evolutionary coding system developed by [google-deepmind](google-deepmind.md) that uses a large language model as the mutation operator in a search over source code (Source: [2026-04-04-marktechpost-deepmind-alphaevolve-game-theory](../sources/2026-04-04-marktechpost-deepmind-alphaevolve-game-theory.md)). Rather than mutating numeric hyperparameters, AlphaEvolve mutates **the actual Python implementation** of an algorithm, evolving a population of candidate implementations against a fitness signal.
+> **DeepMind's distributed evolutionary coding system that uses Gemini 2.5 Pro as the mutation operator over source code.** Rather than tweaking numeric hyperparameters, it mutates **the actual Python implementation** — turning algorithm research into a search problem with a fitness signal.
 
-It is the concrete instantiation of [llm-driven-algorithm-discovery](../concepts/llm-driven-algorithm-discovery.md) covered in the current wiki corpus.
+The canonical wiki instance of [llm-driven-algorithm-discovery](../concepts/llm-driven-algorithm-discovery.md).
 
-## How it works
+## The loop
 
-1. **Seed.** A population is initialized with a standard implementation of the target algorithm (CFR+ for CFR experiments; a Uniform meta-strategy solver for PSRO experiments).
-2. **Select.** Each generation, a parent is sampled from the population based on fitness.
-3. **Mutate.** The parent's source code is passed to **Gemini 2.5 Pro** with a prompt instructing it to produce a modified version. The LLM returns a candidate Python implementation.
-4. **Evaluate.** The candidate is run on a set of proxy/training games. If valid, it enters the population.
-5. **Repeat.** The loop continues across generations, with the LLM reading and transforming actual code rather than tweaking parameters.
+| Step | What happens |
+|---|---|
+| 1. Seed | Population initialized with a standard implementation (CFR+ for CFR; Uniform meta-solver for PSRO) |
+| 2. Select | Parent sampled from population by fitness |
+| 3. Mutate | Parent source code → **Gemini 2.5 Pro** with a modification prompt → candidate Python |
+| 4. Evaluate | Run candidate on proxy/training games; if valid, add to population |
+| 5. Repeat | LLM transforms actual code, not parameters, across generations |
 
-**Multi-objective optimization** is supported: when multiple fitness metrics are defined, one is randomly selected per generation to drive parent sampling — giving the search access to several gradients without collapsing them into a single weighted score.
+**Multi-objective optimization.** When several fitness metrics are defined, one is randomly selected per generation to drive parent sampling — giving the search access to multiple gradients without collapsing them into a weighted score.
 
-## Search space in the game-theory paper
+## The search space (game-theory paper)
 
-AlphaEvolve operates on structured Python class interfaces that are expressive enough to represent all known variants of the target algorithm family as special cases:
+Structured Python class interfaces expressive enough to represent all known variants as special cases:
 
-- **For CFR** — three classes: `RegretAccumulator`, `PolicyFromRegretAccumulator`, `PolicyAccumulator`.
-- **For PSRO** — two classes: `TrainMetaStrategySolver`, `EvalMetaStrategySolver` (the solvers used during oracle training and during exploitability evaluation, respectively).
+| Target | Classes mutated |
+|---|---|
+| CFR | `RegretAccumulator`, `PolicyFromRegretAccumulator`, `PolicyAccumulator` |
+| PSRO | `TrainMetaStrategySolver`, `EvalMetaStrategySolver` |
 
-The fitness signal is negative exploitability after K iterations on a training set of four imperfect-information games. Final evaluation uses a held-out test set of larger, unseen games.
+Fitness: negative exploitability after K iterations on 4 imperfect-information training games. Final evaluation on a held-out test set of larger games.
 
-## Discovered algorithms (from this paper)
+## Discovered algorithms
 
-- **VAD-CFR** — Volatility-Adaptive Discounted CFR. Matches or exceeds state-of-the-art in 10 of 11 benchmark games. Introduces volatility-adaptive discounting via an EWMA of instantaneous regret magnitude, asymmetric positive-regret boosting (factor 1.1), and a hard warm-start at iteration 500 for policy averaging. The 500-iteration threshold was generated without the LLM knowing the 1000-iteration evaluation horizon.
-- **AOD-CFR** — Asymmetric Optimistic Discounted CFR. A secondary discovery using more conventional mechanisms (linear discount schedules, sign-dependent scaling, EMA-based policy optimism, polynomial policy averaging).
-- **SHOR-PSRO** — Smoothed Hybrid Optimistic Regret PSRO. Matches or exceeds state-of-the-art in 8 of 11 games. Blends Optimistic Regret Matching with a Softmax best-pure-strategy component, annealing the blend factor, diversity bonus, and temperature over training. Critically, the discovered training-time and evaluation-time solver configurations are **asymmetric** — a design choice that was itself a product of the search, not a human decision.
+- **VAD-CFR** (Volatility-Adaptive Discounted CFR) — matches/exceeds SoTA on **10 of 11** benchmark games. Volatility-adaptive discounting via EWMA of instantaneous regret, asymmetric positive-regret boost (1.1×), hard warm-start at iter 500 for policy averaging. The 500 threshold was generated without the LLM knowing the 1000-iter evaluation horizon.
+- **AOD-CFR** — secondary discovery, more conventional mechanisms.
+- **SHOR-PSRO** — matches/exceeds SoTA on **8 of 11**. Blends Optimistic Regret Matching with a Softmax best-pure-strategy component; training-time and eval-time solver configs are **asymmetric** — itself a product of the search, not a human decision.
 
-## Why it's notable
+## Why it matters
 
-The interesting unit of this work is not any individual discovered algorithm — it is the demonstration that the **mutation unit in an evolutionary search can be a block of code**, not a scalar. LLMs are now fluent enough at reading and writing code that they can act as the variation operator in a classical evolutionary loop, which turns algorithm research into a search problem with a fitness signal — see [llm-driven-algorithm-discovery](../concepts/llm-driven-algorithm-discovery.md).
+The interesting unit is not any individual discovered algorithm — it is the demonstration that **the mutation unit in an evolutionary search can be a block of code**, not a scalar. See [llm-driven-algorithm-discovery](../concepts/llm-driven-algorithm-discovery.md) for the broader pattern.
 
 ## Related
 
-- [google-deepmind](google-deepmind.md)
-- [llm-driven-algorithm-discovery](../concepts/llm-driven-algorithm-discovery.md)
-- [counterfactual-regret-minimization](../concepts/counterfactual-regret-minimization.md)
-- [policy-space-response-oracles](../concepts/policy-space-response-oracles.md)
-- [marl-imperfect-information-games](../concepts/marl-imperfect-information-games.md)
+- **Parent:** [google-deepmind](google-deepmind.md)
+- **Hub concept:** [llm-driven-algorithm-discovery](../concepts/llm-driven-algorithm-discovery.md)
+- **Domain:** [counterfactual-regret-minimization](../concepts/counterfactual-regret-minimization.md) · [policy-space-response-oracles](../concepts/policy-space-response-oracles.md) · [marl-imperfect-information-games](../concepts/marl-imperfect-information-games.md)
+- **Source:** [2026-04-04-marktechpost-deepmind-alphaevolve-game-theory](../sources/2026-04-04-marktechpost-deepmind-alphaevolve-game-theory.md)
