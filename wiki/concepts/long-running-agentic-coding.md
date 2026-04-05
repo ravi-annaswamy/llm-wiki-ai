@@ -3,16 +3,24 @@ title: "Long-running agentic coding"
 type: concept
 created: 2026-04-04
 updated: 2026-04-04
-sources: ["wiki/sources/2026-04-04-anthropic-long-running-claude-scientific-computing.md"]
-tags: [agentic-coding, long-horizon-tasks, claude-code, methodology, scientific-computing, hpc]
+sources:
+  - "wiki/sources/2026-04-04-anthropic-long-running-claude-scientific-computing.md"
+  - "wiki/sources/2026-04-04-datacamp-karpathy-autoresearch.md"
+tags: [agentic-coding, long-horizon-tasks, claude-code, methodology, scientific-computing, hpc, autoresearch, karpathy]
 status: active
 ---
 
 # Long-running agentic coding
 
-A methodology for handing an LLM coding agent a well-scoped, multi-day, high-stakes software task and letting it work **autonomously** — with occasional human oversight rather than continuous supervision. It is a distinct posture from the dominant "conversational loop, every step on a tight leash" mode most scientists and engineers currently use with AI agents. The shift is enabled by the steady extension of model time-horizons over 2024–2026 (Source: [2026-04-04-anthropic-long-running-claude-scientific-computing](../sources/2026-04-04-anthropic-long-running-claude-scientific-computing.md)).
+A methodology for handing an LLM coding agent a well-scoped, multi-day, high-stakes software task and letting it work **autonomously** — with occasional human oversight rather than continuous supervision. It is a distinct posture from the dominant "conversational loop, every step on a tight leash" mode most scientists and engineers currently use with AI agents. The shift is enabled by the steady extension of model time-horizons over 2024–2026.
 
-The pattern was demonstrated at scale by the [anthropic-c-compiler-project](../entities/anthropic-c-compiler-project.md) (Claude building a Linux-kernel-capable C compiler across ~2,000 sessions) and adapted for scientific computing by [siddharth-mishra-sharma](../entities/siddharth-mishra-sharma.md) in the [clax-project](../entities/clax-project.md).
+The pattern is demonstrated across three instances currently in this wiki:
+
+- The [anthropic-c-compiler-project](../entities/anthropic-c-compiler-project.md) — Claude building a Linux-kernel-capable C compiler across ~2,000 sessions (parallel-swarm topology).
+- The [clax-project](../entities/clax-project.md) — [siddharth-mishra-sharma](../entities/siddharth-mishra-sharma.md)'s single-agent sequential JAX port of the [class-boltzmann-solver](../entities/class-boltzmann-solver.md), reaching sub-percent accuracy in days (Source: [2026-04-04-anthropic-long-running-claude-scientific-computing](../sources/2026-04-04-anthropic-long-running-claude-scientific-computing.md)).
+- [autoresearch](../entities/autoresearch.md) — [andrej-karpathy](../entities/andrej-karpathy.md)'s overnight ML-experiment loop, using the [ratchet-loop](ratchet-loop.md) pattern with `program.md` + `train.py` + an immutable `prepare.py` evaluator (Source: [2026-04-04-datacamp-karpathy-autoresearch](../sources/2026-04-04-datacamp-karpathy-autoresearch.md)).
+
+The three instances share the scaffolding pieces below but vary in topology (swarm vs. solo), filter strictness (test oracle vs. monotone ratchet), and session length (minutes to weeks).
 
 ## When it fits
 
@@ -22,7 +30,7 @@ Three conditions, which together make autonomous operation viable:
 2. **Success criteria are quantifiable.** Reaching them can be measured mechanically, not judged. 0.1% numerical agreement against a reference. Passing a test suite. Compiling a target codebase. See [test-oracle-for-agents](test-oracle-for-agents.md).
 3. **Human oversight can be occasional.** The work doesn't need a human in the loop continuously because the evaluation loop catches most errors without one.
 
-Mishra-Sharma gives three representative task types that fit: reimplementing a numerical solver, porting legacy Fortran to a modern language, and debugging a large codebase against a reference implementation. The common thread: a trustworthy oracle exists to tell the agent whether it's making progress.
+Mishra-Sharma gives three representative task types that fit: reimplementing a numerical solver, porting legacy Fortran to a modern language, and debugging a large codebase against a reference implementation. The common thread: a trustworthy oracle exists to tell the agent whether it's making progress. AutoResearch adds a fourth: **improving a training loop against a fixed validation metric** — the same "trustworthy oracle" criterion, with the oracle's immutability enforced at the filesystem level (an untouchable `prepare.py`).
 
 ## The scaffolding (five pieces)
 
@@ -64,6 +72,24 @@ Enforced via `CLAUDE.md` rules such as: *"Commit and push after every meaningful
 On an HPC cluster: a SLURM job requests a compute node (e.g. one H100, 48-hour wall), the job script launches Claude Code inside a detached **tmux** session, the user attaches via `srun --overlap --pty tmux attach -t claude`, gives direction ("Read `CHANGELOG.md` and pick up the next task"), and detaches. A **local** Claude Code instance can also SSH into the cluster to re-prompt the remote agent, which Mishra-Sharma notes is typically more ergonomic than direct shell attachment.
 
 The HPC/SLURM specifics are not load-bearing — the same pattern applies on any environment where a detached process can run for hours. But tmux on an allocated GPU node is a clean instantiation that researchers already know how to reason about.
+
+## How AutoResearch maps onto the scaffolding
+
+AutoResearch is a minimal instance of the pattern — deliberately stripped down for single-GPU overnight operation — but every piece of the scaffolding has a direct analog:
+
+| Piece | In CLAX / the compiler project | In AutoResearch |
+|---|---|---|
+| Portable plan | `CLAUDE.md` (agent-editable) | `program.md` (human-only) |
+| Cross-session memory | `CHANGELOG.md` with failed approaches | `results.tsv` + git history |
+| Test oracle | Reference implementation (CLASS, test suites) | Immutable `prepare.py` emitting `val_bpb` |
+| Git as coordination | Commit after every meaningful unit of work | Commit after every 5-minute experiment; revert on regression |
+| Execution loop | tmux-on-SLURM detached session | Coding agent in the project directory |
+| Anti-laziness scaffold | [ralph-loop](ralph-loop.md) | `"NEVER STOP"` directive in `program.md` |
+
+Two things are notable about the AutoResearch mapping:
+
+1. **`program.md` is human-only**, unlike the CLAX `CLAUDE.md` which the agent is allowed to edit. This is a deliberate tightening: Karpathy wants the research direction to be a fixed point of the loop rather than something the agent can drift. The tradeoff: the human must write a better `program.md` upfront, since the agent cannot correct it mid-run.
+2. **The filter is stricter.** CLAX tolerates any intermediate state as long as tests eventually pass; AutoResearch runs a strict monotone [ratchet-loop](ratchet-loop.md) where each experiment is either committed or reverted. This is what lets Karpathy run it overnight without a supervisor — the filter leaves no room for the agent to accumulate regressions — but it also creates the [llm-research-creativity-ceiling](llm-research-creativity-ceiling.md).
 
 ## The Ralph loop (optional capability uplift)
 

@@ -9,15 +9,16 @@ sources:
   - "wiki/sources/2026-04-04-newyorker-is-it-wrong-to-write-with-ai.md"
   - "wiki/sources/2026-04-04-anthropic-long-running-claude-scientific-computing.md"
   - "wiki/sources/2026-04-03-anthropic-acquires-coefficient-bio.md"
+  - "wiki/sources/2026-04-04-datacamp-karpathy-autoresearch.md"
 tags: [cross-cutting, architecture, agentic-llms, filter-loop, evaluation, meta]
 status: active
 ---
 
 # The Producer–Filter Pattern
 
-A pattern visible across four of the six sources currently ingested in this wiki — and implicit in a fifth. In each case, the LLM is not functioning as a **chatbot answering queries**; it is functioning as a **producer of durable artifacts**, sitting inside a loop where an **automated (or near-automated) filter decides which artifacts survive**. The substrates differ wildly — Markdown wiki pages, Python algorithms, novel drafts, JAX numerical code — but the architecture is identical. This analysis names the pattern, maps the instances, and draws out what's structurally common across them.
+A pattern visible across five of the eight sources currently ingested in this wiki — and implicit in a sixth. In each case, the LLM is not functioning as a **chatbot answering queries**; it is functioning as a **producer of durable artifacts**, sitting inside a loop where an **automated (or near-automated) filter decides which artifacts survive**. The substrates differ wildly — Markdown wiki pages, Python algorithms, novel drafts, JAX numerical code, full GPT training loops — but the architecture is identical. This analysis names the pattern, maps the instances, and draws out what's structurally common across them.
 
-## The four clean instances
+## The five clean instances
 
 | Source | Producer | Artifact | Filter / oracle | Discussed on |
 |---|---|---|---|---|
@@ -25,8 +26,15 @@ A pattern visible across four of the six sources currently ingested in this wiki
 | [google-deepmind](../entities/google-deepmind.md) / MarkTechPost | AlphaEvolve (Gemini 2.5 Pro as mutation operator) | Python source code of MARL algorithms | Exploitability metric across a suite of imperfect-information games | [llm-driven-algorithm-discovery](../concepts/llm-driven-algorithm-discovery.md), [alphaevolve](../entities/alphaevolve.md) |
 | [coral-hart](../entities/coral-hart.md) / New Yorker | An LLM generating genre-romance drafts | Full novel manuscripts | Author revision pass + Amazon reader reception | [ai-novel-factory](../concepts/ai-novel-factory.md), [ai-in-creative-writing](../concepts/ai-in-creative-writing.md) |
 | [siddharth-mishra-sharma](../entities/siddharth-mishra-sharma.md) / Anthropic | Claude Opus 4.6 in long-running autonomous mode | JAX code + unit tests + git commits | Numerical accuracy vs. [class-boltzmann-solver](../entities/class-boltzmann-solver.md) C reference | [long-running-agentic-coding](../concepts/long-running-agentic-coding.md), [test-oracle-for-agents](../concepts/test-oracle-for-agents.md), [clax-project](../entities/clax-project.md) |
+| [andrej-karpathy](../entities/andrej-karpathy.md) / DataCamp (AutoResearch) | A coding agent modifying a GPT training loop | Git commits to `train.py` (architecture, optimizer, schedule changes) | `val_bpb` from an **immutable** `prepare.py` the agent cannot edit; strict [ratchet-loop](../concepts/ratchet-loop.md) with 5-minute evaluation budget | [autoresearch](../entities/autoresearch.md), [ratchet-loop](../concepts/ratchet-loop.md), [llm-research-creativity-ceiling](../concepts/llm-research-creativity-ceiling.md) |
 
-A plausible **fifth instance** sits implicit in the Anthropic / [coefficient-bio](../entities/coefficient-bio.md) deal: the drug-discovery pipeline the acquired team brings is almost certainly an LLM-producer-plus-filter system (generating candidate molecules, filtered by binding assays and physical-chemistry constraints). The wiki doesn't yet have a source that documents this in detail, but the pattern is widespread enough in ML drug discovery that it is safe to flag as the fifth substrate.
+A plausible **sixth instance** sits implicit in the Anthropic / [coefficient-bio](../entities/coefficient-bio.md) deal: the drug-discovery pipeline the acquired team brings is almost certainly an LLM-producer-plus-filter system (generating candidate molecules, filtered by binding assays and physical-chemistry constraints). The wiki doesn't yet have a source that documents this in detail, but the pattern is widespread enough in ML drug discovery that it is safe to flag as the sixth substrate.
+
+### What AutoResearch adds to the instance set
+
+AutoResearch is the wiki's first example of a filter that is **literally uncircumventable** by the producer: `prepare.py` is immutable by convention *and* by the agent's instruction set, and the agent cannot modify the metric it is being scored on. Every other instance has a weaker guarantee — a linter that can be ignored, a test suite that can be rewritten, a reference implementation the agent could in principle adapt — and the producer's discipline is partly responsible for the filter's authority. AutoResearch collapses that responsibility down to a filesystem constraint, which is the most machine-checkable version of the pattern we have on file.
+
+It is also the first instance with a **strictly monotone** filter rule: keep the change if and only if the metric improves. The other four tolerate intermediate regressions. This is [ratchet-loop](../concepts/ratchet-loop.md) as a specific, strict sub-variant of the producer–filter pattern, and it exposes a new failure mode that the weaker variants don't share — the [llm-research-creativity-ceiling](../concepts/llm-research-creativity-ceiling.md), the inability to traverse valleys in the metric landscape.
 
 ## What's structurally common
 
@@ -87,18 +95,23 @@ A related implication worth acting on: **the wiki's lint schema should probably 
 - [own-your-substrate](own-your-substrate.md)
 - [llm-knowledge-bases](../concepts/llm-knowledge-bases.md)
 - [llm-driven-algorithm-discovery](../concepts/llm-driven-algorithm-discovery.md)
+- [ratchet-loop](../concepts/ratchet-loop.md)
+- [llm-research-creativity-ceiling](../concepts/llm-research-creativity-ceiling.md)
+- [agentic-engineering](../concepts/agentic-engineering.md)
 - [ai-novel-factory](../concepts/ai-novel-factory.md)
 - [long-running-agentic-coding](../concepts/long-running-agentic-coding.md)
 - [test-oracle-for-agents](../concepts/test-oracle-for-agents.md)
 - [wiki-linting](../concepts/wiki-linting.md)
 - [agent-persistent-memory](../concepts/agent-persistent-memory.md)
 - [file-over-app-philosophy](../concepts/file-over-app-philosophy.md)
+- [autoresearch](../entities/autoresearch.md)
 - [clax-project](../entities/clax-project.md)
 - [alphaevolve](../entities/alphaevolve.md)
 - [2026-04-04-venturebeat-karpathy-llm-knowledge-bases](../sources/2026-04-04-venturebeat-karpathy-llm-knowledge-bases.md)
 - [2026-04-04-marktechpost-deepmind-alphaevolve-game-theory](../sources/2026-04-04-marktechpost-deepmind-alphaevolve-game-theory.md)
 - [2026-04-04-newyorker-is-it-wrong-to-write-with-ai](../sources/2026-04-04-newyorker-is-it-wrong-to-write-with-ai.md)
 - [2026-04-04-anthropic-long-running-claude-scientific-computing](../sources/2026-04-04-anthropic-long-running-claude-scientific-computing.md)
+- [2026-04-04-datacamp-karpathy-autoresearch](../sources/2026-04-04-datacamp-karpathy-autoresearch.md)
 
 ## Prompt that produced this page
 

@@ -7,7 +7,7 @@ updated: 2026-04-04
 
 # Wiki Index
 
-Last updated: 2026-04-04 | Total pages: 67 | Total sources: 7
+Last updated: 2026-04-04 | Total pages: 72 | Total sources: 8
 
 ## Sources
 
@@ -20,6 +20,7 @@ Last updated: 2026-04-04 | Total pages: 67 | Total sources: 7
 | 2026-04-04 | [2026-04-04-newyorker-is-it-wrong-to-write-with-ai](sources/2026-04-04-newyorker-is-it-wrong-to-write-with-ai.md) | creative-writing, fiction, authorship, disclosure, drum-machine-analogy |
 | 2026-04-04 | [2026-04-04-anthropic-long-running-claude-scientific-computing](sources/2026-04-04-anthropic-long-running-claude-scientific-computing.md) | anthropic, claude-code, agentic-coding, long-horizon-tasks, scientific-computing, hpc, cosmology |
 | 2026-04-04 | [2026-04-04-yang-song-score-based-generative-modeling](sources/2026-04-04-yang-song-score-based-generative-modeling.md) | generative-models, diffusion, score-matching, sde, ml-theory, foundational |
+| 2026-04-04 | [2026-04-04-datacamp-karpathy-autoresearch](sources/2026-04-04-datacamp-karpathy-autoresearch.md) | karpathy, autoresearch, automated-research, agentic-engineering, ratchet-loop, producer-filter |
 
 ## Entities
 
@@ -36,6 +37,9 @@ Last updated: 2026-04-04 | Total pages: 67 | Total sources: 7
 ### Anthropic projects & demos
 - [anthropic-c-compiler-project](entities/anthropic-c-compiler-project.md) — ~2,000-session Claude build of a Linux-kernel-capable C compiler; parallel-swarm topology.
 - [clax-project](entities/clax-project.md) — Differentiable JAX Boltzmann solver built by Claude over days, sub-percent vs CLASS.
+
+### Karpathy projects
+- [autoresearch](entities/autoresearch.md) — Open-source three-file ratchet loop for overnight ML experimentation on a single GPU.
 
 ### Scientific infrastructure
 - [class-boltzmann-solver](entities/class-boltzmann-solver.md) — Canonical C Boltzmann solver used as test oracle in the CLAX experiment.
@@ -83,6 +87,9 @@ Last updated: 2026-04-04 | Total pages: 67 | Total sources: 7
 
 ### Automated research methodology
 - [llm-driven-algorithm-discovery](concepts/llm-driven-algorithm-discovery.md) — LLMs as the mutation operator in an evolutionary search over source code.
+- [ratchet-loop](concepts/ratchet-loop.md) — Strict monotone filter loop with immutable evaluator; AutoResearch's core architecture.
+- [agentic-engineering](concepts/agentic-engineering.md) — Karpathy's three-stage progression: vibe coding → agentic engineering → independent research.
+- [llm-research-creativity-ceiling](concepts/llm-research-creativity-ceiling.md) — Why automated research finds small improvements but not structurally new mechanisms.
 
 ### Game theory & MARL
 - [marl-imperfect-information-games](concepts/marl-imperfect-information-games.md) — Multi-agent RL in sequential games with hidden information (e.g., poker).

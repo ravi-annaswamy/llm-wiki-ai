@@ -3,16 +3,23 @@ title: "LLM-Driven Algorithm Discovery"
 type: concept
 created: 2026-04-04
 updated: 2026-04-04
-sources: ["wiki/sources/2026-04-04-marktechpost-deepmind-alphaevolve-game-theory.md"]
-tags: [automated-research, evolutionary, llm, meta-learning, deepmind]
+sources:
+  - "wiki/sources/2026-04-04-marktechpost-deepmind-alphaevolve-game-theory.md"
+  - "wiki/sources/2026-04-04-datacamp-karpathy-autoresearch.md"
+tags: [automated-research, evolutionary, llm, meta-learning, deepmind, karpathy, ratchet-loop]
 status: active
 ---
 
 # LLM-Driven Algorithm Discovery
 
-The idea that a large language model, rather than a human researcher, can serve as the mutation and variation operator in a search over algorithm design space — producing new algorithms (or variants of existing ones) automatically, with the LLM reading and rewriting actual source code at each step (Source: [2026-04-04-marktechpost-deepmind-alphaevolve-game-theory](../sources/2026-04-04-marktechpost-deepmind-alphaevolve-game-theory.md)).
+The idea that a large language model, rather than a human researcher, can serve as the mutation and variation operator in a search over algorithm design space — producing new algorithms (or variants of existing ones) automatically, with the LLM reading and rewriting actual source code at each step.
 
-The concrete instance in this wiki is [alphaevolve](../entities/alphaevolve.md) from [google-deepmind](../entities/google-deepmind.md), applied to [counterfactual-regret-minimization](counterfactual-regret-minimization.md) and [policy-space-response-oracles](policy-space-response-oracles.md) in [marl-imperfect-information-games](marl-imperfect-information-games.md).
+The wiki currently holds two concrete instances:
+
+- **[alphaevolve](../entities/alphaevolve.md)** from [google-deepmind](../entities/google-deepmind.md), applied to [counterfactual-regret-minimization](counterfactual-regret-minimization.md) and [policy-space-response-oracles](policy-space-response-oracles.md) in [marl-imperfect-information-games](marl-imperfect-information-games.md) (Source: [2026-04-04-marktechpost-deepmind-alphaevolve-game-theory](../sources/2026-04-04-marktechpost-deepmind-alphaevolve-game-theory.md)). Population-based evolutionary search, Gemini 2.5 Pro as mutation operator, exploitability as fitness signal, closed-source.
+- **[autoresearch](../entities/autoresearch.md)** from [andrej-karpathy](../entities/andrej-karpathy.md) (Source: [2026-04-04-datacamp-karpathy-autoresearch](../sources/2026-04-04-datacamp-karpathy-autoresearch.md)). Single-lineage [ratchet-loop](ratchet-loop.md), any coding agent as mutation operator, validation bits-per-byte (`val_bpb`) as fitness signal, MIT-licensed and single-GPU-accessible. Searches over a full GPT training loop (`train.py`) rather than an algorithm class.
+
+The two instances differ along almost every design axis (population vs. lineage; algorithm-class vs. training-loop; closed-source-cluster vs. open-source-single-GPU), which is the most informative thing about them: the family is broad, and the key design choice is **what kind of filter you can afford to run every iteration**. AlphaEvolve runs an exploitability sweep across 11 games; AutoResearch runs a 5-minute training slice. Both are cheap enough to close the loop. See the comparison tables in [ratchet-loop](ratchet-loop.md) and [producer-filter-pattern](../analyses/producer-filter-pattern.md).
 
 ## The key reframing
 
@@ -54,6 +61,16 @@ The discovered algorithms contain specific, non-intuitive mechanisms that human 
 
 These are the paper's core argument for why automated search over algorithm space is worth doing: the mechanisms it finds are not translations of things in the literature. They're genuinely new structure.
 
+## What AutoResearch adds
+
+AutoResearch demonstrates that the mutation-operator-as-LLM approach works with a **much looser search space** than AlphaEvolve used. AlphaEvolve operated over tight Python class hierarchies expressive enough to represent known CFR/PSRO variants as special cases. AutoResearch operates over a single 630-line training file with no class scaffolding at all — the agent is allowed to rewrite activations, attention heads, LR schedules, initialization, optimizer internals. Same family, much less structure.
+
+What AutoResearch loses by dropping the scaffolding: genuine novelty of the kind AlphaEvolve found (hard warm-starts at iteration 500, asymmetric train/eval solver configs). The ratchet filter has an admissibility rule — strictly improve `val_bpb` — that rules out the valley-traversing moves the evolutionary filter tolerates. See [llm-research-creativity-ceiling](llm-research-creativity-ceiling.md).
+
+What it gains: **radical accessibility.** AutoResearch runs on a single GPU with any off-the-shelf coding agent (Claude Code, Cursor, Codex) as the mutation operator. The barrier to running the loop is a GitHub clone and an overnight API budget. Shopify's Tobi Lutke adapted it to a production query-expansion model and reported a 19% validation improvement from 37 experiments the day after he started.
+
+The two instances together suggest the design space is **not** "do you use evolution or not" but rather "how tight is your search scaffolding, how expensive is one evaluation, and how often can you close the loop." Tight scaffolding + expensive filter = population-based, DeepMind-scale. Loose scaffolding + cheap filter = ratchet, single-GPU.
+
 ## Generalization
 
 The game-theory result is narrow, but the framework is not domain-specific. Anywhere you can:
@@ -86,9 +103,14 @@ It also weakly touches [own-your-substrate](../analyses/own-your-substrate.md): 
 ## Related
 
 - [alphaevolve](../entities/alphaevolve.md)
+- [autoresearch](../entities/autoresearch.md)
+- [ratchet-loop](ratchet-loop.md)
+- [llm-research-creativity-ceiling](llm-research-creativity-ceiling.md)
 - [google-deepmind](../entities/google-deepmind.md)
+- [andrej-karpathy](../entities/andrej-karpathy.md)
 - [counterfactual-regret-minimization](counterfactual-regret-minimization.md)
 - [policy-space-response-oracles](policy-space-response-oracles.md)
 - [marl-imperfect-information-games](marl-imperfect-information-games.md)
 - [llm-knowledge-bases](llm-knowledge-bases.md)
+- [producer-filter-pattern](../analyses/producer-filter-pattern.md)
 - [own-your-substrate](../analyses/own-your-substrate.md)

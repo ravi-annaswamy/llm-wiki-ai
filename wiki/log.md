@@ -163,6 +163,32 @@ Files touched:
 - wiki/index.md (page count 59 → 67, added new "Generative model theory" category, added two new entities and seventh source)
 - wiki/overview.md (seventh source summary, new "substrate beneath applied visual-AI" theme)
 
+## [2026-04-04 23:38] ingest | DataCamp — A Guide to Karpathy's AutoResearch
+Ingested DataCamp tutorial by Bex Tuychiev (clipped 2026-04-04) on [autoresearch](entities/autoresearch.md), Karpathy's open-source three-file ML-experiment loop (released 2026-03-07). Source ~2,400 words but dense — treated as a dense ingest with generous yield because it sits squarely in the wiki's strongest existing thread (automated research + producer–filter pattern + Karpathy's methodological arc) and required integration work across multiple existing pages rather than just isolated new-page creation.
+
+Key integration decisions:
+- Created [autoresearch](entities/autoresearch.md) as a new entity (project), alongside the existing [clax-project](entities/clax-project.md) and [anthropic-c-compiler-project](entities/anthropic-c-compiler-project.md) peers — added a new "Karpathy projects" category in index.md.
+- Created three new concept pages: [ratchet-loop](concepts/ratchet-loop.md) (the strict-monotone filter pattern, generalizing beyond AutoResearch), [agentic-engineering](concepts/agentic-engineering.md) (Karpathy's three-stage progression: vibe coding → agentic engineering → independent research), and [llm-research-creativity-ceiling](concepts/llm-research-creativity-ceiling.md) (why ratcheted automated research finds small improvements but not structurally new mechanisms).
+- Updated [llm-driven-algorithm-discovery](concepts/llm-driven-algorithm-discovery.md) to hold AutoResearch as its second concrete instance alongside AlphaEvolve; added a comparison section showing how the design space is not "evolution yes/no" but "how tight is your scaffolding, how expensive is one evaluation, how often can you close the loop."
+- Updated [long-running-agentic-coding](concepts/long-running-agentic-coding.md) to list AutoResearch as a third instance (alongside CLAX and the C compiler project) and added a mapping table showing how each scaffolding piece (`CLAUDE.md`, `CHANGELOG.md`, test oracle, git, ralph-loop) has a direct analog in AutoResearch's minimal version (`program.md`, `results.tsv`+git log, immutable `prepare.py`, git with strict revert, `"NEVER STOP"` directive).
+- Updated [andrej-karpathy](entities/andrej-karpathy.md) to absorb both existing sources into a unified "methodological arc" framing rather than two disconnected sections.
+- Updated [producer-filter-pattern](analyses/producer-filter-pattern.md) to add AutoResearch as a fifth clean instance (the wiki previously had four). AutoResearch is the first instance with a **literally uncircumventable filter** (immutable `prepare.py`) and a **strictly monotone admissibility rule**, which made it worth calling out as a distinctive sub-variant rather than just appending a row to the table.
+
+Yield: 1 source, 1 entity, 3 concepts, 5 existing pages updated, index + overview both updated. Total ~5 new pages (wiki grows 67 → 72).
+
+Files touched:
+- wiki/sources/2026-04-04-datacamp-karpathy-autoresearch.md (new)
+- wiki/entities/autoresearch.md (new)
+- wiki/concepts/ratchet-loop.md (new)
+- wiki/concepts/agentic-engineering.md (new)
+- wiki/concepts/llm-research-creativity-ceiling.md (new)
+- wiki/entities/andrej-karpathy.md (updated — unified two sources into a single methodological arc; added AutoResearch section)
+- wiki/concepts/llm-driven-algorithm-discovery.md (updated — AutoResearch as second instance, added comparison section)
+- wiki/concepts/long-running-agentic-coding.md (updated — AutoResearch as third instance, added scaffolding mapping table)
+- wiki/analyses/producer-filter-pattern.md (updated — AutoResearch as fifth clean instance, added "what AutoResearch adds" section)
+- wiki/index.md (page count 67 → 72, added new source, new Karpathy-projects entity category, three new concepts)
+- wiki/overview.md (eighth source summary; expanded producer-filter theme; added Karpathy-arc and ratchet-vs-population themes; added five AutoResearch figures; added three open questions)
+
 ## [2026-04-04 21:55] lint | Full health check, low-friction fixes applied
 Ran a full lint pass across all 42 files. Results: no orphans, no low-inbound pages, no genuine broken links (3 flagged items were prose examples like `[[backlinks]]`), no contradictions. Flagged: (1) page-count drift in index.md (38 → 39), (2) stale frontmatter path in the Anthropic source referencing the obsolete `raw/assets/` subdirectory, (3) missing prompt-sections on two older source pages per the user's global instruction, (4) 10+ candidate new pages for concepts/entities mentioned on 3+ pages (Galleri5 at 10 pages, SAG-AFTRA at 6, VAD-CFR/SHOR-PSRO at 6, Mahabharat/Raanjhanaa/Gemini 2.5 Pro/OpenSpiel/Yash Raj at 5 each). User opted to apply only the low-friction fixes; the new-page batch was deferred.
 Files touched:
