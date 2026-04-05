@@ -2,7 +2,7 @@
 title: "Prescient Design"
 type: entity
 created: 2026-04-04
-updated: 2026-04-04
+updated: 2026-04-05
 sources: ["wiki/sources/2026-04-03-anthropic-acquires-coefficient-bio.md"]
 tags: [organization, drug-discovery, genentech]
 status: active
@@ -10,6 +10,13 @@ status: active
 
 # Prescient Design
 
-Computational drug discovery group inside Genentech. Notable here as the shared prior employer of [samuel-stanton](samuel-stanton.md) and [nathan-c-frey](nathan-c-frey.md), who left to co-found [coefficient-bio](coefficient-bio.md) (Source: [2026-04-03-anthropic-acquires-coefficient-bio](../sources/2026-04-03-anthropic-acquires-coefficient-bio.md)).
+> **Genentech's computational drug discovery group; emerging as a talent origin point for AI biotech startups.** Shared prior employer of the Coefficient Bio co-founders.
 
-Prescient Design is mentioned in this wiki as a talent origin point for AI drug-discovery startups, not yet as a primary subject — expand this page as more sources discuss it.
+Expand as more sources discuss it directly — currently a stub anchor for the talent-lineage thread running through [ai-drug-discovery](../concepts/ai-drug-discovery.md).
+
+## Related
+
+- **Alumni:** [samuel-stanton](samuel-stanton.md) · [nathan-c-frey](nathan-c-frey.md)
+- **Spin-out:** [coefficient-bio](coefficient-bio.md)
+- **Concept:** [ai-drug-discovery](../concepts/ai-drug-discovery.md)
+- **Source:** [2026-04-03-anthropic-acquires-coefficient-bio](../sources/2026-04-03-anthropic-acquires-coefficient-bio.md)

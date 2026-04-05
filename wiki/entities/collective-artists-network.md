@@ -2,7 +2,7 @@
 title: "Collective Artists Network"
 type: entity
 created: 2026-04-04
-updated: 2026-04-04
+updated: 2026-04-05
 sources: ["wiki/sources/2026-04-04-reuters-ai-indian-films.md"]
 tags: [india, bollywood, talent-agency, ai-studio, galleri5]
 status: active
@@ -10,16 +10,27 @@ status: active
 
 # Collective Artists Network
 
-A top Bollywood talent agency that has brokered careers for Indian film A-listers. In the AI era, it is pivoting toward "engineering digital ones" through **Galleri5**, its cinematic AI lab based in Bengaluru (Source: [2026-04-04-reuters-ai-indian-films](../sources/2026-04-04-reuters-ai-indian-films.md)).
+> **Top Bollywood talent agency pivoting to "engineering digital ones" via its Bengaluru AI lab Galleri5.** First mover on AI-generated Hindu mythology series, with Microsoft providing compute.
 
 ## Galleri5
 
-Galleri5 is Collective's in-house AI production studio. It is headed by [rahul-regulapati](rahul-regulapati.md) (referred to as CEO), who told Reuters that AI has cut production costs to one-fifth and timelines to one-quarter of traditional filmmaking in the mythology and fantasy genres.
+In-house AI production studio headed by [rahul-regulapati](rahul-regulapati.md). Key facts:
 
-**Content slate:** Eight planned AI-generated titles focused on Hindu deities — Hanuman, Krishna, Durga, Kali. The first episodic series is an AI adaptation of the Mahabharat airing on [jiostar](jiostar.md) (≥26.5M views since October release; 1.4/10 on IMDb).
+| Dimension | Detail |
+|---|---|
+| Cost claim | 1/5 of traditional production (mythology/fantasy) |
+| Time claim | 1/4 of traditional timelines |
+| Content slate | 8 AI-generated titles on Hindu deities (Hanuman, Krishna, Durga, Kali) |
+| First release | AI Mahabharat series on [jiostar](jiostar.md); ≥26.5M views; 1.4/10 IMDb |
+| Pipeline | Hybrid — mocap suits + smartphone facial capture feeding AI video |
+| Compute partner | Microsoft |
 
-**Pipeline.** To bypass the limits of pure text-to-video, Galleri5 uses a hybrid: actors wear sensor-equipped motion-capture suits to record body movement as 3D data, while smartphones capture facial expressions. That data drives AI-generated characters downstream.
+The hybrid pipeline is a deliberate workaround for the limits of pure text-to-video: the AI-generated characters are animated from real performance data.
 
-**Partnerships.** Microsoft provides AI computing power to Collective, framing the collaboration as shaping "the next wave of global storytelling."
+## Related
 
-See [ai-filmmaking-india](../concepts/ai-filmmaking-india.md) and [hindu-mythology-ai-genre](../concepts/hindu-mythology-ai-genre.md).
+- **Leader:** [rahul-regulapati](rahul-regulapati.md)
+- **Distribution:** [jiostar](jiostar.md)
+- **Hub:** [ai-filmmaking-india](../concepts/ai-filmmaking-india.md)
+- **Concept:** [hindu-mythology-ai-genre](../concepts/hindu-mythology-ai-genre.md)
+- **Source:** [2026-04-04-reuters-ai-indian-films](../sources/2026-04-04-reuters-ai-indian-films.md)

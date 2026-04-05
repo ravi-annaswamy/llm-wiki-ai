@@ -2,7 +2,7 @@
 title: "Nathan C. Frey"
 type: entity
 created: 2026-04-04
-updated: 2026-04-04
+updated: 2026-04-05
 sources: ["wiki/sources/2026-04-03-anthropic-acquires-coefficient-bio.md"]
 tags: [person, founder, drug-discovery]
 status: active
@@ -10,6 +10,14 @@ status: active
 
 # Nathan C. Frey
 
-Co-founder of [coefficient-bio](coefficient-bio.md) alongside [samuel-stanton](samuel-stanton.md). Previously worked in computational drug discovery at [prescient-design](prescient-design.md), Genentech's AI drug-design group (Source: [2026-04-03-anthropic-acquires-coefficient-bio](../sources/2026-04-03-anthropic-acquires-coefficient-bio.md)).
+> **Co-founder of Coefficient Bio; ex-Prescient Design (Genentech).** Joining Anthropic's health and life sciences team via the April 2026 acquisition.
 
-Following Anthropic's April 2026 acquisition of Coefficient Bio, he is expected to join [anthropic](anthropic.md)'s health and life sciences team.
+Previously worked in computational drug discovery at [prescient-design](prescient-design.md) alongside co-founder [samuel-stanton](samuel-stanton.md).
+
+## Related
+
+- **Company:** [coefficient-bio](coefficient-bio.md)
+- **Co-founder:** [samuel-stanton](samuel-stanton.md)
+- **Prior employer:** [prescient-design](prescient-design.md)
+- **Acquirer:** [anthropic](anthropic.md)
+- **Source:** [2026-04-03-anthropic-acquires-coefficient-bio](../sources/2026-04-03-anthropic-acquires-coefficient-bio.md)

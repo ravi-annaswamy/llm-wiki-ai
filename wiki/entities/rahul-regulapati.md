@@ -2,7 +2,7 @@
 title: "Rahul Regulapati"
 type: entity
 created: 2026-04-04
-updated: 2026-04-04
+updated: 2026-04-05
 sources: ["wiki/sources/2026-04-04-reuters-ai-indian-films.md"]
 tags: [person, india, ai-filmmaking, galleri5]
 status: active
@@ -10,10 +10,17 @@ status: active
 
 # Rahul Regulapati
 
-CEO and head of Galleri5, the AI production studio arm of [collective-artists-network](collective-artists-network.md) in Bengaluru (Source: [2026-04-04-reuters-ai-indian-films](../sources/2026-04-04-reuters-ai-indian-films.md)).
+> **CEO of Galleri5, the AI production arm of Collective Artists Network.** Primary on-record source for the "1/5 cost, 1/4 time" figures that anchor India's mythology/fantasy AI wave.
 
-Regulapati is a primary on-the-record source for the economic case behind India's AI filmmaking push. He told Reuters:
+To Reuters:
 
 > AI is slashing production costs to one-fifth of what they used to be for traditional filmmaking in genres such as mythology and fantasy.
 
-He added that production time is "down to a quarter." These figures are the most widely quoted numbers behind [ai-filmmaking-india](../concepts/ai-filmmaking-india.md) and the mythology-genre wave. His pipeline of choice combines motion-capture suits and smartphone facial capture feeding into AI video generation — a hybrid approach rather than pure text-to-video.
+Production time is "down to a quarter." His pipeline of choice combines motion-capture suits and smartphone facial capture feeding into AI video generation — hybrid, not pure text-to-video.
+
+## Related
+
+- **Company:** [collective-artists-network](collective-artists-network.md) (Galleri5)
+- **Hub:** [ai-filmmaking-india](../concepts/ai-filmmaking-india.md)
+- **Adjacent:** [hindu-mythology-ai-genre](../concepts/hindu-mythology-ai-genre.md)
+- **Source:** [2026-04-04-reuters-ai-indian-films](../sources/2026-04-04-reuters-ai-indian-films.md)
