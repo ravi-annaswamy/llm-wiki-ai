@@ -160,7 +160,8 @@ When I say "refactor":
 1. Look for pages that have grown too large (>500 lines) → split them
 2. Look for pages that are too thin (<50 words) → merge or expand
 3. Look for better categorization of pages across folders
-4. Suggest schema improvements to THIS file
+4. **Check for analysis-page graduation candidates.** Any cross-cutting theme that has **≥3 clean instances across sources** and is currently tracked only in `wiki/overview.md` paragraphs or inside a concept page's "generalization" section should be promoted to its own `analyses/` page. The threshold is deliberately low: the cost of a premature promotion is minor (a page that grows slowly); the cost of a belated promotion is that the insight gets buried inside a page about something narrower. When promoting, trim the now-redundant section in the original location down to a one-paragraph summary with an outbound link.
+5. Suggest schema improvements to THIS file
 
 ---
 
@@ -193,12 +194,15 @@ Last updated: YYYY-MM-DD | Total pages: N | Total sources: N
 `wiki/log.md` is append-only. Each entry:
 
 ```markdown
-## [YYYY-MM-DD] action | Title
+## [YYYY-MM-DD HH:MM] action | Title
 Brief description of what happened.
+Failed approaches / dead ends (optional but encouraged): what was tried and abandoned, and why.
 Files touched: list of files created or modified.
 ```
 
 Actions: `ingest`, `query`, `lint`, `refactor`, `update`
+
+**On failed approaches.** Borrowed from the `CHANGELOG.md` pattern catalogued at [[concepts/agent-persistent-memory]]: when a refactor, lint, or ingest pass tries a restructuring or categorization that is then abandoned, **record it in the log entry** along with the reason. Without this, successive sessions re-attempt the same dead ends (e.g., "I tried merging these two concept pages and it broke the cross-link graph, so I reverted"). Not every entry needs a failed-approaches section — use it when the path taken was non-obvious or when a plausible alternative was considered and rejected.
 
 ---
 
@@ -213,7 +217,7 @@ Actions: `ingest`, `query`, `lint`, `refactor`, `update`
 
 **Key concept types**: Architectures, Techniques, Frameworks, Tradeoffs, Algorithms
 
-**Synthesis goals**: 
+**Synthesis goals**:
 What are the opportunities?
 What are the risks?
 How does it work?
@@ -221,6 +225,12 @@ How does one apply in practice?
 What should one watch out for?
 
 **Output formats**: markdown pages, comparison tables
+
+**Ingest-time lenses for agentic-work / automated-research sources**: When a source describes LLM agents, automated research, or agent-driven scientific work, actively check for these cross-cutting patterns and note where the source fits:
+
+- **Producer–filter architecture** — is this another instance of [[analyses/producer-filter-pattern]]? Identify the producer (what the LLM is generating), the artifact (what's being persisted), and the filter (how quality is being decided). If yes, add it to the instance table on the analysis page.
+- **Task shape → agent topology** — is the work **parallelizable** (swarm of independent sessions, like the [[entities/anthropic-c-compiler-project]]) or **deeply coupled** (single sequential agent tracing causally through a pipeline, like [[entities/clax-project]])? The same methodology plays out very differently depending on which. Note the topology on the source page and flag if a new task shape doesn't fit either.
+- **Scaffolding pieces** — does the source describe a `CLAUDE.md`-equivalent portable plan, a `CHANGELOG.md`-equivalent cross-session memory, a test oracle, git-as-coordination, or a Ralph-loop-equivalent? These components recur across instances; mapping a new source against them makes integration faster.
 
 ---
 

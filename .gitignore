@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+
+# Obsidian workspace (machine-local)
+.obsidian/
+
+# Raw third-party source material — excluded from the public repo for copyright reasons.
+# The wiki/sources/ summaries are the canonical, transformative record of what was ingested.
+# Each source page links out to the original URL for readers who want the primary text.
+raw/
+Clippings/
+
+# Stray top-level files created by Obsidian auto-link resolution outside the wiki/ tree.
+# The real pages live under wiki/concepts/, wiki/entities/, etc.
+/concepts/
+/entities/
+/sources/
+/analyses/

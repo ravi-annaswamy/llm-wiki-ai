@@ -3,23 +3,77 @@ title: "Overview"
 type: overview
 created: 2026-04-04
 updated: 2026-04-04
-sources: []
-tags: []
-status: draft
+sources:
+  - "wiki/sources/2026-04-03-anthropic-acquires-coefficient-bio.md"
+  - "wiki/sources/2026-04-04-reuters-ai-indian-films.md"
+  - "wiki/sources/2026-04-04-venturebeat-karpathy-llm-knowledge-bases.md"
+  - "wiki/sources/2026-04-04-marktechpost-deepmind-alphaevolve-game-theory.md"
+  - "wiki/sources/2026-04-04-newyorker-is-it-wrong-to-write-with-ai.md"
+  - "wiki/sources/2026-04-04-anthropic-long-running-claude-scientific-computing.md"
+  - "wiki/sources/2026-04-04-yang-song-score-based-generative-modeling.md"
+tags: [enterprise-ai, life-sciences, india-film, llm-knowledge-bases, automated-research, creative-writing, agentic-coding, scientific-computing, generative-models, ml-theory, meta]
+status: active
 ---
 
 # Overview
 
-*This page will contain the high-level synthesis of everything in the wiki. It gets richer with every source ingested.*
+High-level synthesis of everything in the wiki. Updated as sources are ingested.
 
 ## Current State
 
-No sources ingested yet. This overview will be updated after the first ingest.
+Seven sources ingested, spanning two vertical-AI application stories, one knowledge-management methodology source, one automated-research methodology source, one creative-writing / authorship essay, one long-horizon-agentic-coding methodology source, and one foundational ML theory reference (score-based / diffusion generative modeling):
+
+1. **Life sciences** — [[entities/anthropic]]'s April 2026 acquisition of [[entities/coefficient-bio]] for a reported $400M, following the October 2025 launch of [[entities/claude-for-life-sciences]]. A frontier AI lab buying ex-[[entities/prescient-design]] drug-discovery talent to build first-party domain expertise in [[concepts/ai-drug-discovery]].
+2. **Indian film industry** — A Reuters investigation documenting India's unprecedented-scale deployment of AI in filmmaking ([[concepts/ai-filmmaking-india]]). Studios like [[entities/collective-artists-network]] (Galleri5), [[entities/eros-media-world]], [[entities/jiostar]], [[entities/abundantia-entertainment]], and [[entities/neuralgarage]] are pursuing three distinct plays: fully AI-generated mythology content, [[concepts/ai-dubbing]] across 22 languages, and [[concepts/ai-film-re-editing]] of catalog titles. Cost claims: 1/5 traditional production cost, 1/4 traditional timeline (per [[entities/rahul-regulapati]]).
+3. **LLM Knowledge Bases methodology** (meta) — A VentureBeat writeup of [[entities/andrej-karpathy]]'s "LLM Knowledge Bases" pattern: treat the LLM as a full-time research librarian that compiles, lints, and backlinks a Markdown wiki from raw sources. This is the pattern **this wiki itself implements** — see [[concepts/llm-knowledge-bases]]. Community extensions: [[concepts/contamination-mitigation]] ([[entities/steph-ango]]), [[concepts/swarm-knowledge-base]], [[concepts/ephemeral-wiki]].
+4. **Automated algorithm discovery (MARL / game theory)** — A MarkTechPost writeup of a [[entities/google-deepmind]] paper applying [[entities/alphaevolve]] to [[concepts/counterfactual-regret-minimization]] and [[concepts/policy-space-response-oracles]] in [[concepts/marl-imperfect-information-games]]. Uses Gemini 2.5 Pro as the **mutation operator over actual Python source code**, not over hyperparameters. Discovered VAD-CFR (matches SoTA in 10/11 games) and SHOR-PSRO (8/11), including genuinely non-intuitive mechanisms like a hard warm-start at iteration 500 and asymmetric training/evaluation solver configurations. See [[concepts/llm-driven-algorithm-discovery]].
+5. **AI in creative writing** — A New Yorker essay ("Is It Wrong to Write a Book with AI?") framing the authorship debate around two poles: [[entities/shy-girl-ai-novel]] (a Hachette horror novel unmasked by [[entities/pangram]] at 78% AI-generated, cancelled, 4/5 Amazon rating) and [[entities/coral-hart]] (a pseudonymous romance novelist running an industrial [[concepts/ai-novel-factory]] at six figures). Introduces the [[concepts/drum-machine-analogy-for-ai]] (TR-808 in 1983 as a template for where AI writing sits in 2026) and the [[concepts/layered-authorship]] argument (fiction is separable into premise/plot/prose/voice, and different layers can be distributed across contributors — AI included). See [[concepts/ai-in-creative-writing]] as the hub.
+7. **Foundational ML theory — score-based generative models** — [[entities/yang-song]]'s widely cited blog post compiling his 2019–2022 paper sequence on [[concepts/score-based-generative-models]]. Parameterize the score function ∇ₓ log p(x) instead of the density, train with [[concepts/score-matching]] (denoising variant in practice), sample with [[concepts/langevin-dynamics]] (annealed across multiple noise scales to fix high-dimensional failure). Generalizing to infinite noise scales yields a stochastic-differential-equation framework that **unifies score-based modeling with [[concepts/diffusion-models]]** under one continuous-time process — Song's own analogy is wave mechanics vs matrix mechanics. The [[concepts/probability-flow-ode]] turns the same trained model into a continuous normalizing flow for exact log-likelihoods, and Bayes' rule for scores lets a single unconditional model solve arbitrary inverse problems (inpainting, colorization, MRI, CT) at test time without retraining. This is the first foundational-ML-theory source in the wiki and a distinct content cluster from the applied / agentic work that dominates the rest.
+
+6. **Long-running agentic coding for scientific computing** — An Anthropic post by [[entities/siddharth-mishra-sharma]] (Discovery team) describing how to apply multi-day autonomous agentic coding workflows to scientific computing, even outside one's domain. Concrete walkthrough: [[entities/clax-project]], a differentiable JAX Boltzmann solver built by Claude Opus 4.6 in days, reaching sub-percent accuracy vs the [[entities/class-boltzmann-solver]] C reference — where domain-expert teams typically invest months to years. Names the scaffolding pieces: a `CLAUDE.md` portable plan, a `CHANGELOG.md` cross-session memory ([[concepts/agent-persistent-memory]]), a [[concepts/test-oracle-for-agents]], git as coordination, tmux-on-SLURM execution, and the [[concepts/ralph-loop]] to counter [[concepts/agentic-laziness]]. See [[concepts/long-running-agentic-coding]] (the general pattern) and [[concepts/agent-driven-scientific-computing]] (the domain-specific case).
 
 ## Key Themes
 
-*Will emerge as sources are added.*
+- **Vertical AI strategy over horizontal API access.** In the application stories, operators are building (or buying) first-party domain capability — Anthropic acquiring a drug-discovery team, Indian studios standing up in-house AI labs rather than just licensing tools. The Karpathy pattern is the *knowledge-management* expression of the same instinct: own your structured context, don't rent it from a SaaS.
+- **Regulatory and contractual environment shapes where the frontier lives.** The India/Hollywood divergence is explicit: SAG-AFTRA and DGA contracts constrain US studios from the exact practices that Indian studios are deploying freely. Frontiers move to where friction is lowest.
+- **Structure over similarity for mid-sized, high-signal corpora.** The Karpathy pattern's bet is that the industry has over-indexed on vector DBs/RAG for problems that are fundamentally about *structure* (backlinks, indices, explicit connections) rather than *similarity*. See [[concepts/rag-vs-wiki-comparison]].
+- **The economic case is sharpest where stylization hides AI limits.** Indian mythology works as the AI beachhead genre precisely because stylized visuals mask current generative-video weaknesses. Contemporary drama and live-action remain harder.
+- **Talent lineage matters.** Prescient Design (Genentech) is emerging as a recognizable origin point for AI drug-discovery founders. Expect similar patterns in other verticals.
+- **Commercial success and critical reception are decoupling (now 3 instances).** The AI Mahabharat series has a 1.4/10 IMDb rating but 26.5M+ views. The Raanjhanaa AI re-release drew public backlash from its lead actor but sold 35% of Tamil tickets in release month (12 points above average). The Shy Girl AI novel was cancelled by Hachette after a 78% AI-detection finding but had already earned a 4/5 Amazon rating from readers who didn't know. The same pattern now appears across two media (film, fiction) and two cultural contexts (Indian mythology TV, American self-publishing). The Hachette cancellation is a hint that the industry believes the ratings wouldn't survive mandatory disclosure — but the ratings themselves are evidence that audience behavior, absent disclosure, does not track critical signals.
+- **File-over-app and data sovereignty as an emerging AI posture.** Karpathy, [[entities/steph-ango]], and the enterprise voices in the VentureBeat piece all converge on a picture where the *data* lives on the local disk as open files, and AI models visit it as agents. This is in direct tension with the SaaS-heavy knowledge-store model (Notion, Google Docs).
+- **LLM as active producer of structured artifacts, not just query-answerer.** Four clean instances across the wiki's sources: Karpathy's lint-filtered [[concepts/llm-knowledge-bases]], AlphaEvolve's exploitability-filtered [[concepts/llm-driven-algorithm-discovery]], Coral Hart's revision-filtered [[concepts/ai-novel-factory]], and CLAX's accuracy-filtered [[concepts/long-running-agentic-coding]]. Plus a fifth plausible instance in Coefficient Bio's implied drug-discovery pipeline. In every case the LLM generates a durable output and a mechanical filter loop decides what survives. **Graduated to its own cross-cutting analysis page during the 2026-04-04 refactor: see [[analyses/producer-filter-pattern]].**
+- **Task shape determines agent topology.** A new observation from the Mishra-Sharma post: the same long-horizon autonomous agentic-coding methodology plays out in two topologically opposite ways depending on the task. Anthropic's [[entities/anthropic-c-compiler-project]] parallelized across ~2,000 mostly independent sessions; Mishra-Sharma's [[entities/clax-project]] used a **single sequential agent** spawning subagents as needed, because a deeply coupled numerical pipeline requires causal tracing through the whole chain. This generalizes: the swarm-vs-solo choice isn't about the methodology, it's about whether the artifact decomposes naturally or is internally coupled. Expect this to matter for future automated-research / agent-driven-scientific-computing work.
+- **CLAUDE.md + CHANGELOG.md as a generalizable "agent context pair."** Two files — a portable plan the agent can edit, and a progress/failure log the agent reads at session start — together do the work of a hidden vector-store memory, in a form that is legible, portable, and editable by the user. This is a [[concepts/file-over-app-philosophy]] instance and a structural cousin of this wiki's own `CLAUDE.md` + `wiki/log.md` split. The pattern is likely applicable beyond code — writing, research notebooks, multi-day analysis pipelines — wherever the work has memory-length problems and a filter loop.
+- **The substrate beneath the applied visual-AI stories is now explicit.** The text-to-video, image-to-image, voice-cloning, and facial-alteration systems referenced throughout [[concepts/ai-filmmaking-india]], [[concepts/ai-dubbing]], [[concepts/hindu-mythology-ai-genre]], and implicitly in [[concepts/ai-novel-factory]] are all descendants of the score-based / diffusion generative-model family established by [[entities/yang-song]], [[entities/stefano-ermon]], and collaborators between 2019 and 2021. Ingesting Song's tutorial ([[sources/2026-04-04-yang-song-score-based-generative-modeling]]) is the wiki's first foundational-theory source and makes the "own your substrate" split concrete: Indian studios, AI novel factories, and dubbing shops rent the diffusion-model layer (Veo, SDXL, open-source checkpoints, proprietary voice models) and own the domain pipelines, catalogs, and distribution wrapped around it. Cross-link added from the three applied visual-AI concept pages.
+- **Authorship as layered, not unitary.** The New Yorker essay crystallizes an argument this wiki was already half-making through [[concepts/ai-film-re-editing]] and [[concepts/ai-dubbing]]: creative works are layered (premise, plot, scene, dialogue, prose, voice for fiction; performance, voice, facial motion, ending for film), and AI interventions are always at **specific layers**, not wholesale. The controversy tracks which layer is being touched. Prose and voice are the highest-resistance layers in fiction; actor voice identity is the analogous high-resistance layer in film. See [[concepts/layered-authorship]].
+
+## Key Figures to Watch
+
+- The EY projection: AI could boost Indian media/entertainment revenue by 10% and cut costs by 15% over the medium term.
+- Galleri5's 1/5 cost and 1/4 time figures for mythology/fantasy.
+- Abundantia's target: one-third of revenue from AI-generated or AI-assisted content within three years.
+- Eros's 3,000-title catalog review for AI re-editing candidates.
+- Karpathy's scale claim for LLM Knowledge Bases: ~100 articles / ~400,000 words is comfortably navigable without "fancy RAG."
+- AlphaEvolve benchmark result: VAD-CFR matches or surpasses state-of-the-art in 10 of 11 games; SHOR-PSRO in 8 of 11, with no re-tuning between training and test games.
+- CLAX result: sub-percent accuracy against CLASS on main CMB angular power spectra, reached in days of Claude Opus 4.6 wall time on a single H100 node — vs. months-to-years for domain-expert groups building comparable differentiable JAX Boltzmann solvers.
+- Accuracy target chosen for CLAX: 0.1%, matching the typical CLASS↔CAMB agreement level (i.e., the field's floor for "correct").
+- Anthropic C compiler project scale: ~2,000 sessions to build a Linux-kernel-capable compiler.
 
 ## Open Questions
 
-*Will be populated during ingest and lint cycles.*
+- Is Anthropic planning a series of vertical acqui-hires in other scientific domains, or is life sciences a uniquely high-priority bet?
+- How far does the Indian mythology-genre AI tolerance transfer to other genres?
+- Will Hollywood union constraints erode as Indian economics are demonstrated, or will the two industries permanently diverge?
+- What does "AI cost savings" look like outside mythology and fantasy?
+- Do competitors (OpenAI, Google DeepMind, biotech-AI pure plays) respond with similar vertical acquisitions?
+- At what corpus size does the Karpathy pattern break? Is unsupervised linting reliable without a human editor?
+- Does this wiki itself need to adopt [[concepts/contamination-mitigation]] (a staging directory) before multi-source batch ingest becomes safe?
+- How far does [[concepts/llm-driven-algorithm-discovery]] transfer outside game theory? Optimizers, attention variants, compiler passes, RL algorithms are all plausible targets — does the approach need tight class hierarchies, or does it work over looser interfaces?
+- How much of AlphaEvolve's "discovery" is genuine novelty vs. the LLM retrieving and recombining tricks from its training data?
+- Is the reception paradox (Mahabharat / Raanjhanaa / Shy Girl) conditional on non-disclosure, or robust to it? The Hachette cancellation suggests the industry thinks non-disclosure; the Mahabharat numbers suggest disclosure doesn't matter when the genre tolerance is high enough.
+- Does the [[concepts/ai-novel-factory]] model generalize beyond romance and other formulaic genres, or is it structurally capped at the mid-market?
+- In a disclosure regime, would readers want to know *which layers* of a book were AI-assisted (outline only? prose? voice?), or just whether AI was involved at all?
+- How far does [[concepts/long-running-agentic-coding]] generalize outside scientific computing and compiler-building? Which task shapes fit; which don't? What is the failure mode at the multi-week or multi-month horizon (CLAX is days; the compiler is longer but parallel)?
+- Does the "non-expert-driven agent-built scientific code" result in [[entities/clax-project]] replicate in other domains? Where does domain-literacy become the binding constraint vs. scaffolding skill?
+- When does [[concepts/agentic-laziness]] disappear purely from model capability improvements, making scaffolds like the [[concepts/ralph-loop]] obsolete?
+- (Resolved 2026-04-04 refactor) The "test oracle / filter loop" theme was promoted to its own page: [[analyses/producer-filter-pattern]]. Open follow-on: does a sixth substrate (DFT / materials, theorem proving, legal drafting) appear in the next several ingests that extends the pattern further?
