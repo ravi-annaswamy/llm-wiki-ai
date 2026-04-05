@@ -2,7 +2,7 @@
 title: "RAG vs. LLM-Maintained Wiki"
 type: concept
 created: 2026-04-04
-updated: 2026-04-04
+updated: 2026-04-05
 sources: ["wiki/sources/2026-04-04-venturebeat-karpathy-llm-knowledge-bases.md"]
 tags: [rag, vector-db, architecture, tradeoffs, knowledge-management]
 status: active
@@ -10,7 +10,7 @@ status: active
 
 # RAG vs. LLM-Maintained Wiki
 
-This page captures the explicit architectural comparison between the dominant **Retrieval-Augmented Generation (RAG)** pattern and the **[llm-knowledge-bases](llm-knowledge-bases.md)** pattern proposed by [andrej-karpathy](../entities/andrej-karpathy.md) (Source: [2026-04-04-venturebeat-karpathy-llm-knowledge-bases](../sources/2026-04-04-venturebeat-karpathy-llm-knowledge-bases.md)).
+> **The architectural comparison between the dominant Retrieval-Augmented Generation (RAG) pattern and the [llm-knowledge-bases](llm-knowledge-bases.md) pattern proposed by [andrej-karpathy](../entities/andrej-karpathy.md).** Not competitors at the extremes — complementary for different scales and different needs.
 
 ## The short version
 
@@ -19,37 +19,34 @@ This page captures the explicit architectural comparison between the dominant **
 | Data format | Opaque vectors (math) | Human-readable Markdown |
 | Logic | Semantic similarity (nearest neighbor) | Explicit connections (backlinks, indices) |
 | Auditability | Low (black box) | High (direct traceability) |
-| Compounding | Static — requires re-indexing | Active — self-healing through linting |
+| Compounding | Static — requires re-indexing | Active — self-healing via linting |
 | Ideal scale | Millions of documents | 100–10,000 high-signal documents |
 
-## The mental model
-
-From the VentureBeat writeup:
+The VentureBeat analogy:
 
 > The "Vector DB" approach is like a massive, unorganized warehouse with a very fast forklift driver. You can find anything, but you don't know why it's there or how it relates to the pallet next to it. Karpathy's "Markdown Wiki" is like a curated library with a head librarian who is constantly writing new books to explain the old ones.
 
-## Where RAG wins
+## Where each wins
 
-- **Scale.** Millions of documents, indexed for sub-second retrieval.
-- **Semantic recall.** Finding passages that don't share keywords but share meaning.
-- **Zero authoring cost at ingest.** Just chunk and embed.
-
-## Where the Karpathy wiki wins
-
-- **Auditability.** Every claim traces to a specific `.md` file a human can read, edit, or delete. Vector embeddings are a black box.
-- **Compounding.** The wiki improves as sources are reconciled, contradictions surfaced, and connections drawn. RAG corpora are inert — more sources means more chunks, not more insight.
-- **Structure over similarity.** For topics where *how things connect* matters more than *what's similar*, backlinks and explicit indices beat nearest-neighbor search.
-- **Cost and latency for mid-sized corpora.** Karpathy argues that at ~100 articles / ~400k words, the "fancy RAG" infrastructure introduces more latency and retrieval noise than it solves.
-- **Portability and vendor independence.** Markdown files survive any application or vendor. Vector stores are locked to a specific DB and embedding model.
+| Dimension | RAG wins | Wiki wins |
+|---|---|---|
+| Scale | Millions of docs, sub-second retrieval | 100-word~400k-word mid corpora |
+| Semantic recall | Finds meaning-matched passages without shared keywords | — |
+| Authoring cost | Zero — just chunk and embed | Requires compilation + linting |
+| Auditability | — | Every claim traces to a `.md` file |
+| Compounding | — | Improves as sources are reconciled and contradictions surfaced |
+| Structure-over-similarity | — | Backlinks beat nearest-neighbor when *how things connect* matters more than *what's similar* |
+| Portability | — | Markdown survives any app/vendor; vector stores lock to a DB+embedding model |
 
 ## When to use which
 
-The VentureBeat framing — and the honest answer — is that the two are not competitors at the extremes. RAG remains the right tool for true enterprise-scale corpora and for tasks that are fundamentally about similarity. The Karpathy pattern dominates for **mid-sized, high-signal** corpora where structure matters — personal research, single-team knowledge bases, project-specific context for coding agents.
+RAG remains the right tool for true enterprise-scale corpora and tasks that are fundamentally about similarity. The Karpathy pattern dominates for **mid-sized, high-signal** corpora where structure matters — personal research, single-team knowledge bases, coding-agent project context.
 
-There is also a hybrid case the source doesn't develop explicitly but is implied: **use the Karpathy wiki as the compiled, human-readable layer on top of a RAG store of raw materials.** The wiki is the distilled knowledge; the raw index is the long-tail fallback.
+**Hybrid.** The source implies but doesn't develop: use the Karpathy wiki as the *compiled, human-readable layer* on top of a RAG store of raw materials. Wiki = distilled knowledge; raw index = long-tail fallback.
 
 ## Related
 
-- [llm-knowledge-bases](llm-knowledge-bases.md)
-- [file-over-app-philosophy](file-over-app-philosophy.md)
-- [andrej-karpathy](../entities/andrej-karpathy.md)
+- **Hub:** [llm-knowledge-bases](llm-knowledge-bases.md)
+- **Adjacent:** [file-over-app-philosophy](file-over-app-philosophy.md)
+- **Author:** [andrej-karpathy](../entities/andrej-karpathy.md)
+- **Source:** [2026-04-04-venturebeat-karpathy-llm-knowledge-bases](../sources/2026-04-04-venturebeat-karpathy-llm-knowledge-bases.md)

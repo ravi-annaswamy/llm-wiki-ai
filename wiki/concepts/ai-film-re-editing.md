@@ -2,7 +2,7 @@
 title: "AI Film Re-Editing"
 type: concept
 created: 2026-04-04
-updated: 2026-04-04
+updated: 2026-04-05
 sources: ["wiki/sources/2026-04-04-reuters-ai-indian-films.md"]
 tags: [india, ai-applications, film, catalog, re-release]
 status: active
@@ -10,28 +10,33 @@ status: active
 
 # AI Film Re-Editing
 
-AI film re-editing is the practice of using generative AI to alter existing films — most visibly by replacing endings, but also potentially modifying scenes, dialogue, or characters — and releasing the altered version commercially. It is one of the three distinct plays Indian studios are making in [ai-filmmaking-india](ai-filmmaking-india.md).
+> **Using generative AI to alter existing films — most visibly by replacing endings — and releasing the altered version commercially.** One of three distinct plays Indian studios are making in [ai-filmmaking-india](ai-filmmaking-india.md). Raanjhanaa is the canonical case.
 
 ## The canonical case: Raanjhanaa
 
-[eros-media-world](../entities/eros-media-world.md) re-released the 2013 hit "Raanjhanaa" in 2025 with an AI-altered ending: the protagonist's death was replaced with a happy reunion. Lead actor Dhanush publicly objected on X, saying the remake had "stripped the film of its very soul" and set a "deeply concerning precedent for both art and artists" (Source: [2026-04-04-reuters-ai-indian-films](../sources/2026-04-04-reuters-ai-indian-films.md)).
+[eros-media-world](../entities/eros-media-world.md) re-released the 2013 hit "Raanjhanaa" in 2025 with an AI-altered ending: the protagonist's death replaced with a happy reunion. Lead actor **Dhanush publicly objected** on X — the remake "stripped the film of its very soul" and set "a deeply concerning precedent for both art and artists."
 
-The commercial result contradicted the artistic reception: PVR Inox told Reuters that **35% of available tickets sold for the Tamil version in its August release month — 12 points above the 2025 average**. Financially, the experiment worked.
+The commercial signal contradicted the artistic reception: PVR Inox reported **35% of available tickets sold for the Tamil version in August — 12 points above the 2025 average.** Financially, the experiment worked.
 
-## Scaling up: catalog mining
+## Scaling: catalog mining
 
-Eros group CEO [pradeep-dwivedi](../entities/pradeep-dwivedi.md) told Reuters the studio is reviewing its full ~3,000-title catalog "to identify candidates for AI-assisted adaptation," calling it "both a revenue opportunity and a creative renewal strategy." The move is partly defensive: Eros International's Indian unit saw annual revenue from operations fall 44% last year.
+Eros CEO [pradeep-dwivedi](../entities/pradeep-dwivedi.md) said Eros is reviewing its full ~3,000-title catalog for AI-assisted adaptation candidates — *"both a revenue opportunity and a creative renewal strategy."* Partly defensive: Eros International's Indian unit saw revenue fall 44% last year. If Raanjhanaa economics generalize, catalog re-editing is attractive because it repurposes already-paid-for IP, casts, and scripts — marginal cost is essentially the AI work itself.
 
-If the Raanjhanaa economics generalize, catalog re-editing becomes a compelling play because it repurposes already-paid-for IP, casts, and scripts — the marginal cost is essentially the AI work itself.
+## Why it's structurally Indian
 
-## Why it's structurally Indian (for now)
-
-In Hollywood, the same strategy would hit hard legal and contractual walls. Under its SAG-AFTRA agreement, studios cannot digitally alter an actor's performance or create a digital replica without the performer's informed consent. The Directors Guild of America bars studios from using AI for creative decisions without consulting the director and prevents AI from doing the work of its members. Indian studios face no equivalent constraints — performer and director objections (like Dhanush's) are reputational, not contractual.
+| Jurisdiction | Constraint |
+|---|---|
+| Hollywood | SAG-AFTRA bars digital alteration of an actor's performance or digital replica without informed consent. DGA bars AI creative decisions without director consultation |
+| India | No equivalent contractual constraints. Performer/director objections are reputational, not enforceable |
 
 ## Open questions
 
-- Will performer pushback in India eventually produce union or statutory protections similar to SAG-AFTRA's, or will market success keep the door open?
-- Does audience tolerance for AI re-editing generalize beyond "happier ending" swaps? Would re-cut scenes or altered dialogue face more resistance?
-- How does AI re-editing interact with moral rights / authors' rights frameworks in Indian copyright law?
+- Will Indian pushback eventually produce union or statutory protections, or will market success keep the door open?
+- Does audience tolerance generalize beyond "happier ending" swaps to re-cut scenes or altered dialogue?
+- How does re-editing interact with moral-rights frameworks in Indian copyright law?
 
-Related: [ai-filmmaking-india](ai-filmmaking-india.md), [eros-media-world](../entities/eros-media-world.md), [pradeep-dwivedi](../entities/pradeep-dwivedi.md).
+## Related
+
+- **Parent:** [ai-filmmaking-india](ai-filmmaking-india.md)
+- **Canonical case:** [eros-media-world](../entities/eros-media-world.md) · [pradeep-dwivedi](../entities/pradeep-dwivedi.md)
+- **Source:** [2026-04-04-reuters-ai-indian-films](../sources/2026-04-04-reuters-ai-indian-films.md)

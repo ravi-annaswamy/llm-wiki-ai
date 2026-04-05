@@ -2,50 +2,40 @@
 title: "Wiki Linting (Active Maintenance)"
 type: concept
 created: 2026-04-04
-updated: 2026-04-04
+updated: 2026-04-05
 sources: ["wiki/sources/2026-04-04-venturebeat-karpathy-llm-knowledge-bases.md"]
 tags: [karpathy, linting, maintenance, quality, self-healing]
 status: active
 ---
 
-# Wiki Linting (Active Maintenance)
+# Wiki Linting
 
-In the [llm-knowledge-bases](llm-knowledge-bases.md) pattern, **linting** is the ongoing maintenance step where the LLM periodically scans the whole wiki for inconsistencies, orphan pages, missing connections, contradictions, and coverage gaps — then fixes what it can and surfaces what it can't (Source: [2026-04-04-venturebeat-karpathy-llm-knowledge-bases](../sources/2026-04-04-venturebeat-karpathy-llm-knowledge-bases.md)).
+> **The ongoing maintenance step in [llm-knowledge-bases](llm-knowledge-bases.md) where the LLM scans the whole wiki for inconsistencies, orphans, contradictions, and coverage gaps — fixing what it can and surfacing what it can't.** Community member Charly Wargnier: *"It acts as a living AI knowledge base that actually heals itself."*
 
-Community member Charly Wargnier described the result: "It acts as a living AI knowledge base that actually heals itself."
+## What a lint pass checks
 
-## What a lint pass typically checks
-
-Based on Karpathy's description and the community reactions:
-
-- **Orphans.** Pages with no inbound `[[backlinks]]` — indicating the knowledge is siloed and undiscoverable from the rest of the wiki.
-- **Contradictions.** Claims on one page that conflict with claims on another. Should be flagged explicitly rather than silently merged.
-- **Stale pages.** Pages whose source material has been superseded by newer ingests.
-- **Missing pages.** Concepts or entities mentioned multiple times across the wiki but lacking their own dedicated page.
-- **Broken links.** Wikilinks that point to non-existent files.
-- **Coverage gaps.** Important topics that appear in raw sources but weren't promoted into the wiki during compilation.
-- **Suggested questions.** What should the user investigate next? Linting is both a cleanup pass and a research prompt.
+| Check | What it finds |
+|---|---|
+| **Orphans** | Pages with no inbound backlinks — knowledge siloed and undiscoverable |
+| **Contradictions** | Claims on one page conflicting with claims on another. Flag explicitly, don't silently merge |
+| **Stale pages** | Source material superseded by newer ingests |
+| **Missing pages** | Concepts/entities mentioned across 3+ pages but lacking their own |
+| **Broken links** | Wikilinks pointing to non-existent files |
+| **Coverage gaps** | Important topics in raw sources not yet promoted |
+| **Suggested questions** | What should the user investigate next? |
 
 ## Why it's the core innovation (not compilation)
 
-At first glance, compilation — the LLM writing wiki pages from raw sources — looks like the central move. But linting is what makes the wiki **compound** rather than merely grow. Without linting:
-
-- Every new source adds pages but doesn't reconcile them with existing knowledge.
-- Contradictions pile up silently.
-- Concepts fragment across multiple similar pages.
-- The signal-to-noise ratio degrades as the corpus grows.
-
-Linting is how the wiki stays coherent at scale. It is what distinguishes a "self-healing knowledge base" from an LLM-authored pile of files.
+At first glance, compilation — the LLM writing pages from raw sources — looks like the central move. But **linting is what makes the wiki compound rather than merely grow.** Without it, every new source adds pages without reconciling them with existing knowledge, contradictions pile up silently, concepts fragment across similar pages, and signal-to-noise degrades as the corpus grows. Linting is how the wiki stays coherent at scale — what distinguishes a "self-healing knowledge base" from an LLM-authored pile of files.
 
 ## Open questions
 
 - Can unsupervised linting be trusted, or does it need a human editor in the loop?
-- What are the failure modes — e.g., does the LLM tend to over-merge distinct concepts, or over-split similar ones?
+- What are the failure modes — over-merging distinct concepts, or over-splitting similar ones?
 - Does linting need a separate model from compilation to avoid confirmation bias?
-- Is there a lint-frequency threshold? Daily? After every ingest? On a size trigger?
 
 ## Related
 
-- [llm-knowledge-bases](llm-knowledge-bases.md)
-- [contamination-mitigation](contamination-mitigation.md)
-- [swarm-knowledge-base](swarm-knowledge-base.md) (uses a dedicated Hermes model as a lint/quality gate)
+- **Hub:** [llm-knowledge-bases](llm-knowledge-bases.md)
+- **Adjacent:** [contamination-mitigation](contamination-mitigation.md) · [swarm-knowledge-base](swarm-knowledge-base.md) (uses a dedicated Hermes model as a lint/quality gate)
+- **Source:** [2026-04-04-venturebeat-karpathy-llm-knowledge-bases](../sources/2026-04-04-venturebeat-karpathy-llm-knowledge-bases.md)

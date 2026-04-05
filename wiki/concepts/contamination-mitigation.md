@@ -2,56 +2,54 @@
 title: "Contamination Mitigation (Clean Vault / Messy Vault)"
 type: concept
 created: 2026-04-04
-updated: 2026-04-04
+updated: 2026-04-05
 sources: ["wiki/sources/2026-04-04-venturebeat-karpathy-llm-knowledge-bases.md"]
 tags: [karpathy, multi-agent, quality, obsidian, workflow]
 status: active
 ---
 
-# Contamination Mitigation (Clean Vault / Messy Vault)
+# Contamination Mitigation
 
-A practical refinement of the [llm-knowledge-bases](llm-knowledge-bases.md) pattern, proposed by [steph-ango](../entities/steph-ango.md) (co-creator of [obsidian](../entities/obsidian.md)) in response to Karpathy's original post (Source: [2026-04-04-venturebeat-karpathy-llm-knowledge-bases](../sources/2026-04-04-venturebeat-karpathy-llm-knowledge-bases.md)).
+> **A practical refinement of [llm-knowledge-bases](llm-knowledge-bases.md) proposed by [steph-ango](../entities/steph-ango.md) ([obsidian](../entities/obsidian.md) co-creator): keep your personal "vault" clean, let agents play in a "messy vault," promote only reviewed artifacts.**
 
-## The core idea
+## The failure mode it prevents
 
-> Keep your personal "vault" clean. Let the agents play in a "messy vault." Only bring useful artifacts over once the agent-facing workflow has distilled them.
+Unconstrained agents writing directly into a user's primary knowledge base can pollute it with:
 
-## Why it matters
+| Failure | Effect |
+|---|---|
+| Low-quality drafts | Treated as authoritative because they live in the vault |
+| Speculative cross-links | Corrupt the backlink graph with junk edges |
+| Hallucinated claims | Become context for the next lint pass, compounding |
+| Redundant pages | Agent didn't notice an existing one |
+| Over-eager refactors | Damage structure the user carefully built |
 
-The unconstrained version of the Karpathy pattern has a failure mode: LLM agents working directly in a user's primary knowledge base can **pollute** it with:
-
-- Low-quality drafts that were meant to be revised later
-- Speculative connections between unrelated topics
-- Hallucinated claims presented as facts
-- Redundant pages created because the agent didn't notice an existing one
-- Over-eager refactors that damage structure the user carefully built
-
-Once pollution enters a personal vault, it's hard to remove — especially if the user trusts the vault as "their knowledge." The more the user treats the vault as authoritative, the more damaging contamination becomes.
+Once pollution enters a personal vault it's hard to remove — especially if the user trusts the vault as "their knowledge."
 
 ## The two-vault pattern
 
-The fix is architectural, not behavioral:
+Fix is **architectural, not behavioral**:
 
-- **Messy vault** — where agents work freely. Ingests, compilations, linting, experiments, multi-agent swarms. High throughput, lower quality bar. Treated as disposable.
-- **Clean vault** — the user's primary knowledge base. High quality bar. Curated by a human (or a highly constrained single agent). Only receives artifacts the user has explicitly reviewed and promoted.
+- **Messy vault** — where agents work freely. Ingests, compilations, linting, experiments, swarms. High throughput, lower quality bar, treated as disposable.
+- **Clean vault** — user's primary knowledge base. High bar, curated by a human (or a tightly constrained single agent). Only receives artifacts the user has explicitly promoted.
 
-Promotion is the key step: a conscious human action, not an automatic sync.
+**Promotion is the key step** — a conscious human action, not automatic sync.
 
-## Implications for multi-agent setups
+## Why multi-agent setups need this
 
-Contamination mitigation becomes nearly mandatory once more than one agent is writing to the wiki. Without the clean/messy separation:
+Once more than one agent writes to the wiki, contamination mitigation becomes nearly mandatory:
 
-- A hallucination from agent A becomes context for agent B, then compounds across the swarm (the same concern addressed by the [swarm-knowledge-base](swarm-knowledge-base.md) "Quality Gate").
-- Lint passes can't distinguish "the user wrote this" from "an agent wrote this last week," so human corrections can be silently reverted.
+- Agent A's hallucination becomes agent B's context, compounding across the swarm (same concern as the [swarm-knowledge-base](swarm-knowledge-base.md) Quality Gate).
+- Lint passes can't distinguish "human wrote this" from "agent wrote this last week" — human corrections can be silently reverted.
 
 ## How this wiki could apply it
 
-This project currently has a single vault (`wiki/`). A future refinement could introduce a `wiki-staging/` or `wiki-scratch/` directory where LLM-generated analyses and lint suggestions land first, with a human "promote" step before they enter `wiki/`. Currently, the human review happens implicitly during the conversational ingest flow — which works at this scale but may not survive heavy multi-source ingest batches or multi-agent expansion.
+This project currently has a single vault (`wiki/`). A future refinement could introduce `wiki-staging/` where agent outputs and lint suggestions land first, with an explicit human promote step. Currently the review happens implicitly during the conversational ingest flow — which works at this scale but may not survive heavy batch ingest or multi-agent expansion.
 
 ## Related
 
-- [llm-knowledge-bases](llm-knowledge-bases.md)
-- [swarm-knowledge-base](swarm-knowledge-base.md)
-- [wiki-linting](wiki-linting.md)
-- [steph-ango](../entities/steph-ango.md)
-- [obsidian](../entities/obsidian.md)
+- **Hub:** [llm-knowledge-bases](llm-knowledge-bases.md)
+- **Multi-agent version:** [swarm-knowledge-base](swarm-knowledge-base.md)
+- **Adjacent:** [wiki-linting](wiki-linting.md)
+- **Originator:** [steph-ango](../entities/steph-ango.md) · [obsidian](../entities/obsidian.md)
+- **Source:** [2026-04-04-venturebeat-karpathy-llm-knowledge-bases](../sources/2026-04-04-venturebeat-karpathy-llm-knowledge-bases.md)
